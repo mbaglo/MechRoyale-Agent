@@ -179,16 +179,18 @@
           "candidate": 130
         }
       },
-      "official_submission_status": "not submitted; revalidate new exact source",
-      "submission_id": null,
+      "official_submission_status": "Scoring",
+      "submission_id": "BB-CDD245D9",
       "official_score": null,
-      "technical_validation": "27 tests and official checker passed; exact CI pending",
+      "technical_validation": "27 tests; official checker; exact-source Linux Docker sandbox CI passed",
       "promotion_rule": "Promote only on an official score exceeding the current best; objective >=10.00",
       "status": "Rebuilt single cube-range change on verified 2.31 best",
       "prepared_predecessor_commits": [
         "0cbd1a2b96572176dad9ec7be9c88c6996795020"
       ],
-      "commit": "581009b54f2331846ff52d0d553e15e400248baa"
+      "commit": "581009b54f2331846ff52d0d553e15e400248baa",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44945193673",
+      "submitted_at": "2026-11-21T15:15:00-05:00"
     },
     {
       "id": "EXP-011",
@@ -205,12 +207,13 @@
       "official_submission_status": "not submitted; review base after current result and validate exact CI",
       "submission_id": null,
       "official_score": null,
-      "technical_validation": "21 tests, official checker and Linux Docker sandbox CI passed",
+      "technical_validation": "26 tests and official checker passed; exact CI pending",
       "promotion_rule": "Promote only on a new official best; target >=10.00",
       "status": "Rebuilt one upgrade priority on current best; revalidate",
       "prepared_predecessor_commits": [
         "088ee223247c071188de4417bfff1e9c34f5f770"
-      ]
+      ],
+      "commit": "d8336b8ce06215842220bd7ad5d7278a46458484"
     }
   ],
   "best_official_entry": {
