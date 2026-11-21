@@ -3,6 +3,12 @@ Autonomous AI combat agent for Builders Buildathon 2026. Features adaptive comba
 
 [CODEX_ENHANCEMENT_2026-11-21]
 
+**Selected official best: 2.31**, `BB-0BF60252`, source
+`644baa44fe773c5e2429bec5c715f91787770ab1`.
+**EXP-011 rebuilt:** `experiment/best231-magazine-2026-11-21` changes only
+magazine-upgrade preference on that verified source. Its old predecessor was
+never submitted. Target remains official **10.00+**; new candidate score unknown.
+
 **EXP-009 attention-memory candidate:** `experiment/best-threat-attention-2026-11-21`,
 based on selected official **2.25** source `2f30e3d217461379eedebeea49751b6209397c79`.
 Only no-target threat-bearing persistence changes, allowing a defensive torso
