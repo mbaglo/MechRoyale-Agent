@@ -66,10 +66,14 @@ class ZoneRoute:
                     self.cost[other],self.parent[other] = total,cell
                     heapq.heappush(self.frontier,(total+math.dist(dest[:2],self.goal),total,other))
 
-    def waypoint(self, s, goal):
+    def waypoint(self, s, goal, early=False):
         me, zone = s.me, s.obs['zone']
         pos,stats = me['pos'],me['stats']
-        if (not s.urgent or not me['grounded'] or math.dist(pos[:2],zone['next_center']) < zone['next_radius']-5
+        # [ASTRA_ENHANCEMENT_2026-11-21] [CODEX_ENHANCEMENT_2026-11-21]
+        # Resolve an obstruction on a quiet trip before the zone clock becomes urgent.
+        distance_to_center = math.dist(pos[:2],zone['next_center'])
+        outside_next = distance_to_center > zone['next_radius']+8
+        if (not (s.urgent or (early and outside_next)) or not me['grounded'] or distance_to_center < zone['next_radius']-5
                 or abs(pos[2]-self.world.ground(*pos[:2])) > stats['step_up']):
             self.clear()
             return goal

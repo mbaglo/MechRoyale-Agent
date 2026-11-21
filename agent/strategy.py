@@ -5,6 +5,7 @@ import math
 class Strategy:
     def __init__(self):
         self.mode = 'balanced'
+        self.zone_goal = True
 
     def choose(self, s):
         close = [e for e in s.enemies if math.dist(e['pos'], s.me['pos']) < 100]
@@ -18,6 +19,8 @@ class Strategy:
         return self.mode
 
     def goal(self, s, mode):
+        # [ASTRA_ENHANCEMENT_2026-11-21] Identify planned zone travel separately from a pickup or opponent.
+        self.zone_goal = True
         o, me = s.obs, s.me
         pos = me['pos']
         z = o['zone']
@@ -52,10 +55,12 @@ class Strategy:
             if distance < reach and safe and not contested and abs(p['pos'][2]-pos[2]) < 4:
                 options.append((distance*cost, p['pos'][:2]))
         if options:
+            self.zone_goal = False
             return min(options, key=lambda p:p[0])[1]
         if mode == 'aggressive' and s.enemies:
             enemy = s.enemies[0]['pos']
             distance = math.dist(enemy[:2], pos[:2])
             if distance > 55:
+                self.zone_goal = False
                 return [enemy[k]+(pos[k]-enemy[k])*55/distance for k in range(2)]
         return goal
