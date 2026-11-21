@@ -241,12 +241,14 @@
       "base_official_score": 2.46,
       "hypothesis": "Finish exposed opponents using current ammo and time to turn, and route toward the selected opponent at useful weapon range.",
       "technical_validation": "40 tests passed, 300/300 protocol, maximum 8.5 ms locally. No replay action differences. Recording contains no simultaneous opponents.",
-      "official_submission_status": "Scoring",
-      "official_score": null,
+      "official_submission_status": "Scored",
+      "official_score": 2.13,
       "submission_id": "BB-CDA30EDB",
       "commit": "e29c8dc1b66afb73f093a7cb935322c38af0154a",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44949004758",
-      "submitted_at": "2026-11-21T15:58:00-05:00"
+      "submitted_at": "2026-11-21T15:58:00-05:00",
+      "status": "Rejected, 2.46 selected",
+      "interpretation": "New policy treated two exposed ranged contacts as enough to retreat and changed focus toward estimated finishes. No match traces identify a causal component."
     },
     {
       "id": "EXP-014",
@@ -257,8 +259,9 @@
       "technical_validation": "40 tests, official protocol 300/300 locally, max 9.8 ms. Replay has 15 weapon reacquisitions but zero changed actions. Scenario tests exercise collection and abandonment.",
       "official_score": null,
       "submission_id": null,
-      "official_submission_status": "Prepared, held for stronger replay evidence from EXP-015",
-      "commit": "76cb349a9077cb6c09b79b922929848d240245dd"
+      "official_submission_status": "Validated, awaiting evaluation",
+      "commit": "76cb349a9077cb6c09b79b922929848d240245dd",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44949310307"
     },
     {
       "id": "EXP-015",
@@ -269,7 +272,10 @@
       "technical_validation": "40 tests, official checker 300/300 max 13.6ms locally. Replay changes 13 movement and 2 boost decisions, 0 aim or fire decisions.",
       "official_score": null,
       "submission_id": null,
-      "official_submission_status": "Awaiting CI"
+      "official_submission_status": "Validated, awaiting evaluation",
+      "commit": "0e40ae0843a06e39d7da16c5f49baa1c1e13f942",
+      "probe": "In a local ground movement model with recorded opponent positions, center and head were covered on the final step of 2/5 charge windows versus 1/5 for baseline. Enemy responses, damage and placement were not simulated.",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44949637971"
     }
   ],
   "best_official_entry": {
@@ -285,5 +291,5 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-21T21:01:03.882494+00:00"
+  "last_updated_at": "2026-11-21T21:07:23.069333+00:00"
 }

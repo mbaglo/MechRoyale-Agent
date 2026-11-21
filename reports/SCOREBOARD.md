@@ -19,3 +19,4 @@ Verified best **2.46**, selected. Objective **>=10.00** remains unmet.
 | EXP-010 | `581009b54f2331846ff52d0d553e15e400248baa` | BB-CDD245D9 | 2.38 |
 | EXP-011 | `7e5b3565ce616be3e798255588e1c88ab7f86f46` | BB-D1BCAB2F | 2.42 |
 | EXP-012 | `4ba12f9cf9da12dbdcbe35dc104a352879347414` | BB-B18CA477 | 2.46 |
+| EXP-013 | `e29c8dc1b66afb73f093a7cb935322c38af0154a` | BB-CDA30EDB | 2.13 |
