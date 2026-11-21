@@ -19,7 +19,8 @@
       "score_reported_by_user": 1.31,
       "status": "regression; preserve branch, do not select",
       "official_score": 1.31,
-      "promotion_rule": "Only promote if the official score exceeds the current best official score; recheck live selection"
+      "promotion_rule": "Only promote if the official score exceeds the current best official score; recheck live selection",
+      "branch": "optimization/squad-survival-2026-11-21"
     },
     {
       "id": "EXP-003",
@@ -36,7 +37,8 @@
       "commit": "28afe8bcba8480f7483dc65280afdc270c0120ac",
       "stage": "complete",
       "submitted_at": "2026-11-21T11:52:00-05:00",
-      "status": "Scored 2.19; preserved, superseded by 2.25"
+      "status": "Scored 2.19; preserved, superseded by 2.25",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44925412894"
     },
     {
       "id": "EXP-XF01",
@@ -118,16 +120,16 @@
       "base_official_score": 2.25,
       "hypothesis": "Recharge hysteresis may create sustained escape bursts and health regeneration opportunities",
       "changed_policy": "Grounded non-urgent boost recovery from <=30 energy to 85% capacity; existing urgent/air rules retained",
-      "official_submission_status": "Scoring",
+      "official_submission_status": "Scored",
       "submission_id": "BB-CB9FB47A",
-      "official_score": null,
+      "official_score": 2.23,
       "technical_validation": "26 tests; official checker; Linux AMD64 Docker sandbox CI passed",
       "promotion_rule": "Only select an official score exceeding the live best; target remains 10.00+",
       "commit": "d63c6befe6102a49005025b9337fc01b1da1f9fa",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44931496281",
       "automation_status": "Background launch rejected by automatic approval review: blocked by policy; no bypass attempted",
       "submitted_at": "2026-11-21T12:53:00-05:00",
-      "status": "Awaiting authoritative score; selected best remains 2.25",
+      "status": "Below 2.25; not promoted; energy fixture did not establish gameplay gain",
       "submission_route": "Permitted interactive browser; rejected background watcher not relaunched"
     },
     {
@@ -137,14 +139,15 @@
       "base_official_score": 2.25,
       "hypothesis": "Reachable roof cover may create sustained quiet regeneration windows under pursuit",
       "changed_policy": "Energy- and map-checked approach, vertical jump/jet, traverse, land, hold refuge; original policy fallback",
-      "official_submission_status": "not submitted; validate CI and evaluate EXP-007 first",
-      "submission_id": null,
-      "official_score": null,
+      "official_submission_status": "Scored",
+      "submission_id": "BB-B1CAEBA4",
+      "official_score": 1.42,
       "technical_validation": "27 tests and official checker; Linux AMD64 Docker sandbox CI passed",
       "promotion_rule": "Only select if an official score exceeds the live best; target 10.00+",
       "commit": "2ccc8124a335972fcf3b613e9a1ea655bb17c312",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44932183078",
-      "status": "Ready; independent of EXP-007; no official result yet"
+      "status": "Substantial regression; rejected; not selected",
+      "submitted_at": "2026-11-21T13:03:00-05:00"
     },
     {
       "id": "EXP-009",
@@ -153,25 +156,91 @@
       "base_official_score": 2.25,
       "hypothesis": "Persisting a no-target attacker bearing may finish defensive torso turns and protect front armor",
       "changed_policy": "No-target bearing attention lasts a bounded turn-rate-derived interval; original fresh-stimulus choice and visible-target behavior retained",
-      "official_submission_status": "not submitted; require exact CI and available quota",
+      "official_submission_status": "Scored",
+      "submission_id": "BB-0BF60252",
+      "official_score": 2.31,
+      "technical_validation": "21 tests; official checker; Linux AMD64 Docker sandbox CI passed",
+      "promotion_rule": "Promote only on a new official best; goal remains >=10.00",
+      "commit": "644baa44fe773c5e2429bec5c715f91787770ab1",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44932906509",
+      "status": "Verified new best; selected automatically",
+      "submitted_at": "2026-11-21T13:09:00-05:00",
+      "wait_reported": "30m 01s"
+    },
+    {
+      "id": "EXP-010",
+      "branch": "experiment/best231-cube-reach-2026-11-21",
+      "base_commit": "644baa44fe773c5e2429bec5c715f91787770ab1",
+      "base_official_score": 2.31,
+      "hypothesis": "Recovering safe combat drops beyond 55m may improve health, damage and upgrade access",
+      "changed_parameter": {
+        "cube_search_radius_m": {
+          "baseline": 55,
+          "candidate": 130
+        }
+      },
+      "official_submission_status": "Scoring",
+      "submission_id": "BB-CDD245D9",
+      "official_score": null,
+      "technical_validation": "27 tests; official checker; exact-source Linux Docker sandbox CI passed",
+      "promotion_rule": "Promote only on an official score exceeding the current best; objective >=10.00",
+      "status": "Rebuilt single cube-range change on verified 2.31 best",
+      "prepared_predecessor_commits": [
+        "0cbd1a2b96572176dad9ec7be9c88c6996795020"
+      ],
+      "commit": "581009b54f2331846ff52d0d553e15e400248baa",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44945193673",
+      "submitted_at": "2026-11-21T15:15:00-05:00"
+    },
+    {
+      "id": "EXP-011",
+      "branch": "experiment/best231-magazine-2026-11-21",
+      "base_commit": "644baa44fe773c5e2429bec5c715f91787770ab1",
+      "base_official_score": 2.31,
+      "hypothesis": "Prioritizing the magazine upgrade may improve sustained gun combat and reduce reload exposure",
+      "changed_parameter": {
+        "gun_mag_upgrade_rank": {
+          "baseline": 62,
+          "candidate": 115
+        }
+      },
+      "official_submission_status": "not submitted; review base after current result and validate exact CI",
       "submission_id": null,
       "official_score": null,
-      "technical_validation": "21 tests and official checker; 57 aim changes only in recorded-input audit",
-      "promotion_rule": "Promote only on a new official best; goal remains >=10.00"
+      "technical_validation": "26 tests and official checker passed; exact CI pending",
+      "promotion_rule": "Promote only on a new official best; target >=10.00",
+      "status": "Rebuilt one upgrade priority on current best; revalidate",
+      "prepared_predecessor_commits": [
+        "088ee223247c071188de4417bfff1e9c34f5f770"
+      ],
+      "commit": "d8336b8ce06215842220bd7ad5d7278a46458484"
+    },
+    {
+      "id": "EXP-012",
+      "branch": "experiment/best231-retreat-gun-2026-11-21",
+      "base_commit": "644baa44fe773c5e2429bec5c715f91787770ab1",
+      "base_official_score": 2.31,
+      "hypothesis": "Aligned ranged gun counterpressure during retreat may improve survival against pursuers",
+      "changed_policy": "Gun no longer inherits the conservative >55m firing veto; all other gun gates and secondary vetoes retained",
+      "official_submission_status": "not submitted; await current evaluation and exact CI",
+      "submission_id": null,
+      "official_score": null,
+      "technical_validation": "26 tests and official checker passed; 19 gun-fire changes only in recording",
+      "promotion_rule": "Promote only if official score exceeds current live best; goal >=10.00"
     }
   ],
   "best_official_entry": {
-    "experiment": "EXP-004",
-    "commit": "2f30e3d217461379eedebeea49751b6209397c79",
-    "submission_id": "BB-28A2E7AE",
-    "score": 2.25,
+    "experiment": "EXP-009",
+    "commit": "644baa44fe773c5e2429bec5c715f91787770ab1",
+    "submission_id": "BB-0BF60252",
+    "score": 2.31,
     "selected": "Verified automatic best-scoring final entry",
-    "source": "Authenticated Buildathon page"
-  },
-  "quota_observed": {
-    "remaining": 0,
-    "next_slot": "2026-11-21T12:52:00-05:00",
     "source": "Authenticated official page"
   },
-  "objective_official_practice_score_at_least": 10.0
+  "quota_observed": {
+    "remaining": 4,
+    "source": "Authenticated official page"
+  },
+  "objective_official_practice_score_at_least": 10.0,
+  "last_updated_at": "2026-11-21T20:12:45.057095+00:00"
 }

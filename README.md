@@ -3,6 +3,12 @@ Autonomous AI combat agent for Builders Buildathon 2026. Features adaptive comba
 
 [CODEX_ENHANCEMENT_2026-11-21]
 
+**EXP-012 retreat-gun candidate:** `experiment/best231-retreat-gun-2026-11-21`,
+based on selected official **2.31** (`644baa44fe773c5e2429bec5c715f91787770ab1`).
+Only the gun is allowed to fire while retreating beyond 55 m, retaining alignment,
+range, ammunition, cooldown, reload and cover gates. Secondary weapons are unchanged.
+Performance is unknown; goal remains official **10.00+**. See `reports/EXP-012.md`.
+
 **EXP-009 attention-memory candidate:** `experiment/best-threat-attention-2026-11-21`,
 based on selected official **2.25** source `2f30e3d217461379eedebeea49751b6209397c79`.
 Only no-target threat-bearing persistence changes, allowing a defensive torso

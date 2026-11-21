@@ -99,7 +99,11 @@ class Combat:
             allowed = aligned and not retreat and w.get('cooldown',0)<=.1
             if kind=='gun':
                 # Do not fire the gun along the mortar's elevated trajectory.
-                fire[i] = allowed and distance < st['range'] and w.get('ammo',0)>0 and not w.get('reload',0) and (selected is None or selected['kind']!='mortar')
+                # [CODEX_ENHANCEMENT_2026-11-21] EXP-012: allow aligned gun
+                # counterpressure while retreating; all other weapons keep the
+                # original retreat veto. No target/LOS still means no firing.
+                gun_allowed = aligned and w.get('cooldown',0)<=.1
+                fire[i] = gun_allowed and distance < st['range'] and w.get('ammo',0)>0 and not w.get('reload',0) and (selected is None or selected['kind']!='mortar')
             elif kind=='lightning':
                 fire[i] = bool(not retreat and distance < st['range'] and me['energy'] > st['energy']+15 and abs(angle_delta(yaw,me['aim'][0])) < math.radians(st['cone_deg'])*.45 and w.get('cooldown',0)<=.1)
             elif kind=='laser':
