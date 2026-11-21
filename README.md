@@ -3,9 +3,15 @@ Autonomous AI combat agent for Builders Buildathon 2026. Features adaptive comba
 
 [CODEX_ENHANCEMENT_2026-11-21]
 
+**Verified official best:** EXP-003, **2.19**, submission `BB-DA35D253`, commit
+`28afe8bcba8480f7483dc65280afdc270c0120ac`; automatically selected in the final.
+**Current candidate:** EXP-005, `experiment/best-balanced-kiting-2026-11-21`.
+It changes only balanced-mode separation weight (0.8 to 1.5) on top of that best.
+Neither wider weapon search nor V2's changes are included. See `reports/experiments.json`.
+
 **EXP-003 candidate:** `experiment/v1-defensive-fire-2026-11-21`, branched directly
 from V1 `8a87e8a467dde525d25fcf9cb5181087c6e55fd7`. The user reports V1 scored
-2.10 and V2 scored 1.31. Keep V1 selected until a candidate officially beats it.
+2.10 and V2 scored 1.31. EXP-003 subsequently scored 2.19 and superseded V1.
 This experiment changes only arm-gun retaliation during conservative retreat:
 it can answer the currently targeted opponent for 0.6 seconds after that opponent
 damages us. Quiet retreat and all movement/weapon gates remain as in V1.

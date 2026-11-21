@@ -12,8 +12,8 @@ jobs:
         with:
           python-version: '3.13'
       - run: python -m unittest discover -s tests -v
-      # [CODEX_ENHANCEMENT_2026-11-21] Audit the single change against V1.
-      - run: python scripts/experiment_defensive_fire.py
+      # [CODEX_ENHANCEMENT_2026-11-21] Audit this experiment against official 2.19.
+      - run: python scripts/experiment_balanced_kiting.py
       - run: docker build --platform linux/amd64 -t mechroyale-agent .
       - name: Official checker under competition sandbox
         run: >-

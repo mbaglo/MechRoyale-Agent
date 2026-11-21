@@ -1,0 +1,15 @@
+{
+  "experiment": "EXP-005",
+  "kind": "recorded-input A/B; NOT simulation",
+  "baseline_commit": "28afe8bcba8480f7483dc65280afdc270c0120ac",
+  "baseline_official_score": 2.19,
+  "observations": 300,
+  "changed_movement_decisions": 0,
+  "non_movement_changes": 0,
+  "candidate_ms": {
+    "p50": 2.569400006905198,
+    "p99": 8.291799982544035,
+    "maximum": 9.389599988935515
+  },
+  "official_score": null
+}

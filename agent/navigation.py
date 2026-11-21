@@ -44,7 +44,10 @@ class Navigator:
                 ep = enemy['pos']
                 before, after = math.dist(pos[:2],ep[:2]), math.dist(end[:2],ep[:2])
                 desired = 130 if mode == 'conservative' else 75
-                score += (min(desired,after)-min(desired,before))*(2.5 if mode == 'conservative' else .8)
+                # [CODEX_FIX_2026-11-21] EXP-005: a 0.8 balanced separation
+                # weight loses to the 1.0 goal-distance penalty at a held goal,
+                # allowing stationary exposure. Change only this weight to 1.5.
+                score += (min(desired,after)-min(desired,before))*(2.5 if mode == 'conservative' else 1.5 if mode == 'balanced' else .8)
                 # Use cover when retreating. Ray queries only for nearby threats.
                 if mode == 'conservative' and before < 160:
                     if not self.world.clear([ep[0],ep[1],ep[2]+7], [end[0],end[1],end[2]+4.5]):
