@@ -26,6 +26,10 @@ class Combat:
     def __init__(self, config, world):
         self.config, self.world = config, world
         self.target_id = None
+        # [CODEX_ENHANCEMENT_2026-11-21] EXP-009: finish looking toward a
+        # heard attacker before returning to the original no-target scan.
+        self.attention_yaw = 0.
+        self.attention_until = -float('inf')
 
     def act(self, s, mode):
         me, obs = s.me, s.obs
@@ -52,7 +56,13 @@ class Combat:
             # Face a heard attacker before scanning; preserve front armor.
             bearings = [e['bearing'] for e in obs.get('events',[]) if e['type']=='damaged' and e.get('bearing') is not None]
             sounds = [e for e in obs.get('sounds',[]) if e['kind'] in ('gun','laser_charge','lightning')]
-            yaw = bearings[-1] if bearings else sounds[-1]['bearing'] if sounds else obs['t']*.6
+            # [CODEX_FIX_2026-11-21] One 0.1-second command cannot complete
+            # a large defensive turn at the protocol's finite torso turn rate.
+            if bearings or sounds:
+                self.attention_yaw = bearings[-1] if bearings else sounds[-1]['bearing']
+                turn_rate = me['stats'].get('turn_rate',self.config['mech']['turn_rate'])
+                self.attention_until = obs['t']+max(.6,min(2.,math.pi/max(.1,turn_rate)+.2))
+            yaw = self.attention_yaw if obs['t']<self.attention_until else obs['t']*.6
             return [angle_delta(yaw,0),0.], [False,False], reload
         self.target_id = target['id']
         height = 1.2 if target['kind']=='crate' else 4.5*(1+.05*target.get('cubes',0))

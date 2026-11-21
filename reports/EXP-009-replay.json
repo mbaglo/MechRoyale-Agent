@@ -1,0 +1,15 @@
+{
+  "experiment": "EXP-009",
+  "kind": "input replay; not a match simulation",
+  "baseline_commit": "2f30e3d217461379eedebeea49751b6209397c79",
+  "baseline_official_score": 2.25,
+  "observations": 300,
+  "changed_aim_decisions": 57,
+  "other_action_changes": 0,
+  "candidate_ms": {
+    "p50": 2.2219000093173236,
+    "p99": 7.371500018052757,
+    "maximum": 8.138100005453452
+  },
+  "official_score": null
+}

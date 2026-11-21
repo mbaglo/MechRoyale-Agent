@@ -3,6 +3,12 @@ Autonomous AI combat agent for Builders Buildathon 2026. Features adaptive comba
 
 [CODEX_ENHANCEMENT_2026-11-21]
 
+**EXP-009 attention-memory candidate:** `experiment/best-threat-attention-2026-11-21`,
+based on selected official **2.25** source `2f30e3d217461379eedebeea49751b6209397c79`.
+Only no-target threat-bearing persistence changes, allowing a defensive torso
+turn to finish before scanning resumes. Performance is unknown; objective remains
+official **10.00+**. See `reports/EXP-009.md` and the experiment ledger.
+
 **EXP-004:** branch `experiment/v1-weapon-reach-2026-11-21`, based directly on
 V1 `8a87e8a467dde525d25fcf9cb5181087c6e55fd7`. Its only tactical change is
 weapon-search radius: 65 to 130 meters. Existing safety filters are preserved.
