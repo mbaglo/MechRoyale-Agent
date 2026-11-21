@@ -1,0 +1,77 @@
+{
+  "kind": "recorded and synthetic input comparison; NOT gameplay simulation",
+  "baseline_commit": "8a87e8a467dde525d25fcf9cb5181087c6e55fd7",
+  "baseline_official_score": {
+    "score": 2.1,
+    "submission": "BB-6CB32C3E",
+    "source": "user supplied"
+  },
+  "candidate_official_score": null,
+  "target_official_score_above": 3.0,
+  "recorded": {
+    "baseline": {
+      "decisions": 900,
+      "decision_ms": {
+        "mean": 3.081683665772693,
+        "p50": 2.2548999986611307,
+        "p99": 8.08060000417754,
+        "maximum": 9.248299989849329
+      },
+      "boost_fraction": 0.23666666666666666,
+      "firing_fraction": 0.07333333333333333,
+      "modes": {
+        "balanced": 366,
+        "conservative": 534
+      },
+      "decisions_with_route": 0
+    },
+    "candidate": {
+      "decisions": 900,
+      "decision_ms": {
+        "mean": 2.980143000378222,
+        "p50": 2.2191000025486574,
+        "p99": 9.499199979472905,
+        "maximum": 12.283599993679672
+      },
+      "boost_fraction": 0.23,
+      "firing_fraction": 0.07333333333333333,
+      "modes": {
+        "balanced": 318,
+        "conservative": 582
+      },
+      "decisions_with_route": 309
+    }
+  },
+  "crowded": {
+    "baseline": {
+      "decisions": 180,
+      "decision_ms": {
+        "mean": 10.295725001196843,
+        "p50": 9.985850003431551,
+        "p99": 18.855300004361197,
+        "maximum": 19.647099979920313
+      },
+      "boost_fraction": 1.0,
+      "firing_fraction": 0.0,
+      "modes": {
+        "conservative": 180
+      },
+      "decisions_with_route": 0
+    },
+    "candidate": {
+      "decisions": 180,
+      "decision_ms": {
+        "mean": 9.88097000081325,
+        "p50": 9.857400014880113,
+        "p99": 11.854999989736825,
+        "maximum": 11.860099999466911
+      },
+      "boost_fraction": 1.0,
+      "firing_fraction": 0.0,
+      "modes": {
+        "conservative": 180
+      },
+      "decisions_with_route": 177
+    }
+  }
+}

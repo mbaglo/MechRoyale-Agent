@@ -137,6 +137,28 @@ class AgentTests(unittest.TestCase):
         with self.assertRaises(RuntimeError):
             Bot(h)
 
+    def test_crowded_actions_and_runtime(self):
+        # [CODEX_ENHANCEMENT_2026-11-21] Fifteen approaching mechs plus
+        # sixteen projectiles exercise bounded work on actual map geometry.
+        from scripts.compare_policy import crowded
+        timings = []
+        for obs in crowded(self.observations[0]):
+            start = time.perf_counter()
+            action = self.bot.act(obs)
+            timings.append((time.perf_counter()-start)*1000)
+            self.assertEqual(self.schema.errors(action,'Action'),[])
+        self.assertLess(sorted(timings)[int(.99*len(timings))],40)
+
+    def test_cylinder_clearance_thin_slab_and_hole(self):
+        # [CODEX_FIX_2026-11-21] A slab between three height probes still blocks.
+        w = self.bot.world
+        p = dict(base=1,top=2,ring=[-5,-5,5,-5,5,5,-5,5],holes=[])
+        w.cells,w.prisms = {(0,0):[0],(-1,0):[0],(0,-1):[0],(-1,-1):[0]},[(p,(-5,-5,5,5))]
+        self.assertTrue(w.body_blocked(0,0,0,2.5,9))
+        p['holes'] = [[-4,-4,4,-4,4,4,-4,4]]
+        self.assertFalse(w.body_blocked(0,0,0,2.5,9))
+        self.assertTrue(w.body_blocked(3,0,0,2.5,9))
+
 
 if __name__ == '__main__':
     unittest.main()

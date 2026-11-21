@@ -3,8 +3,20 @@ Autonomous AI combat agent for Builders Buildathon 2026. Features adaptive comba
 
 [CODEX_ENHANCEMENT_2026-11-21]
 
+**Optimization branch:** `optimization/squad-survival-2026-11-21`. The user
+reported official submission `BB-6CB32C3E` scored **2.10** for preserved baseline
+`8a87e8a467dde525d25fcf9cb5181087c6e55fd7`. The optimization revision has no
+official score yet; the next target is above 3.0. See
+[optimization notes](reports/optimization.md) and
+[input-only comparison](reports/optimization-comparison.json).
+
+New layers add intent-weighted threat pressure, crossfire/emergency assessment,
+incremental A* feeding the preserved local planner, cylinder clearance, phase-aware
+loot decisions, energy reserves/recovery, and weapon feasibility checks. No private
+opponent information or practice/final mode switch is used.
+
 Working deterministic Python agent for `mechfight/1`, using only the standard
-library and official starter kit. **Gameplay strength is unmeasured:** the kit
+library and official starter kit. **Optimization strength is unmeasured:** the kit
 has no simulator. The original project description above describes the intended
 system; simulation-driven optimization requires official match results.
 
@@ -55,7 +67,7 @@ of authoritative physics. Navigation is local and can struggle around complex
 concave buildings. Mortar aiming uses an approximate lead and does not simulate
 the entire ballistic path. These are known limitations requiring match evidence.
 
-## Actual validation and remaining blockers
+## Historical baseline validation and remaining blockers
 
 November 21, 2026, Windows development host:
 

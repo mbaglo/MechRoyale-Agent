@@ -15,7 +15,8 @@ class Bot:
             raise ValueError('unsupported protocol')
         self.config = hello['config']
         self.world = World(hello['map']['dir'])
-        self.observer, self.strategy = Observer(), Strategy()
+        # [CODEX_ENHANCEMENT_2026-11-21] Share read-only geometry with threat assessment.
+        self.observer, self.strategy = Observer(self.world), Strategy()
         self.navigator = Navigator(self.world)
         self.combat = Combat(self.config,self.world)
         self.mode = 'balanced'

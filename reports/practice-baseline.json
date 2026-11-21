@@ -1,0 +1,12 @@
+{
+  "tag": "[CODEX_ENHANCEMENT_2026-11-21]",
+  "source": "User-provided official submission result; not independently retrieved",
+  "submission_id": "BB-6CB32C3E",
+  "commit": "8a87e8a467dde525d25fcf9cb5181087c6e55fd7",
+  "practice_score": 2.10,
+  "starter_score": 1.15,
+  "metric": "mean(16 - placement)",
+  "matches": 48,
+  "candidate_score": null,
+  "next_target": "> 3.0"
+}
