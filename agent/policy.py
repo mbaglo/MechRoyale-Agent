@@ -5,6 +5,7 @@ from .observation import Observer
 from .strategy import Strategy
 from .navigation import Navigator
 from .combat import Combat
+from .recovery_cover import RecoveryCover
 
 
 class Bot:
@@ -18,13 +19,20 @@ class Bot:
         self.observer, self.strategy = Observer(), Strategy()
         self.navigator = Navigator(self.world)
         self.combat = Combat(self.config,self.world)
+        # [ASTRA_ENHANCEMENT_2026-11-21] Route and hold within confirmed healing windows.
+        self.recovery_cover = RecoveryCover(self.world, self.config)
         self.mode = 'balanced'
 
     def act(self, obs):
         s = self.observer.parse(obs)
         self.mode = self.strategy.choose(s)
         goal = self.strategy.goal(s,self.mode)
-        move, boost = self.navigator.move(s,goal,self.mode)
+        shelter, hold = self.recovery_cover.route(s)
+        if hold:
+            self.navigator.previous = (0.,0.)
+            move, boost = [0.,0.], False
+        else:
+            move, boost = self.navigator.move(s,shelter or goal,self.mode)
         aim, fire, reload = self.combat.act(s,self.mode)
         action = dict(tick=obs['tick'],move=move,boost=boost,jump=False,aim=aim,fire=fire,reload=reload)
         offer = obs.get('offer')
