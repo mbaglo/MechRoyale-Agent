@@ -36,7 +36,7 @@
       "commit": "28afe8bcba8480f7483dc65280afdc270c0120ac",
       "stage": "complete",
       "submitted_at": "2026-11-21T11:52:00-05:00",
-      "status": "new best; selected automatically by competition"
+      "status": "Scored 2.19; preserved, superseded by 2.25"
     },
     {
       "id": "EXP-XF01",
@@ -57,16 +57,17 @@
           "candidate": 130
         }
       },
-      "official_submission_status": "Scoring",
+      "official_submission_status": "Scored",
       "submission_id": "BB-28A2E7AE",
-      "official_score": null,
+      "official_score": 2.25,
       "technical_validation": "16 tests, official checker and Linux Docker sandbox CI passed",
       "input_evidence": "No action differences on official 300-observation recording; synthetic tests exercise wider safe pickup pursuit",
       "promotion_rule": "Only select if official score exceeds best verified score",
       "commit": "2f30e3d217461379eedebeea49751b6209397c79",
-      "stage": "Fetching",
+      "stage": "complete",
       "submitted_at": "2026-11-21T12:01:00-05:00",
-      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44927603840"
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44927603840",
+      "status": "new best; selected automatically by competition"
     },
     {
       "id": "EXP-005",
@@ -80,18 +81,28 @@
         }
       },
       "hypothesis": "Prevent stationary exposure to nearby enemies at a held goal",
-      "official_submission_status": "not submitted; previous evaluation pending",
-      "submission_id": null,
+      "official_submission_status": "Scoring",
+      "submission_id": "BB-840FF3B9",
       "official_score": null,
-      "promotion_rule": "Select only if official score exceeds current best 2.19"
+      "promotion_rule": "Select only if official score exceeds current best 2.19",
+      "commit": "50fcaf476db0814965c34063102342949266f09c",
+      "stage": "Fetching",
+      "submitted_at": "2026-11-21T12:08:00-05:00",
+      "technical_validation": "22 tests, official checker, Linux Docker sandbox CI passed",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44928054304"
     }
   ],
   "best_official_entry": {
-    "experiment": "EXP-003",
-    "commit": "28afe8bcba8480f7483dc65280afdc270c0120ac",
-    "submission_id": "BB-DA35D253",
-    "score": 2.19,
+    "experiment": "EXP-004",
+    "commit": "2f30e3d217461379eedebeea49751b6209397c79",
+    "submission_id": "BB-28A2E7AE",
+    "score": 2.25,
     "selected": "Verified automatic best-scoring final entry",
     "source": "Authenticated Buildathon page"
+  },
+  "quota_observed": {
+    "remaining": 0,
+    "next_slot": "2026-11-21T12:28:00-05:00",
+    "source": "Authenticated competition page; do not submit until live quota permits"
   }
 }
