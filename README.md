@@ -1,31 +1,22 @@
 # MechRoyale-Agent
-Autonomous AI combat agent for Builders Buildathon 2026. Features adaptive combat strategies, intelligent navigation, opponent tracking, survival optimization, and simulation-driven decision-making.
+
+Deterministic Python agent for the official `mechfight/1` protocol, using the standard library and official starter kit.
 
 [CODEX_ENHANCEMENT_2026-11-21]
 
-**Current official best: 2.31**, `BB-0BF60252`, commit
-`644baa44fe773c5e2429bec5c715f91787770ab1`, selected automatically by the site.
-**EXP-010 rebuilt:** `experiment/best231-cube-reach-2026-11-21` changes only safe
-cube pursuit from 55 to 130 m on that source. Its old 2.25-based predecessor was
-not submitted. Goal remains official **10.00+**; candidate score is unknown.
+**Official best: 2.38**, receipt **BB-CDD245D9**, commit
+`581009b54f2331846ff52d0d553e15e400248baa`, selected automatically by the site.
+The objective remains **10.00+** and has not been reached. Original V1 and all evaluated source commits are preserved.
 
-**EXP-009 attention-memory candidate:** `experiment/best-threat-attention-2026-11-21`,
-based on selected official **2.25** source `2f30e3d217461379eedebeea49751b6209397c79`.
-Only no-target threat-bearing persistence changes, allowing a defensive torso
-turn to finish before scanning resumes. Performance is unknown; objective remains
-official **10.00+**. See `reports/EXP-009.md` and the experiment ledger.
+EXP-011 magazine priority is scoring as BB-D1BCAB2F at exact commit
+`7e5b3565ce616be3e798255588e1c88ab7f86f46`.
+This branch prepares EXP-012, gun counterpressure during retreat, on the verified
+2.38 baseline. Its score is unknown and it is not selected.
+See `reports/experiments.json` and `reports/SCOREBOARD.md` for evaluations.
 
-**EXP-004:** branch `experiment/v1-weapon-reach-2026-11-21`, based directly on
-V1 `8a87e8a467dde525d25fcf9cb5181087c6e55fd7`. Its only tactical change is
-weapon-search radius: 65 to 130 meters. Existing safety filters are preserved.
-The official 300-observation replay produced no changed actions; synthetic tests
-cover the additional safe pickup opportunities. Official performance is unknown.
-Keep the verified 2.10 V1 entry selected. See `reports/experiments.json` for results.
-
-Working deterministic Python agent for `mechfight/1`, using only the standard
-library and official starter kit. **Gameplay strength is unmeasured:** the kit
-has no simulator. The original project description above describes the intended
-system; simulation-driven optimization requires official match results.
+The supplied kit has a recorded observation checker, not an interactive match
+simulator. Protocol tests and replay timings do not measure competitive strength;
+only official results establish score changes.
 
 ## Run and test
 

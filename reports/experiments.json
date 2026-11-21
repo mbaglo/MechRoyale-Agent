@@ -227,10 +227,10 @@
       "official_submission_status": "ready; pending prior evaluations",
       "submission_id": null,
       "official_score": null,
-      "technical_validation": "32 tests passed; official checker 300/300, max 11.2ms locally; Docker CI pending",
+      "technical_validation": "32 tests; official checker 300/300; exact-source Linux Docker sandbox CI passed",
       "promotion_rule": "Promote only if official score exceeds current live best; goal >=10.00",
-      "commit": null,
-      "ci_url": null
+      "commit": "d64606ac54242c3efa811795ba4b782045ad53a5",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44946690894"
     }
   ],
   "best_official_entry": {
