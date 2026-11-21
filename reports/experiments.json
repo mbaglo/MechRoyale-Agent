@@ -413,9 +413,9 @@
       "base_official_score": 2.56,
       "hypothesis": "Score visible imminent gun/NPC crossings with the observed velocity and permitted ground acceleration. Do not cancel an effective dodge merely because there is no current mech contact.",
       "technical_validation": "46 tests passed, official checker 300/300 with a 17.0ms local maximum. Replay against 2.56 changes five movement decisions and zero other measured fields.",
-      "official_score": null,
+      "official_score": 2.42,
       "submission_id": "BB-23814895",
-      "official_submission_status": "Scoring",
+      "official_submission_status": "Scored",
       "commit": "e4dff24c80d260631c5a6701f35b4d6b4de43dd4",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44958784342",
       "prepared_predecessors": [
@@ -426,7 +426,9 @@
           "official_submission_status": "Validated, never submitted"
         }
       ],
-      "submitted_at_display": "Sat 6:00 PM"
+      "submitted_at_display": "Sat 6:00 PM",
+      "selected": false,
+      "assessment": "Rejected against 2.56 parent. The crossing probe changed five recorded commands and improved clearance in a simplified model; its detours may cost firing position or interfere with other routing in matches. Cause unconfirmed without match traces. Next test is urgent obstacle routing on the 2.56 parent."
     },
     {
       "id": "EXP-023",
@@ -450,9 +452,18 @@
       "technical_validation": "46 tests passed. Checker answered 300/300, max 10.6 ms locally, no recorded action changes. In synthetic ground routes around actual arena obstacles with a 14-second deadline, 18/24 reached the circle versus 7/24 without the planner. After freezing the policy, next eligible obstacles in map order gave 10/23 against 0/23. No match simulation or official score from these probes.",
       "official_score": null,
       "submission_id": null,
-      "commit": "1551cd2ebce730860b4ab9372b4993e063304277",
-      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44959754398",
-      "official_submission_status": "Validated, unsubmitted"
+      "commit": "2c56fcfa037fcc63d78978478b6ca82ed12f0bfd",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44959943779",
+      "official_submission_status": "Validated, unsubmitted",
+      "probe_sensitivity": "With approximate axis-wise wall sliding and delayed energy regeneration, the planner reached 20/24 initial routes versus 7/24. On the additional 23 obstacle crossings it reached 10 versus 0. No opponent physics or match scores.",
+      "prepared_predecessors": [
+        {
+          "commit": "1551cd2ebce730860b4ab9372b4993e063304277",
+          "branch": "experiment/astra-zone-path-024",
+          "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44959754398",
+          "official_submission_status": "Validated, same game policy; no submission"
+        }
+      ]
     }
   ],
   "best_official_entry": {
@@ -469,11 +480,12 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-21T23:02:52.768038+00:00",
+  "last_updated_at": "2026-11-21T23:07:33.773894+00:00",
   "leaderboard_observation": {
-    "score": 2.48,
-    "rank": 256,
-    "teams": 305,
-    "observed_at": "2026-11-21T17:22:00-05:00"
+    "observed_at": "2026-11-21T18:02:00-05:00",
+    "rank": 257,
+    "teams": 310,
+    "source": "Official expanded practice leaderboard",
+    "score": 2.56
   }
 }
