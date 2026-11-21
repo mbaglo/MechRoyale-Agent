@@ -403,7 +403,7 @@
       "commit": "a4b1857bb7a1484af3458bd68d7e2b805918395f",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44956779928",
       "submitted_at_display": "Sat 5:41 PM",
-      "selected": true,
+      "selected": false,
       "status": "Official new best at 2.56, selected by the site."
     },
     {
@@ -450,11 +450,11 @@
       "base_official_score": 2.56,
       "hypothesis": "Route around walls that block urgent ground travel to the circle. Bounded A* runs across decisions. Following a verified detour permits temporary movement away from the circle while already outside; inside the current zone its border still applies.",
       "technical_validation": "46 tests passed. Checker answered 300/300, max 10.6 ms locally, no recorded action changes. In synthetic ground routes around actual arena obstacles with a 14-second deadline, 18/24 reached the circle versus 7/24 without the planner. After freezing the policy, next eligible obstacles in map order gave 10/23 against 0/23. No match simulation or official score from these probes.",
-      "official_score": null,
-      "submission_id": null,
+      "official_score": 2.65,
+      "submission_id": "BB-56988FB1",
       "commit": "2c56fcfa037fcc63d78978478b6ca82ed12f0bfd",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44959943779",
-      "official_submission_status": "Validated, unsubmitted",
+      "official_submission_status": "Scored",
       "probe_sensitivity": "With approximate axis-wise wall sliding and delayed energy regeneration, the planner reached 20/24 initial routes versus 7/24. On the additional 23 obstacle crossings it reached 10 versus 0. No opponent physics or match scores.",
       "prepared_predecessors": [
         {
@@ -463,7 +463,10 @@
           "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44959754398",
           "official_submission_status": "Validated, same game policy; no submission"
         }
-      ]
+      ],
+      "submitted_at_display": "Sat 6:18 PM",
+      "selected": true,
+      "assessment": "Promoted after official evaluation. The 48-match practice mean increased by 0.09 from 2.56. The scorer does not identify which routes or matches produced that difference. Next test keeps this planner and isolates torso attention around cover."
     },
     {
       "id": "EXP-025",
@@ -480,10 +483,10 @@
     }
   ],
   "best_official_entry": {
-    "experiment": "EXP-021",
-    "commit": "a4b1857bb7a1484af3458bd68d7e2b805918395f",
-    "submission_id": "BB-1EDBB6E6",
-    "score": 2.56,
+    "experiment": "EXP-024",
+    "commit": "2c56fcfa037fcc63d78978478b6ca82ed12f0bfd",
+    "submission_id": "BB-56988FB1",
+    "score": 2.65,
     "selected": "Verified automatic best-scoring final entry",
     "source": "Authenticated official page"
   },
@@ -493,12 +496,14 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-21T23:11:07.424855+00:00",
+  "last_updated_at": "2026-11-21T23:22:36.418830+00:00",
   "leaderboard_observation": {
-    "observed_at": "2026-11-21T18:02:00-05:00",
-    "rank": 257,
-    "teams": 310,
-    "source": "Official expanded practice leaderboard",
-    "score": 2.56
+    "observed_at": "2026-11-21T18:22:00-05:00",
+    "rank": 255,
+    "teams": 312,
+    "score": 2.65,
+    "rank_32_score": 6.0,
+    "highest_displayed_score": 6.38,
+    "source": "Official expanded practice leaderboard"
   }
 }
