@@ -42,10 +42,24 @@ def scored(text):
 
 def main():
     LOCAL.mkdir(parents=True,exist_ok=True)
+    # [CODEX_FIX_2026-11-21] Prevent two local watchers racing on one quota slot.
+    lock = LOCAL/'evaluation.lock'
+    try:
+        fd = os.open(lock,os.O_CREAT|os.O_EXCL|os.O_WRONLY)
+    except FileExistsError:
+        print('An evaluation watcher lock already exists; no second watcher started.')
+        return
+    os.write(fd,str(os.getpid()).encode());os.close(fd)
     sys.path.insert(0,str(LOCAL/'tools'))
     from playwright.sync_api import sync_playwright
     state = dict(experiment='EXP-006',commit=COMMIT,repository=REPO,
                  submission_id=None,official_score=None,submission_attempts=0)
+    previous = LOCAL/'evaluation-state.json'
+    if previous.exists():
+        old = json.loads(previous.read_text(encoding='utf-8'))
+        if old.get('commit')==COMMIT:
+            state['submission_attempts']=old.get('submission_attempts',0)
+            state['submission_id']=old.get('submission_id')
 
     def save(status,**extra):
         state.update(status=status,observed_at=datetime.now(timezone.utc).isoformat(),**extra)
@@ -116,6 +130,8 @@ def main():
         save('watcher time limit reached; stopped')
     except Exception as exc:
         save('stopped on error; no automatic retry',error=f'{type(exc).__name__}: {exc}')
+    finally:
+        lock.unlink(missing_ok=True)
 
 
 if __name__=='__main__':
