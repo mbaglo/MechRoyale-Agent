@@ -207,14 +207,14 @@
       "official_submission_status": "ready; pending current evaluation",
       "submission_id": null,
       "official_score": null,
-      "technical_validation": "26 tests, official checker and exact-source Linux Docker sandbox CI passed",
+      "technical_validation": "32 tests; official checker 300/300; exact-source Docker CI in progress",
       "promotion_rule": "Promote only on a new official best; target >=10.00",
       "status": "Rebuilt magazine priority on official 2.38 best; validating",
       "prepared_predecessor_commits": [
         "088ee223247c071188de4417bfff1e9c34f5f770"
       ],
-      "commit": null,
-      "ci_url": null
+      "commit": "7e5b3565ce616be3e798255588e1c88ab7f86f46",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44946429043"
     },
     {
       "id": "EXP-012",
