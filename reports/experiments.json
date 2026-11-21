@@ -20,7 +20,11 @@
       "status": "regression; preserve branch, do not select",
       "official_score": 1.31,
       "promotion_rule": "Only promote if the official score exceeds the current best official score; recheck live selection",
-      "branch": "optimization/squad-survival-2026-11-21"
+      "branch": "optimization/squad-survival-2026-11-21",
+      "commit": "146d3e87c65cbd041e63a12c107cd4ef8bc3ca8f",
+      "official_submission_status": "Scored",
+      "selected": false,
+      "submitted_at_display": "Sat 10:22 AM"
     },
     {
       "id": "EXP-003",
@@ -38,7 +42,8 @@
       "stage": "complete",
       "submitted_at": "2026-11-21T11:52:00-05:00",
       "status": "Scored 2.19; preserved, superseded by 2.25",
-      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44925412894"
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44925412894",
+      "selected": false
     },
     {
       "id": "EXP-XF01",
@@ -47,7 +52,10 @@
       "official_score": 1.96,
       "status": "regression; do not select",
       "source": "Authenticated official competition page; separately prepared V1 crossfire candidate",
-      "promotion_rule": "Only promote if the official score exceeds the current best official score; recheck live selection"
+      "promotion_rule": "Only promote if the official score exceeds the current best official score; recheck live selection",
+      "official_submission_status": "Scored",
+      "selected": false,
+      "submitted_at_display": "Sat 11:28 AM"
     },
     {
       "id": "EXP-004",
@@ -70,7 +78,8 @@
       "stage": "complete",
       "submitted_at": "2026-11-21T12:01:00-05:00",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44927603840",
-      "status": "new best; selected automatically by competition"
+      "status": "new best; selected automatically by competition",
+      "selected": false
     },
     {
       "id": "EXP-005",
@@ -93,7 +102,8 @@
       "submitted_at": "2026-11-21T12:08:00-05:00",
       "technical_validation": "22 tests, official checker, Linux Docker sandbox CI passed",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44928054304",
-      "status": "regression; rejected; not selected"
+      "status": "regression; rejected; not selected",
+      "selected": false
     },
     {
       "id": "EXP-006",
@@ -111,7 +121,8 @@
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44928587769",
       "status": "regression relative to 2.25; not selected",
       "automation": "Bounded local watcher will submit only this validated hash at most once when live quota permits, then record result; never changes final selection",
-      "submitted_at": "2026-11-21T12:29:00-05:00"
+      "submitted_at": "2026-11-21T12:29:00-05:00",
+      "selected": false
     },
     {
       "id": "EXP-007",
@@ -130,7 +141,8 @@
       "automation_status": "Background launch rejected by automatic approval review: blocked by policy; no bypass attempted",
       "submitted_at": "2026-11-21T12:53:00-05:00",
       "status": "Below 2.25; not promoted; energy fixture did not establish gameplay gain",
-      "submission_route": "Permitted interactive browser; rejected background watcher not relaunched"
+      "submission_route": "Permitted interactive browser; rejected background watcher not relaunched",
+      "selected": false
     },
     {
       "id": "EXP-008",
@@ -147,7 +159,8 @@
       "commit": "2ccc8124a335972fcf3b613e9a1ea655bb17c312",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44932183078",
       "status": "Substantial regression; rejected; not selected",
-      "submitted_at": "2026-11-21T13:03:00-05:00"
+      "submitted_at": "2026-11-21T13:03:00-05:00",
+      "selected": false
     },
     {
       "id": "EXP-009",
@@ -165,7 +178,8 @@
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44932906509",
       "status": "Verified new best; selected automatically",
       "submitted_at": "2026-11-21T13:09:00-05:00",
-      "wait_reported": "30m 01s"
+      "wait_reported": "30m 01s",
+      "selected": false
     },
     {
       "id": "EXP-010",
@@ -190,7 +204,8 @@
       ],
       "commit": "581009b54f2331846ff52d0d553e15e400248baa",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44945193673",
-      "submitted_at": "2026-11-21T15:15:00-05:00"
+      "submitted_at": "2026-11-21T15:15:00-05:00",
+      "selected": false
     },
     {
       "id": "EXP-011",
@@ -215,7 +230,8 @@
       ],
       "commit": "7e5b3565ce616be3e798255588e1c88ab7f86f46",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44946429043",
-      "submitted_at": "2026-11-21T15:29:00-05:00"
+      "submitted_at": "2026-11-21T15:29:00-05:00",
+      "selected": false
     },
     {
       "id": "EXP-012",
@@ -224,29 +240,119 @@
       "base_official_score": 2.42,
       "hypothesis": "Aligned ranged gun counterpressure during retreat may improve survival against pursuers",
       "changed_policy": "Gun no longer inherits the conservative >55m firing veto; all other gun gates and secondary vetoes retained",
-      "official_submission_status": "Scoring",
+      "official_submission_status": "Scored",
       "submission_id": "BB-B18CA477",
-      "official_score": null,
+      "official_score": 2.46,
       "technical_validation": "37 tests; official checker 300/300, max 19.4ms locally; exact-source Linux Docker sandbox CI passed",
       "promotion_rule": "Promote only if official score exceeds current live best; goal >=10.00",
       "commit": "4ba12f9cf9da12dbdcbe35dc104a352879347414",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44947260251",
-      "status": "Official evaluation pending",
-      "submitted_at": "2026-11-21T15:39:00-05:00"
+      "status": "Verified new best, selected by site",
+      "submitted_at": "2026-11-21T15:39:00-05:00",
+      "selected": true
+    },
+    {
+      "id": "EXP-013",
+      "branch": "experiment/astra-engagement-013",
+      "base_commit": "4ba12f9cf9da12dbdcbe35dc104a352879347414",
+      "base_official_score": 2.46,
+      "hypothesis": "Finish exposed opponents using current ammo and time to turn, and route toward the selected opponent at useful weapon range.",
+      "technical_validation": "40 tests passed, 300/300 protocol, maximum 8.5 ms locally. No replay action differences. Recording contains no simultaneous opponents.",
+      "official_submission_status": "Scored",
+      "official_score": 2.13,
+      "submission_id": "BB-CDA30EDB",
+      "commit": "e29c8dc1b66afb73f093a7cb935322c38af0154a",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44949004758",
+      "submitted_at": "2026-11-21T15:58:00-05:00",
+      "status": "Rejected, 2.46 selected",
+      "interpretation": "New policy treated two exposed ranged contacts as enough to retreat and changed focus toward estimated finishes. No match traces identify a causal component.",
+      "selected": false
+    },
+    {
+      "id": "EXP-014",
+      "branch": "experiment/astra-resource-memory-014",
+      "base_commit": "4ba12f9cf9da12dbdcbe35dc104a352879347414",
+      "base_official_score": 2.46,
+      "hypothesis": "Retain recently observed ground pickups and cubes across view loss to complete safe collection trips.",
+      "technical_validation": "40 tests, official protocol 300/300 locally, max 9.8 ms. Replay has 15 weapon reacquisitions but zero changed actions. Scenario tests exercise collection and abandonment.",
+      "official_score": null,
+      "submission_id": null,
+      "official_submission_status": "Validated, awaiting evaluation",
+      "commit": "76cb349a9077cb6c09b79b922929848d240245dd",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44949310307"
+    },
+    {
+      "id": "EXP-015",
+      "branch": "experiment/astra-laser-cover-015",
+      "base_commit": "4ba12f9cf9da12dbdcbe35dc104a352879347414",
+      "base_official_score": 2.46,
+      "hypothesis": "Route to a walkable point shielded from a visible charging laser while zone travel is safe.",
+      "technical_validation": "40 tests, official checker 300/300 max 13.6ms locally. Replay changes 13 movement and 2 boost decisions, 0 aim or fire decisions.",
+      "official_score": 2.46,
+      "submission_id": "BB-05367574",
+      "official_submission_status": "Scored",
+      "commit": "0e40ae0843a06e39d7da16c5f49baa1c1e13f942",
+      "probe": "In a local ground movement model with recorded opponent positions, center and head were covered on the final step of 2/5 charge windows versus 1/5 for baseline. Enemy responses, damage and placement were not simulated.",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44949637971",
+      "submitted_at": "2026-11-21T16:16:00-05:00",
+      "selected": false,
+      "status": "Tied 2.46. Original best remains selected."
+    },
+    {
+      "id": "EXP-016",
+      "branch": "experiment/astra-weapon-selection-016",
+      "base_commit": "4ba12f9cf9da12dbdcbe35dc104a352879347414",
+      "base_official_score": 2.46,
+      "hypothesis": "A vetoed secondary yields torso control to the available gun to retain ordinary fire and movement lead. A held mortar previously suppressed both slots during a ranged retreat.",
+      "technical_validation": "40 tests passed, official checker 300/300 maximum 10.5ms locally. Scenarios verify close mortar, retreating mortar, low-energy arc and retreating laser. The supplied recording contains only a gun and no changed actions.",
+      "official_score": 2.44,
+      "submission_id": "BB-8242F910",
+      "official_submission_status": "Scored",
+      "commit": "3693f5b7cf6738eee35ce06adc709832d73c6cee",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44950039495",
+      "submitted_at_display": "Sat 4:30 PM",
+      "selected": false,
+      "status": "Rejected, 2.44 versus selected 2.46.",
+      "interpretation": "The slot conflict is reproducible. Its fix can also spend ammunition or interrupt regeneration. The official service gives an aggregate score only, so the measured difference cannot be attributed to a specific cause."
+    },
+    {
+      "id": "EXP-017",
+      "branch": "experiment/astra-arming-route-017",
+      "base_commit": "4ba12f9cf9da12dbdcbe35dc104a352879347414",
+      "base_official_score": 2.46,
+      "hypothesis": "Recover a missed secondary weapon en route into the next safe circle when the pre-shrink time budget covers both legs.",
+      "technical_validation": "40 tests, 300/300 checker maximum 11.0ms locally. Two recorded movement changes. Tests cover clock, route direction, view loss, contention and inner loot priority.",
+      "official_score": null,
+      "submission_id": null,
+      "official_submission_status": "Validated, unsubmitted",
+      "commit": "42db3bc95b273139da2cfa25f6d184cdbb297ea9",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44950973356"
+    },
+    {
+      "id": "EXP-018",
+      "branch": "experiment/astra-duel-position-018",
+      "base_commit": "4ba12f9cf9da12dbdcbe35dc104a352879347414",
+      "base_official_score": 2.46,
+      "hypothesis": "Move across the firing line during an isolated exposed duel at the stationary safe-zone goal. Existing navigation scores choose the open side, while cover and supply capture still permit holding position.",
+      "technical_validation": "40 tests and 300/300 checker, maximum 10.7ms locally. For 60 synthetic clear 95m duels on the official map, the baseline stopped in 60 and the candidate moved laterally in 60. Original recording unchanged.",
+      "official_score": null,
+      "submission_id": null,
+      "official_submission_status": "Awaiting CI"
     }
   ],
   "best_official_entry": {
-    "experiment": "EXP-011",
-    "commit": "7e5b3565ce616be3e798255588e1c88ab7f86f46",
-    "submission_id": "BB-D1BCAB2F",
-    "score": 2.42,
+    "experiment": "EXP-012",
+    "commit": "4ba12f9cf9da12dbdcbe35dc104a352879347414",
+    "submission_id": "BB-B18CA477",
+    "score": 2.46,
     "selected": "Verified automatic best-scoring final entry",
     "source": "Authenticated official page"
   },
   "quota_observed": {
-    "remaining": 1,
+    "display": "2 of 6 left this hour",
+    "team_limit_per_rolling_hour": 4,
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-21T20:39:43.564143+00:00"
+  "last_updated_at": "2026-11-21T21:37:27.226963+00:00"
 }

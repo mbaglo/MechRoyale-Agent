@@ -24,6 +24,23 @@ class Navigator:
         candidates = [(0., 0.)] + [(math.cos(base+i*math.pi/8), math.sin(base+i*math.pi/8)) for i in range(16)]
         zone = o['zone']
         look = min(8, max(3, distance))
+        # [ASTRA_ENHANCEMENT_2026-11-21] [CODEX_ENHANCEMENT_2026-11-21]
+        # The inner-circle goal follows our current position. Holding it during
+        # an exposed duel otherwise makes every moving candidate lose progress.
+        lateral_axis = None
+        if distance < .01 and mode == 'balanced' and len(s.enemies) == 1 and not s.urgent:
+            enemy = s.enemies[0]
+            ep = enemy['pos']
+            dx, dy = pos[0] - ep[0], pos[1] - ep[1]
+            separation = math.hypot(dx, dy)
+            gun = next((w for w in me['weapons'] if w and w['kind'] == 'gun'), None)
+            capturing = any(drop['lands_in'] <= 0 and math.dist(pos[:2], drop['pos'][:2]) <= drop['radius']
+                            for drop in o.get('drops', []))
+            if gun and 1 < separation < gun['stats']['range'] and not capturing:
+                scale = 1 + .05*enemy.get('cubes',0)
+                if self.world.clear([ep[0],ep[1],ep[2]+7*scale],
+                                    [pos[0],pos[1],pos[2]+stats['height']*.5]):
+                    lateral_axis = (-dy/separation, dx/separation)
         best, best_score = (0., 0.), -float('inf')
         # Limit detailed collision checks to the nearest projectiles.
         bullets = sorted(o.get('projectiles', []), key=lambda p:math.dist(p['pos'],pos))[:16]
@@ -33,6 +50,10 @@ class Navigator:
                 continue
             progress = distance-math.dist(end[:2], goal)
             score = progress*(4 if s.urgent else 1)
+            if lateral_axis is not None:
+                # Both tangents are legal. Existing obstacle, hazard, zone and
+                # momentum scores choose the feasible side and maintain it.
+                score += 2*look*abs(dx*lateral_axis[0]+dy*lateral_axis[1])
             score += .8*(dx*self.previous[0]+dy*self.previous[1])
             if self.escape_until > o['t']:
                 score += 12*self.side*(dx*(-math.sin(base))+dy*math.cos(base))
