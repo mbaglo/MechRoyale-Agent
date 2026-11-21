@@ -118,11 +118,14 @@
       "base_official_score": 2.25,
       "hypothesis": "Recharge hysteresis may create sustained escape bursts and health regeneration opportunities",
       "changed_policy": "Grounded non-urgent boost recovery from <=30 energy to 85% capacity; existing urgent/air rules retained",
-      "official_submission_status": "not submitted; quota zero until live page permits",
+      "official_submission_status": "ready; live quota zero at last check",
       "submission_id": null,
       "official_score": null,
-      "technical_validation": "25 local tests and official checker passed; 54 boost flags changed in input replay, all other fields identical",
-      "promotion_rule": "Only select an official score exceeding the live best; target remains 10.00+"
+      "technical_validation": "26 tests; official checker; Linux AMD64 Docker sandbox CI passed",
+      "promotion_rule": "Only select an official score exceeding the live best; target remains 10.00+",
+      "commit": "d63c6befe6102a49005025b9337fc01b1da1f9fa",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44931496281",
+      "automation_status": "Background launch rejected by automatic approval review: blocked by policy; no bypass attempted"
     }
   ],
   "best_official_entry": {
