@@ -513,9 +513,9 @@
       "technical_validation": "51 tests. Official checker 300/300 max 7.8 ms locally. All 300 recorded commands matched the new 2.90 parent. The change affects quiet obstructed zone travel; synthetic route counts and preceding source are preserved in prepared_predecessors.",
       "commit": "a78c6f74df08e6fd265912cf8eefb54802b61754",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44962625106",
-      "submission_id": null,
+      "submission_id": "BB-A34A4879",
       "official_score": null,
-      "official_submission_status": "Validated, unsubmitted",
+      "official_submission_status": "Scoring",
       "prepared_predecessors": [
         {
           "branch": "experiment/astra-early-zone-route-026",
@@ -525,7 +525,21 @@
           "technical_validation": "47 tests passed. Official checker 300/300 max 8.3 ms locally; no replay action changes. Synthetic early-circle traversals with approximate sliding on the official map: 20/24 initial and 10/23 additional crossings reached the circle within 14 seconds, versus 13/24 and 3/23 for the officially scored parent. No full-match results inferred.",
           "official_submission_status": "Validated, never submitted"
         }
-      ]
+      ],
+      "submitted_at_display": "Sat 6:42 PM"
+    },
+    {
+      "id": "EXP-027",
+      "branch": "experiment/astra-quiet-scan-027",
+      "base_commit": "27662b9a02c0677ca8b914fda223067d11065988",
+      "base_official_score": 2.9,
+      "hypothesis": "With no engagement or recent warning, scan the least recently observed sector using actual torso facing and the published field of view, reducing the blind interval for initial detection.",
+      "technical_validation": "52 tests; checker 300/300 max 6.7 ms locally. Only aim changed on 39 recorded frames. In 72 stationary open-view cases (24 bearings, three starting yaws, published slew rate), average time until the bearing entered view dropped from 1.783 to 0.381 seconds and maximum from 7.1 to 1.1. Time to sight is a local geometry measure.",
+      "commit": "b34e3cc01d6926d10201d9b466d94c0cc773d259",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44962881931",
+      "submission_id": null,
+      "official_score": null,
+      "official_submission_status": "Validated, unsubmitted"
     }
   ],
   "best_official_entry": {
@@ -542,7 +556,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-21T23:38:15.728884+00:00",
+  "last_updated_at": "2026-11-21T23:42:15.541588+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-21T18:35:00-05:00",
     "rank": 240,
