@@ -204,44 +204,46 @@
           "candidate": 115
         }
       },
-      "official_submission_status": "ready; pending current evaluation",
-      "submission_id": null,
-      "official_score": null,
-      "technical_validation": "26 tests, official checker and exact-source Linux Docker sandbox CI passed",
+      "official_submission_status": "Scored",
+      "submission_id": "BB-D1BCAB2F",
+      "official_score": 2.42,
+      "technical_validation": "32 tests; official checker 300/300; exact-source Docker CI passed",
       "promotion_rule": "Promote only on a new official best; target >=10.00",
-      "status": "Rebuilt magazine priority on official 2.38 best; validating",
+      "status": "Verified new best; automatically selected",
       "prepared_predecessor_commits": [
         "088ee223247c071188de4417bfff1e9c34f5f770"
       ],
-      "commit": null,
-      "ci_url": null
+      "commit": "7e5b3565ce616be3e798255588e1c88ab7f86f46",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44946429043",
+      "submitted_at": "2026-11-21T15:29:00-05:00"
     },
     {
       "id": "EXP-012",
-      "branch": "experiment/best231-retreat-gun-2026-11-21",
-      "base_commit": "644baa44fe773c5e2429bec5c715f91787770ab1",
-      "base_official_score": 2.31,
+      "branch": "experiment/best242-retreat-gun-2026-11-21",
+      "base_commit": "7e5b3565ce616be3e798255588e1c88ab7f86f46",
+      "base_official_score": 2.42,
       "hypothesis": "Aligned ranged gun counterpressure during retreat may improve survival against pursuers",
       "changed_policy": "Gun no longer inherits the conservative >55m firing veto; all other gun gates and secondary vetoes retained",
       "official_submission_status": "ready; pending prior evaluations",
       "submission_id": null,
       "official_score": null,
-      "technical_validation": "26 tests, official checker and exact-source Linux Docker sandbox CI passed",
+      "technical_validation": "32 tests; official checker 300/300; exact-source Linux Docker sandbox CI passed",
       "promotion_rule": "Promote only if official score exceeds current live best; goal >=10.00",
-      "commit": "8935f8dfe3aadaea604771adca2466b50ded2290",
-      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44945520635"
+      "commit": null,
+      "ci_url": null,
+      "status": "Rebuilt gun-only change on official 2.42 winner; validating"
     }
   ],
   "best_official_entry": {
-    "experiment": "EXP-010",
-    "commit": "581009b54f2331846ff52d0d553e15e400248baa",
-    "submission_id": "BB-CDD245D9",
-    "score": 2.38,
+    "experiment": "EXP-011",
+    "commit": "7e5b3565ce616be3e798255588e1c88ab7f86f46",
+    "submission_id": "BB-D1BCAB2F",
+    "score": 2.42,
     "selected": "Verified automatic best-scoring final entry",
     "source": "Authenticated official page"
   },
   "quota_observed": {
-    "remaining": 3,
+    "remaining": 2,
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
