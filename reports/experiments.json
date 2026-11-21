@@ -156,15 +156,16 @@
       "base_official_score": 2.25,
       "hypothesis": "Persisting a no-target attacker bearing may finish defensive torso turns and protect front armor",
       "changed_policy": "No-target bearing attention lasts a bounded turn-rate-derived interval; original fresh-stimulus choice and visible-target behavior retained",
-      "official_submission_status": "Scoring",
+      "official_submission_status": "Scored",
       "submission_id": "BB-0BF60252",
-      "official_score": null,
+      "official_score": 2.31,
       "technical_validation": "21 tests; official checker; Linux AMD64 Docker sandbox CI passed",
       "promotion_rule": "Promote only on a new official best; goal remains >=10.00",
       "commit": "644baa44fe773c5e2429bec5c715f91787770ab1",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44932906509",
-      "status": "Awaiting official evaluation; 2.25 remains selected",
-      "submitted_at": "2026-11-21T13:09:00-05:00"
+      "status": "Verified new best; selected automatically",
+      "submitted_at": "2026-11-21T13:09:00-05:00",
+      "wait_reported": "30m 01s"
     },
     {
       "id": "EXP-010",
@@ -202,23 +203,25 @@
       "official_submission_status": "not submitted; review base after current result and validate exact CI",
       "submission_id": null,
       "official_score": null,
-      "technical_validation": "21 tests and official checker; recording has no offers so zero changed actions",
-      "promotion_rule": "Promote only on a new official best; target >=10.00"
+      "technical_validation": "21 tests, official checker and Linux Docker sandbox CI passed",
+      "promotion_rule": "Promote only on a new official best; target >=10.00",
+      "commit": "088ee223247c071188de4417bfff1e9c34f5f770",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44935139718",
+      "status": "Prepared predecessor; rebuild on new 2.31 best before submission"
     }
   ],
   "best_official_entry": {
-    "experiment": "EXP-004",
-    "commit": "2f30e3d217461379eedebeea49751b6209397c79",
-    "submission_id": "BB-28A2E7AE",
-    "score": 2.25,
+    "experiment": "EXP-009",
+    "commit": "644baa44fe773c5e2429bec5c715f91787770ab1",
+    "submission_id": "BB-0BF60252",
+    "score": 2.31,
     "selected": "Verified automatic best-scoring final entry",
-    "source": "Authenticated Buildathon page"
+    "source": "Authenticated official page"
   },
   "quota_observed": {
-    "remaining": 0,
-    "next_slot": "2026-11-21T13:29:00-05:00",
-    "source": "Authenticated competition page"
+    "remaining": 4,
+    "source": "Authenticated official page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-21T18:05:49.122842+00:00"
+  "last_updated_at": "2026-11-21T20:12:45.057095+00:00"
 }
