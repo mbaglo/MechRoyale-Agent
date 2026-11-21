@@ -30,6 +30,8 @@ class Combat:
         # heard attacker before returning to the original no-target scan.
         self.attention_yaw = 0.
         self.attention_until = -float('inf')
+        self.near_warning_yaw = 0.
+        self.near_warning_until = -float('inf')
 
     def act(self, s, mode):
         me, obs = s.me, s.obs
@@ -62,7 +64,27 @@ class Combat:
                 self.attention_yaw = bearings[-1] if bearings else sounds[-1]['bearing']
                 turn_rate = me['stats'].get('turn_rate',self.config['mech']['turn_rate'])
                 self.attention_until = obs['t']+max(.6,min(2.,math.pi/max(.1,turn_rate)+.2))
+                near = [sound for sound in sounds if sound.get('dist') in ('near','mid')]
+                if bearings or near:
+                    self.near_warning_yaw = bearings[-1] if bearings else near[-1]['bearing']
+                    self.near_warning_until = self.attention_until
             yaw = self.attention_yaw if obs['t']<self.attention_until else obs['t']*.6
+            # [ASTRA_ENHANCEMENT_2026-11-21] [CODEX_ENHANCEMENT_2026-11-21]
+            # The game reports a tracked mech's current position behind cover.
+            # Keep the front arc and view on it until it emerges or the track expires.
+            if len(s.enemies) == 1:
+                enemy = s.enemies[0]
+                delta = [enemy['pos'][k]-origin[k] for k in range(3)]
+                scale = 1+self.config['cubes']['size_per_cube']*enemy.get('cubes',0)
+                delta[2] += self.config['mech']['height']*.5*scale
+                bearing = math.atan2(delta[1],delta[0])
+                if math.hypot(*delta[:2]) < self.config['weapons']['gun']['range']:
+                    if (obs['t'] < self.near_warning_until and
+                            abs(angle_delta(bearing,self.near_warning_yaw)) > math.pi/4):
+                        return [self.near_warning_yaw,0.],[False,False],reload
+                    pitch = math.atan2(delta[2],math.hypot(*delta[:2]))
+                    pitch = max(me['stats']['min_pitch'],min(me['stats']['max_pitch'],pitch))
+                    return [bearing,pitch],[False,False],reload
             return [angle_delta(yaw,0),0.], [False,False], reload
         self.target_id = target['id']
         height = 1.2 if target['kind']=='crate' else 4.5*(1+.05*target.get('cubes',0))

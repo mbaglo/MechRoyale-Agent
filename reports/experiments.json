@@ -345,7 +345,7 @@
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44952733688",
       "ground_route_probe": "19 synthetic official-map positions, 2 seconds of ground movement. Median transverse displacement 0.0m baseline versus 22.52m candidate. 18/19 candidate routes crossed one mech radius, 0/19 baseline.",
       "submitted_at_display": "Sat 4:59 PM",
-      "selected": true,
+      "selected": false,
       "status": "Official new best at 2.48, site selected."
     },
     {
@@ -380,11 +380,15 @@
       "base_official_score": 2.48,
       "hypothesis": "Use a healthy, sufficiently energized lightning mech to close a short interval against one exposed laser carrier. Respect cover, supply capture, zone and pressure.",
       "technical_validation": "44 tests passed and official checker 300/300 max 12.9ms locally. On ten synthetic official-map routes the selected baseline reached arc fire range in 0/10 and the candidate in 10/10 within three seconds. Median candidate first trigger was 1.4s. Opponent position held fixed.",
-      "official_score": null,
-      "submission_id": null,
-      "official_submission_status": "Validated, unsubmitted",
+      "official_score": 2.38,
+      "submission_id": "BB-A83D4DBF",
+      "official_submission_status": "Scored",
       "commit": "9a15661b7cd80b26399ac0cecf9864d396347929",
-      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44955367401"
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44955367401",
+      "submitted_at_display": "Sat 5:31 PM",
+      "selected": false,
+      "status": "Rejected, retained selected 2.48.",
+      "interpretation": "Closing on a laser opponent was effective at reaching arc range in the isolated scenario. The 48-match score fell. Exposure during approach or energy cost could explain the loss, but the official result does not identify which."
     },
     {
       "id": "EXP-021",
@@ -393,16 +397,93 @@
       "base_official_score": 2.48,
       "hypothesis": "Use hit, damaged, HP loss and zone-entry observations to preserve imminent HP regeneration when a distant target is optional. Resume fire under pressure or for a finishing opportunity.",
       "technical_validation": "43 tests passed, official checker 300/300 with an 8.6ms local maximum. Isolated firing tests cover ongoing combat, outgoing hits, zone re-entry, low enemy HP and laser response. Initial replay audit changed two fire decisions.",
+      "official_score": 2.56,
+      "submission_id": "BB-1EDBB6E6",
+      "official_submission_status": "Scored",
+      "commit": "a4b1857bb7a1484af3458bd68d7e2b805918395f",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44956779928",
+      "submitted_at_display": "Sat 5:41 PM",
+      "selected": true,
+      "status": "Official new best at 2.56, selected by the site."
+    },
+    {
+      "id": "EXP-022",
+      "branch": "experiment/astra-projectile-on-256",
+      "base_commit": "a4b1857bb7a1484af3458bd68d7e2b805918395f",
+      "base_official_score": 2.56,
+      "hypothesis": "Score visible imminent gun/NPC crossings with the observed velocity and permitted ground acceleration. Do not cancel an effective dodge merely because there is no current mech contact.",
+      "technical_validation": "46 tests passed, official checker 300/300 with a 17.0ms local maximum. Replay against 2.56 changes five movement decisions and zero other measured fields.",
+      "official_score": 2.42,
+      "submission_id": "BB-23814895",
+      "official_submission_status": "Scored",
+      "commit": "e4dff24c80d260631c5a6701f35b4d6b4de43dd4",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44958784342",
+      "prepared_predecessors": [
+        {
+          "commit": "9806b9eb3c3108724246aa141b2df1166c40efdc",
+          "branch": "experiment/astra-projectile-movement-022",
+          "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44958243528",
+          "official_submission_status": "Validated, never submitted"
+        }
+      ],
+      "submitted_at_display": "Sat 6:00 PM",
+      "selected": false,
+      "assessment": "Rejected against 2.56 parent. The crossing probe changed five recorded commands and improved clearance in a simplified model; its detours may cost firing position or interfere with other routing in matches. Cause unconfirmed without match traces. Next test is urgent obstacle routing on the 2.56 parent."
+    },
+    {
+      "id": "EXP-023",
+      "branch": "experiment/astra-recovery-cover-023",
+      "base_commit": "a4b1857bb7a1484af3458bd68d7e2b805918395f",
+      "base_official_score": 2.56,
+      "hypothesis": "Seek nearby walkable shelter against a lone visible opponent only when the observed regeneration delay has elapsed or is about to elapse. Hold briefly while sheltered, release on damage or zone urgency.",
+      "technical_validation": "46 tests passed. Official checker 300/300 on time, maximum 9.4 ms locally. Twelve movement changes in 300 recorded observations, no aim or fire changes. No full-match local simulator.",
       "official_score": null,
       "submission_id": null,
+      "commit": "c9955a3941ba43550af7ee718daa45d317e5a7bd",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44959181839",
+      "official_submission_status": "Validated, unsubmitted"
+    },
+    {
+      "id": "EXP-024",
+      "branch": "experiment/astra-zone-path-024",
+      "base_commit": "a4b1857bb7a1484af3458bd68d7e2b805918395f",
+      "base_official_score": 2.56,
+      "hypothesis": "Route around walls that block urgent ground travel to the circle. Bounded A* runs across decisions. Following a verified detour permits temporary movement away from the circle while already outside; inside the current zone its border still applies.",
+      "technical_validation": "46 tests passed. Checker answered 300/300, max 10.6 ms locally, no recorded action changes. In synthetic ground routes around actual arena obstacles with a 14-second deadline, 18/24 reached the circle versus 7/24 without the planner. After freezing the policy, next eligible obstacles in map order gave 10/23 against 0/23. No match simulation or official score from these probes.",
+      "official_score": null,
+      "submission_id": null,
+      "commit": "2c56fcfa037fcc63d78978478b6ca82ed12f0bfd",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44959943779",
+      "official_submission_status": "Validated, unsubmitted",
+      "probe_sensitivity": "With approximate axis-wise wall sliding and delayed energy regeneration, the planner reached 20/24 initial routes versus 7/24. On the additional 23 obstacle crossings it reached 10 versus 0. No opponent physics or match scores.",
+      "prepared_predecessors": [
+        {
+          "commit": "1551cd2ebce730860b4ab9372b4993e063304277",
+          "branch": "experiment/astra-zone-path-024",
+          "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44959754398",
+          "official_submission_status": "Validated, same game policy; no submission"
+        }
+      ]
+    },
+    {
+      "id": "EXP-025",
+      "branch": "experiment/astra-occluded-contact-025",
+      "base_commit": "a4b1857bb7a1484af3458bd68d7e2b805918395f",
+      "base_official_score": 2.56,
+      "hypothesis": "When a lone in-range opponent is still tracked behind cover, keep its bearing in the front arc. Preserve stronger near/mid warnings or incoming damage from another direction. No firing into blocked geometry.",
+      "technical_validation": "47 tests, checker 300/300, max 6.7 ms locally. In 57 recorded observations of one occluded opponent the parent commanded 42 rear-facing orientations relative to the tracked contact; the candidate commanded zero. Only aim changed on replay. This measures commanded torso direction, not armor damage or official performance.",
+      "commit": null,
+      "ci_url": null,
+      "submission_id": null,
+      "official_score": null,
       "official_submission_status": "Awaiting CI"
     }
   ],
   "best_official_entry": {
-    "experiment": "EXP-018",
-    "commit": "e24fcdad447c5ebdec006774e6c28cd1d492e290",
-    "submission_id": "BB-167AA858",
-    "score": 2.48,
+    "experiment": "EXP-021",
+    "commit": "a4b1857bb7a1484af3458bd68d7e2b805918395f",
+    "submission_id": "BB-1EDBB6E6",
+    "score": 2.56,
     "selected": "Verified automatic best-scoring final entry",
     "source": "Authenticated official page"
   },
@@ -412,11 +493,12 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-21T22:23:50.536340+00:00",
+  "last_updated_at": "2026-11-21T23:07:33.773894+00:00",
   "leaderboard_observation": {
-    "score": 2.48,
-    "rank": 256,
-    "teams": 305,
-    "observed_at": "2026-11-21T17:22:00-05:00"
+    "observed_at": "2026-11-21T18:02:00-05:00",
+    "rank": 257,
+    "teams": 310,
+    "source": "Official expanded practice leaderboard",
+    "score": 2.56
   }
 }
