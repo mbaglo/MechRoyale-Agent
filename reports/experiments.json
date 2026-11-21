@@ -23,7 +23,8 @@
       "branch": "optimization/squad-survival-2026-11-21",
       "commit": "146d3e87c65cbd041e63a12c107cd4ef8bc3ca8f",
       "official_submission_status": "Scored",
-      "selected": false
+      "selected": false,
+      "submitted_at_display": "Sat 10:22 AM"
     },
     {
       "id": "EXP-003",
@@ -53,7 +54,8 @@
       "source": "Authenticated official competition page; separately prepared V1 crossfire candidate",
       "promotion_rule": "Only promote if the official score exceeds the current best official score; recheck live selection",
       "official_submission_status": "Scored",
-      "selected": false
+      "selected": false,
+      "submitted_at_display": "Sat 11:28 AM"
     },
     {
       "id": "EXP-004",
@@ -293,7 +295,8 @@
       "probe": "In a local ground movement model with recorded opponent positions, center and head were covered on the final step of 2/5 charge windows versus 1/5 for baseline. Enemy responses, damage and placement were not simulated.",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44949637971",
       "submitted_at": "2026-11-21T16:16:00-05:00",
-      "selected": false
+      "selected": false,
+      "status": "Tied 2.46. Original best remains selected."
     },
     {
       "id": "EXP-016",
@@ -302,11 +305,15 @@
       "base_official_score": 2.46,
       "hypothesis": "A vetoed secondary yields torso control to the available gun to retain ordinary fire and movement lead. A held mortar previously suppressed both slots during a ranged retreat.",
       "technical_validation": "40 tests passed, official checker 300/300 maximum 10.5ms locally. Scenarios verify close mortar, retreating mortar, low-energy arc and retreating laser. The supplied recording contains only a gun and no changed actions.",
-      "official_score": null,
-      "submission_id": null,
-      "official_submission_status": "Validated, unsubmitted",
+      "official_score": 2.44,
+      "submission_id": "BB-8242F910",
+      "official_submission_status": "Scored",
       "commit": "3693f5b7cf6738eee35ce06adc709832d73c6cee",
-      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44950039495"
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44950039495",
+      "submitted_at_display": "Sat 4:30 PM",
+      "selected": false,
+      "status": "Rejected, 2.44 versus selected 2.46.",
+      "interpretation": "The slot conflict is reproducible. Its fix can also spend ammunition or interrupt regeneration. The official service gives an aggregate score only, so the measured difference cannot be attributed to a specific cause."
     },
     {
       "id": "EXP-017",
@@ -336,5 +343,5 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-21T21:23:22.440314+00:00"
+  "last_updated_at": "2026-11-21T21:37:27.226963+00:00"
 }

@@ -22,5 +22,5 @@ The selected entry is **EXP-012** at **2.46**. The target is **10.00**.
 | EXP-013 | [e29c8dc1b66afb73f093a7cb935322c38af0154a](https://github.com/mbaglo/MechRoyale-Agent/commit/e29c8dc1b66afb73f093a7cb935322c38af0154a) | BB-CDA30EDB | 2.13 |
 | EXP-014 | [76cb349a9077cb6c09b79b922929848d240245dd](https://github.com/mbaglo/MechRoyale-Agent/commit/76cb349a9077cb6c09b79b922929848d240245dd) | Unsubmitted | Validated, awaiting evaluation |
 | EXP-015 | [0e40ae0843a06e39d7da16c5f49baa1c1e13f942](https://github.com/mbaglo/MechRoyale-Agent/commit/0e40ae0843a06e39d7da16c5f49baa1c1e13f942) | BB-05367574 | 2.46 |
-| EXP-016 | [3693f5b7cf6738eee35ce06adc709832d73c6cee](https://github.com/mbaglo/MechRoyale-Agent/commit/3693f5b7cf6738eee35ce06adc709832d73c6cee) | Unsubmitted | Validated, unsubmitted |
+| EXP-016 | [3693f5b7cf6738eee35ce06adc709832d73c6cee](https://github.com/mbaglo/MechRoyale-Agent/commit/3693f5b7cf6738eee35ce06adc709832d73c6cee) | BB-8242F910 | 2.44 |
 | EXP-017 | [42db3bc95b273139da2cfa25f6d184cdbb297ea9](https://github.com/mbaglo/MechRoyale-Agent/commit/42db3bc95b273139da2cfa25f6d184cdbb297ea9) | Unsubmitted | Validated, unsubmitted |
