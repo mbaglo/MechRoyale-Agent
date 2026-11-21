@@ -11,7 +11,7 @@ class Navigator:
         self.escape_until = 0
         self.side = 1
 
-    def move(self, s, goal, mode):
+    def move(self, s, goal, mode, zone_detour=False):
         me, o = s.me, s.obs
         pos, stats = me['pos'], me['stats']
         if self.anchor is None or o['t']-self.anchor_t > 1.5:
@@ -55,11 +55,14 @@ class Navigator:
                 # momentum scores choose the feasible side and maintain it.
                 score += 2*look*abs(dx*lateral_axis[0]+dy*lateral_axis[1])
             score += .8*(dx*self.previous[0]+dy*self.previous[1])
-            if self.escape_until > o['t']:
+            if self.escape_until > o['t'] and not zone_detour:
                 score += 12*self.side*(dx*(-math.sin(base))+dy*math.cos(base))
             outside = max(0, math.dist(end[:2], zone['center'])-zone['radius']+6)
-            score -= outside*10
-            if s.urgent:
+            # [ASTRA_FIX_2026-11-21] A validated detour may initially lead away
+            # from the circle. Keep the current border constraint while still inside.
+            if not zone_detour or me['in_zone']:
+                score -= outside*10
+            if s.urgent and not zone_detour:
                 score -= max(0, math.dist(end[:2], zone['next_center'])-zone['next_radius']+8)*2
             for enemy in s.enemies[:6]:
                 ep = enemy['pos']

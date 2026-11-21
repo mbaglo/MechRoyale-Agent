@@ -17,6 +17,27 @@ def inside(x, y, ring):
     return hit
 
 
+def index_ring(ring):
+    """[ASTRA_ENHANCEMENT_2026-11-21] Index polygon crossings by horizontal strip."""
+    strips = {}
+    bx, by = ring[-2:]
+    for i in range(0,len(ring),2):
+        ax, ay = ring[i:i+2]
+        if ay != by:
+            for row in range(math.floor(min(ay,by)/4),math.floor(max(ay,by)/4)+1):
+                strips.setdefault(row,[]).append((ax,ay,bx,by))
+        bx,by = ax,ay
+    return strips
+
+
+def indexed_inside(x,y,index):
+    hit = False
+    for ax,ay,bx,by in index.get(math.floor(y/4),()):
+        if (ay > y) != (by > y) and x < (bx-ax)*(y-ay)/(by-ay)+ax:
+            hit = not hit
+    return hit
+
+
 class World:
     def __init__(self, directory):
         self.prisms = []
@@ -37,6 +58,7 @@ class World:
                 raise ValueError('terrain size mismatch')
             for p in data['prisms']:
                 r = p['ring']
+                p['_rings'] = [index_ring(r)] + [index_ring(h) for h in p.get('holes',[])]
                 box = (min(r[::2]), min(r[1::2]), max(r[::2]), max(r[1::2]))
                 idx = len(self.prisms)
                 self.prisms.append((p, box))
@@ -61,7 +83,11 @@ class World:
         for idx in self.cells.get((math.floor(x/32), math.floor(y/32)), ()):
             p, b = self.prisms[idx]
             if b[0] <= x <= b[2] and b[1] <= y <= b[3] and p['base'] < z < p['top']:
-                if inside(x, y, p['ring']) and not any(inside(x, y, h) for h in p.get('holes', [])):
+                rings = p.get('_rings')
+                if rings:
+                    if indexed_inside(x,y,rings[0]) and not any(indexed_inside(x,y,h) for h in rings[1:]):
+                        return True
+                elif inside(x, y, p['ring']) and not any(inside(x, y, h) for h in p.get('holes', [])):
                     return True
         return False
 
