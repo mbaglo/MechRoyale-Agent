@@ -1,0 +1,16 @@
+{
+  "experiment": "EXP-011",
+  "kind": "input audit; not a match simulator",
+  "baseline_commit": "581009b54f2331846ff52d0d553e15e400248baa",
+  "baseline_official_score": 2.38,
+  "observations": 300,
+  "upgrade_offer_observations": 0,
+  "changed_picks": 0,
+  "other_action_changes": 0,
+  "candidate_ms": {
+    "p50": 4.1099999798461795,
+    "p99": 18.904500000644475,
+    "maximum": 19.704199978150427
+  },
+  "official_score": null
+}

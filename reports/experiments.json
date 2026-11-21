@@ -6,7 +6,7 @@
     "commit": "8a87e8a467dde525d25fcf9cb5181087c6e55fd7",
     "submission_id": "BB-6CB32C3E",
     "score": 2.1,
-    "selected": "Historical V1 best; now superseded by EXP-003 with official 2.19",
+    "selected": "Historical V1 baseline; current verified best is recorded separately",
     "source": "Verified on authenticated competition page on 2026-11-21"
   },
   "experiments": [
@@ -179,21 +179,24 @@
           "candidate": 130
         }
       },
-      "official_submission_status": "not submitted; revalidate new exact source",
-      "submission_id": null,
-      "official_score": null,
-      "technical_validation": "22 tests, official checker and Linux AMD64 Docker sandbox CI passed",
+      "official_submission_status": "Scored",
+      "submission_id": "BB-CDD245D9",
+      "official_score": 2.38,
+      "technical_validation": "27 tests; official checker; exact-source Linux Docker sandbox CI passed",
       "promotion_rule": "Promote only on an official score exceeding the current best; objective >=10.00",
-      "status": "Rebuilt single cube-range change on verified 2.31 best",
+      "status": "Verified new best; automatically selected",
       "prepared_predecessor_commits": [
         "0cbd1a2b96572176dad9ec7be9c88c6996795020"
-      ]
+      ],
+      "commit": "581009b54f2331846ff52d0d553e15e400248baa",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44945193673",
+      "submitted_at": "2026-11-21T15:15:00-05:00"
     },
     {
       "id": "EXP-011",
-      "branch": "experiment/best-magazine-priority-2026-11-21",
-      "base_commit": "2f30e3d217461379eedebeea49751b6209397c79",
-      "base_official_score": 2.25,
+      "branch": "experiment/best238-magazine-2026-11-21",
+      "base_commit": "581009b54f2331846ff52d0d553e15e400248baa",
+      "base_official_score": 2.38,
       "hypothesis": "Prioritizing the magazine upgrade may improve sustained gun combat and reduce reload exposure",
       "changed_parameter": {
         "gun_mag_upgrade_rank": {
@@ -201,28 +204,46 @@
           "candidate": 115
         }
       },
-      "official_submission_status": "not submitted; review base after current result and validate exact CI",
+      "official_submission_status": "ready; pending current evaluation",
       "submission_id": null,
       "official_score": null,
-      "technical_validation": "21 tests, official checker and Linux Docker sandbox CI passed",
+      "technical_validation": "26 tests, official checker and exact-source Linux Docker sandbox CI passed",
       "promotion_rule": "Promote only on a new official best; target >=10.00",
-      "commit": "088ee223247c071188de4417bfff1e9c34f5f770",
-      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44935139718",
-      "status": "Prepared predecessor; rebuild on new 2.31 best before submission"
+      "status": "Rebuilt magazine priority on official 2.38 best; validating",
+      "prepared_predecessor_commits": [
+        "088ee223247c071188de4417bfff1e9c34f5f770"
+      ],
+      "commit": null,
+      "ci_url": null
+    },
+    {
+      "id": "EXP-012",
+      "branch": "experiment/best231-retreat-gun-2026-11-21",
+      "base_commit": "644baa44fe773c5e2429bec5c715f91787770ab1",
+      "base_official_score": 2.31,
+      "hypothesis": "Aligned ranged gun counterpressure during retreat may improve survival against pursuers",
+      "changed_policy": "Gun no longer inherits the conservative >55m firing veto; all other gun gates and secondary vetoes retained",
+      "official_submission_status": "ready; pending prior evaluations",
+      "submission_id": null,
+      "official_score": null,
+      "technical_validation": "26 tests, official checker and exact-source Linux Docker sandbox CI passed",
+      "promotion_rule": "Promote only if official score exceeds current live best; goal >=10.00",
+      "commit": "8935f8dfe3aadaea604771adca2466b50ded2290",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44945520635"
     }
   ],
   "best_official_entry": {
-    "experiment": "EXP-009",
-    "commit": "644baa44fe773c5e2429bec5c715f91787770ab1",
-    "submission_id": "BB-0BF60252",
-    "score": 2.31,
+    "experiment": "EXP-010",
+    "commit": "581009b54f2331846ff52d0d553e15e400248baa",
+    "submission_id": "BB-CDD245D9",
+    "score": 2.38,
     "selected": "Verified automatic best-scoring final entry",
     "source": "Authenticated official page"
   },
   "quota_observed": {
-    "remaining": 4,
-    "source": "Authenticated official page"
+    "remaining": 3,
+    "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-21T20:12:45.057095+00:00"
+  "last_updated_at": "2026-11-21T20:27:49.128165+00:00"
 }

@@ -30,7 +30,9 @@ class Bot:
         offer = obs.get('offer')
         if offer and offer['choices']:
             ranks = {'nanites':100,'armor':95,'plating':90,'servos':85,'reactor':80,'jets':75,
-                     'gun_rate':65,'gun_damage':64,'gun_mag':62,'laser_damage':60,'lightning_range':60}
+                     # [CODEX_ENHANCEMENT_2026-11-21] EXP-011: prefer the
+                     # drum's sustained-fire capacity; original gun_mag rank 62.
+                     'gun_rate':65,'gun_damage':64,'gun_mag':115,'laser_damage':60,'lightning_range':60}
             action['pick'] = max(range(len(offer['choices'])),key=lambda i:ranks.get(offer['choices'][i]['id'],40))
         me = s.me
         held = {w['kind'] for w in me['weapons'] if w}
