@@ -35,7 +35,10 @@ class Strategy:
         if any(w is None for w in me['weapons']):
             for p in o.get('pickups', []):
                 if p['kind'] not in [w['kind'] for w in me['weapons'] if w]:
-                    candidates.append((p, .85, 65))
+                    # [CODEX_ENHANCEMENT_2026-11-21] EXP-004: the only
+                    # tactical change from V1 is weapon search reach (65 -> 130 m).
+                    # Existing zone, enemy-contestation and vertical filters apply.
+                    candidates.append((p, .85, 130))
         for p in o.get('drops', []):
             if p['lands_in'] < 8:
                 candidates.append((p, .6 if s.health < .7 else 1.2, 100))
