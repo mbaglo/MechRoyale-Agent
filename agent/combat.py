@@ -114,4 +114,15 @@ class Combat:
                 r = math.dist(origin[:2],aim_point[:2]); dz = aim_point[2]-origin[2]
                 possible = st['speed']**4-st['gravity']*(st['gravity']*r*r+2*dz*st['speed']**2)>=0
                 fire[i] = bool(allowed and selected is w and possible and distance > st['splash_radius']*2+8)
+        # [ASTRA_ENHANCEMENT_2026-11-21] Preserve an imminent regeneration window
+        # while tracking a distant target. Keep close defense and finishing shots.
+        if s.recovery_window and not s.urgent and not any(w and w.get('charge',0) > 0 for w in weapons):
+            gun = next((w for w in weapons if w and w['kind'] == 'gun'), None)
+            damage = gun['stats']['damage'] if gun else 0
+            cubes = self.config['cubes']
+            damage *= 1 + cubes['damage_per_cube']*min(me.get('cubes',0), cubes['stat_cap'])
+            distant = all(math.dist(e['pos'],me['pos']) > 100 and not e.get('charging') for e in s.enemies)
+            incoming = any(math.dist(b['pos'],me['pos']) < 30 for b in obs.get('projectiles', []))
+            if not incoming and distant and (target['kind'] == 'crate' or target.get('hp',1400) > 2*damage):
+                fire = [False,False]
         return [yaw,pitch], fire, reload
