@@ -137,8 +137,11 @@
       "official_submission_status": "not submitted; validate CI and evaluate EXP-007 first",
       "submission_id": null,
       "official_score": null,
-      "technical_validation": "27 unit tests, official checker; 277 supported static roof sites; recorded stream never activates refuge",
-      "promotion_rule": "Only select if an official score exceeds the live best; target 10.00+"
+      "technical_validation": "27 tests and official checker; Linux AMD64 Docker sandbox CI passed",
+      "promotion_rule": "Only select if an official score exceeds the live best; target 10.00+",
+      "commit": "2ccc8124a335972fcf3b613e9a1ea655bb17c312",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44932183078",
+      "status": "Ready; independent of EXP-007; no official result yet"
     }
   ],
   "best_official_entry": {
