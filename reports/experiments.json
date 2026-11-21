@@ -19,7 +19,8 @@
       "score_reported_by_user": 1.31,
       "status": "regression; preserve branch, do not select",
       "official_score": 1.31,
-      "promotion_rule": "Only promote if the official score exceeds the current best official score; recheck live selection"
+      "promotion_rule": "Only promote if the official score exceeds the current best official score; recheck live selection",
+      "branch": "optimization/squad-survival-2026-11-21"
     },
     {
       "id": "EXP-003",
@@ -36,7 +37,8 @@
       "commit": "28afe8bcba8480f7483dc65280afdc270c0120ac",
       "stage": "complete",
       "submitted_at": "2026-11-21T11:52:00-05:00",
-      "status": "Scored 2.19; preserved, superseded by 2.25"
+      "status": "Scored 2.19; preserved, superseded by 2.25",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44925412894"
     },
     {
       "id": "EXP-XF01",
@@ -177,5 +179,6 @@
     "next_slot": "2026-11-21T13:01:00-05:00",
     "source": "Authenticated official submission page"
   },
-  "objective_official_practice_score_at_least": 10.0
+  "objective_official_practice_score_at_least": 10.0,
+  "last_updated_at": "2026-11-21T18:05:49.122842+00:00"
 }
