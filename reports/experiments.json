@@ -432,16 +432,26 @@
     },
     {
       "id": "EXP-023",
-      "branch": "experiment/astra-recovery-cover-023",
-      "base_commit": "a4b1857bb7a1484af3458bd68d7e2b805918395f",
-      "base_official_score": 2.56,
+      "branch": "experiment/astra-recovery-cover-on-290",
+      "base_commit": "27662b9a02c0677ca8b914fda223067d11065988",
+      "base_official_score": 2.9,
       "hypothesis": "Seek nearby walkable shelter against a lone visible opponent only when the observed regeneration delay has elapsed or is about to elapse. Hold briefly while sheltered, release on damage or zone urgency.",
-      "technical_validation": "46 tests passed. Official checker 300/300 on time, maximum 9.4 ms locally. Twelve movement changes in 300 recorded observations, no aim or fire changes. No full-match local simulator.",
+      "technical_validation": "53 tests passed. Official checker 300/300 max 8.2 ms locally. Twelve recorded movement changes versus the selected 2.90 policy; all other action fields identical. Existing urgent path and torso attention behavior retained.",
       "official_score": null,
       "submission_id": null,
-      "commit": "c9955a3941ba43550af7ee718daa45d317e5a7bd",
-      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44959181839",
-      "official_submission_status": "Validated, unsubmitted"
+      "commit": "d1cdbcd1289b2d809bdf13a694b180135b4c56c0",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44962669786",
+      "official_submission_status": "Validated, unsubmitted",
+      "prepared_predecessors": [
+        {
+          "branch": "experiment/astra-recovery-cover-023",
+          "commit": "c9955a3941ba43550af7ee718daa45d317e5a7bd",
+          "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44959181839",
+          "base_commit": "a4b1857bb7a1484af3458bd68d7e2b805918395f",
+          "technical_validation": "46 tests passed. Official checker 300/300 on time, maximum 9.4 ms locally. Twelve movement changes in 300 recorded observations, no aim or fire changes. No full-match local simulator.",
+          "official_submission_status": "Validated, never submitted"
+        }
+      ]
     },
     {
       "id": "EXP-024",
@@ -465,7 +475,7 @@
         }
       ],
       "submitted_at_display": "Sat 6:18 PM",
-      "selected": true,
+      "selected": false,
       "assessment": "Promoted after official evaluation. The 48-match practice mean increased by 0.09 from 2.56. The scorer does not identify which routes or matches produced that difference. Next test keeps this planner and isolates torso attention around cover."
     },
     {
@@ -475,11 +485,11 @@
       "base_official_score": 2.65,
       "hypothesis": "When a lone in-range opponent is still tracked behind cover, keep its bearing in the front arc. Preserve stronger near/mid warnings or incoming damage from another direction. No firing into blocked geometry.",
       "technical_validation": "50 tests passed. Official checker 300/300 with max 7.7 ms locally. Compared to the 2.65 winner, 57 recorded aim commands changed, with all other action fields identical. The behavior targets front-facing orientation while tracking a blocked contact.",
-      "commit": null,
-      "ci_url": null,
-      "submission_id": null,
-      "official_score": null,
-      "official_submission_status": "Awaiting CI",
+      "commit": "27662b9a02c0677ca8b914fda223067d11065988",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44961559832",
+      "submission_id": "BB-1DEA5990",
+      "official_score": 2.9,
+      "official_submission_status": "Scored",
       "prepared_predecessors": [
         {
           "branch": "experiment/astra-occluded-contact-025",
@@ -489,14 +499,69 @@
           "technical_validation": "47 tests, checker 300/300, max 6.7 ms locally. In 57 recorded observations of one occluded opponent the parent commanded 42 rear-facing orientations relative to the tracked contact; the candidate commanded zero. Only aim changed on replay. This measures commanded torso direction, not armor damage or official performance.",
           "official_submission_status": "Validated, never submitted"
         }
-      ]
+      ],
+      "submitted_at_display": "Sat 6:32 PM",
+      "selected": true,
+      "assessment": "Selected by the official site. Against the 2.65 policy, this experiment raised the 48-match mean by 0.25. Changes to received damage, elimination count and individual placements are not exposed. Rebuild early-route and shelter experiments on this selected source."
+    },
+    {
+      "id": "EXP-026",
+      "branch": "experiment/astra-early-route-on-290",
+      "base_commit": "27662b9a02c0677ca8b914fda223067d11065988",
+      "base_official_score": 2.9,
+      "hypothesis": "Extend the verified 2.65 obstacle planner to quiet safe-zone travel before urgency when the next circle is still beyond the mech. Preserve combat, pickup pursuit and recent-damage response.",
+      "technical_validation": "51 tests. Official checker 300/300 max 7.8 ms locally. All 300 recorded commands matched the new 2.90 parent. The change affects quiet obstructed zone travel; synthetic route counts and preceding source are preserved in prepared_predecessors.",
+      "commit": "a78c6f74df08e6fd265912cf8eefb54802b61754",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44962625106",
+      "submission_id": "BB-A34A4879",
+      "official_score": 2.88,
+      "official_submission_status": "Scored",
+      "prepared_predecessors": [
+        {
+          "branch": "experiment/astra-early-zone-route-026",
+          "commit": "33aca62bbebdbf5e6a1caa8cec583631dc84abb9",
+          "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44961716344",
+          "base_commit": "2c56fcfa037fcc63d78978478b6ca82ed12f0bfd",
+          "technical_validation": "47 tests passed. Official checker 300/300 max 8.3 ms locally; no replay action changes. Synthetic early-circle traversals with approximate sliding on the official map: 20/24 initial and 10/23 additional crossings reached the circle within 14 seconds, versus 13/24 and 3/23 for the officially scored parent. No full-match results inferred.",
+          "official_submission_status": "Validated, never submitted"
+        }
+      ],
+      "submitted_at_display": "Sat 6:42 PM",
+      "selected": false,
+      "assessment": "Rejected by 0.02 against the 2.90 parent. Faster approach in isolated obstacle crossings did not produce a higher official mean. Earlier arrival can change exposure and loot timing. The scorer does not publish a per-match breakdown. Test regeneration shelter next and retain urgent-only routing."
+    },
+    {
+      "id": "EXP-027",
+      "branch": "experiment/astra-quiet-scan-027",
+      "base_commit": "27662b9a02c0677ca8b914fda223067d11065988",
+      "base_official_score": 2.9,
+      "hypothesis": "With no engagement or recent warning, scan the least recently observed sector using actual torso facing and the published field of view, reducing the blind interval for initial detection.",
+      "technical_validation": "52 tests; checker 300/300 max 6.7 ms locally. Only aim changed on 39 recorded frames. In 72 stationary open-view cases (24 bearings, three starting yaws, published slew rate), average time until the bearing entered view dropped from 1.783 to 0.381 seconds and maximum from 7.1 to 1.1. Time to sight is a local geometry measure.",
+      "commit": "b34e3cc01d6926d10201d9b466d94c0cc773d259",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44962881931",
+      "submission_id": null,
+      "official_score": null,
+      "official_submission_status": "Validated, unsubmitted"
+    },
+    {
+      "id": "EXP-028",
+      "branch": "experiment/astra-reload-guard-028",
+      "base_commit": "27662b9a02c0677ca8b914fda223067d11065988",
+      "base_official_score": 2.9,
+      "hypothesis": "While the only gun is reloading against multiple engaged shooters, use the front armor arc to cover more bearings and restore aim before the gun becomes ready. No change to active firing, movement or secondary attacks.",
+      "technical_validation": "55 tests passed. Official checker 300/300 max 6.5 ms locally, no recorded action changes; the starter recording lacks simultaneous opponents. Across eight fixed two-opponent reload scenarios with the official torso turn rate, rear-facing opponent-ticks fell from 200 to 50 and aim returned within floating-point precision when the gun was ready. No inferred match damage or placement.",
+      "commit": null,
+      "ci_url": null,
+      "submission_id": null,
+      "official_score": null,
+      "official_submission_status": "Awaiting CI"
     }
   ],
   "best_official_entry": {
-    "experiment": "EXP-024",
-    "commit": "2c56fcfa037fcc63d78978478b6ca82ed12f0bfd",
-    "submission_id": "BB-56988FB1",
-    "score": 2.65,
+    "experiment": "EXP-025",
+    "commit": "27662b9a02c0677ca8b914fda223067d11065988",
+    "submission_id": "BB-1DEA5990",
+    "score": 2.9,
     "selected": "Verified automatic best-scoring final entry",
     "source": "Authenticated official page"
   },
@@ -506,13 +571,13 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-21T23:22:36.418830+00:00",
+  "last_updated_at": "2026-11-21T23:45:47.593286+00:00",
   "leaderboard_observation": {
-    "observed_at": "2026-11-21T18:22:00-05:00",
-    "rank": 255,
+    "observed_at": "2026-11-21T18:35:00-05:00",
+    "rank": 240,
     "teams": 312,
-    "score": 2.65,
-    "rank_32_score": 6.0,
+    "score": 2.9,
+    "rank_32_score": 6.06,
     "highest_displayed_score": 6.38,
     "source": "Official expanded practice leaderboard"
   }

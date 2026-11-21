@@ -1,5 +1,6 @@
 """[CODEX_ENHANCEMENT_2026-11-21] Intercepts, weapon control and fire discipline."""
 import math
+from .reload_guard import guard_yaw
 
 
 def angle_delta(a, b):
@@ -147,4 +148,6 @@ class Combat:
             incoming = any(math.dist(b['pos'],me['pos']) < 30 for b in obs.get('projectiles', []))
             if not incoming and distant and (target['kind'] == 'crate' or target.get('hp',1400) > 2*damage):
                 fire = [False,False]
+        if target['kind'] == 'mech' and not any(fire):
+            yaw = guard_yaw(s,yaw,self.config,self.world)
         return [yaw,pitch], fire, reload
