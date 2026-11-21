@@ -3,6 +3,12 @@ Autonomous AI combat agent for Builders Buildathon 2026. Features adaptive comba
 
 [CODEX_ENHANCEMENT_2026-11-21]
 
+**Current official best: 2.31**, `BB-0BF60252`, commit
+`644baa44fe773c5e2429bec5c715f91787770ab1`, selected automatically by the site.
+**EXP-010 rebuilt:** `experiment/best231-cube-reach-2026-11-21` changes only safe
+cube pursuit from 55 to 130 m on that source. Its old 2.25-based predecessor was
+not submitted. Goal remains official **10.00+**; candidate score is unknown.
+
 **EXP-009 attention-memory candidate:** `experiment/best-threat-attention-2026-11-21`,
 based on selected official **2.25** source `2f30e3d217461379eedebeea49751b6209397c79`.
 Only no-target threat-bearing persistence changes, allowing a defensive torso
