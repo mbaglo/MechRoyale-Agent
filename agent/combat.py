@@ -26,9 +26,23 @@ class Combat:
     def __init__(self, config, world):
         self.config, self.world = config, world
         self.target_id = None
+        # [CODEX_ENHANCEMENT_2026-11-21] EXP-003: bounded observed-attacker
+        # memory; no inferred enemy identities or match information.
+        self.recent_attackers = {}
+        self.defensive_fire_window_s = .6
 
     def act(self, s, mode):
         me, obs = s.me, s.obs
+        # [CODEX_FIX_2026-11-21] Quiet retreat still protects regeneration,
+        # but a recent weapon attacker may be answered with the arm gun.
+        now = obs['t']
+        self.recent_attackers = {k:t for k,t in self.recent_attackers.items()
+                                 if 0 <= now-t <= self.defensive_fire_window_s}
+        for event in obs.get('events',[]):
+            attacker = event.get('by')
+            if (event['type']=='damaged' and event.get('weapon')!='zone' and
+                    event.get('amount',0)>0 and attacker is not None):
+                self.recent_attackers[attacker] = now
         origin = list(me['pos'])
         origin[2] += me['stats']['muzzle_height']
         targets = list(s.enemies)
@@ -89,7 +103,11 @@ class Combat:
             allowed = aligned and not retreat and w.get('cooldown',0)<=.1
             if kind=='gun':
                 # Do not fire the gun along the mortar's elevated trajectory.
-                fire[i] = allowed and distance < st['range'] and w.get('ammo',0)>0 and not w.get('reload',0) and (selected is None or selected['kind']!='mortar')
+                # [CODEX_ENHANCEMENT_2026-11-21] EXP-003 changes only the
+                # conservative gun-fire veto for an observed recent attacker.
+                defensive = retreat and target['id'] in self.recent_attackers
+                gun_allowed = allowed or (defensive and aligned and w.get('cooldown',0)<=.1)
+                fire[i] = gun_allowed and distance < st['range'] and w.get('ammo',0)>0 and not w.get('reload',0) and (selected is None or selected['kind']!='mortar')
             elif kind=='lightning':
                 fire[i] = bool(not retreat and distance < st['range'] and me['energy'] > st['energy']+15 and abs(angle_delta(yaw,me['aim'][0])) < math.radians(st['cone_deg'])*.45 and w.get('cooldown',0)<=.1)
             elif kind=='laser':

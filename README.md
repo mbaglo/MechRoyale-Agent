@@ -3,8 +3,16 @@ Autonomous AI combat agent for Builders Buildathon 2026. Features adaptive comba
 
 [CODEX_ENHANCEMENT_2026-11-21]
 
+**EXP-003 candidate:** `experiment/v1-defensive-fire-2026-11-21`, branched directly
+from V1 `8a87e8a467dde525d25fcf9cb5181087c6e55fd7`. The user reports V1 scored
+2.10 and V2 scored 1.31. Keep V1 selected until a candidate officially beats it.
+This experiment changes only arm-gun retaliation during conservative retreat:
+it can answer the currently targeted opponent for 0.6 seconds after that opponent
+damages us. Quiet retreat and all movement/weapon gates remain as in V1.
+See [experiment record](reports/experiments.json) and [submission notes](reports/EXP-003.md).
+
 Working deterministic Python agent for `mechfight/1`, using only the standard
-library and official starter kit. **Gameplay strength is unmeasured:** the kit
+library and official starter kit. **Candidate gameplay strength is unmeasured:** the kit
 has no simulator. The original project description above describes the intended
 system; simulation-driven optimization requires official match results.
 

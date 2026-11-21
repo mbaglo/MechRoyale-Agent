@@ -6,10 +6,14 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
       - run: python -m unittest discover -s tests -v
+      # [CODEX_ENHANCEMENT_2026-11-21] Audit the single change against V1.
+      - run: python scripts/experiment_defensive_fire.py
       - run: docker build --platform linux/amd64 -t mechroyale-agent .
       - name: Official checker under competition sandbox
         run: >-

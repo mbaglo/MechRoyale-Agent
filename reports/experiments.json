@@ -1,0 +1,37 @@
+{
+  "tag": "[CODEX_ENHANCEMENT_2026-11-21]",
+  "objective_official_practice_score_above": 6.0,
+  "deadline": "2026-11-22T11:00:00-05:00",
+  "best_verified_by_user": {
+    "version": "V1",
+    "commit": "8a87e8a467dde525d25fcf9cb5181087c6e55fd7",
+    "submission_id": "BB-6CB32C3E",
+    "score": 2.10,
+    "selected": "User reports selected; leave unchanged",
+    "source": "User-provided official result, not independently retrieved"
+  },
+  "experiments": [
+    {
+      "id": "EXP-002",
+      "version": "V2",
+      "previous_candidate_commit": "146d3e87c65cbd041e63a12c107cd4ef8bc3ca8f",
+      "commit_association": "Previous candidate from this conversation; official submission commit not independently confirmed",
+      "submission_id": null,
+      "score_reported_by_user": 1.31,
+      "status": "regression; preserve branch, do not select"
+    },
+    {
+      "id": "EXP-003",
+      "base_commit": "8a87e8a467dde525d25fcf9cb5181087c6e55fd7",
+      "branch": "experiment/v1-defensive-fire-2026-11-21",
+      "hypothesis": "Gun retaliation against a recent attacker can avoid prolonged unanswered damage while retreating",
+      "changed_policy": "Allow only gun fire at the visible targeted mech for 0.6 seconds after observed non-zone damage from its ID",
+      "official_submission_status": "not submitted; authenticated browser control unavailable",
+      "submission_id": null,
+      "official_score": null,
+      "promotion_rule": "Only select if official score exceeds 2.10; retain every evaluated commit",
+      "revision_record": "Immutable full candidate commit is the Git commit containing this manifest; use git rev-parse HEAD before submitting",
+      "submissions_attempted_in_this_session": 0
+    }
+  ]
+}
