@@ -514,8 +514,8 @@
       "commit": "a78c6f74df08e6fd265912cf8eefb54802b61754",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44962625106",
       "submission_id": "BB-A34A4879",
-      "official_score": null,
-      "official_submission_status": "Scoring",
+      "official_score": 2.88,
+      "official_submission_status": "Scored",
       "prepared_predecessors": [
         {
           "branch": "experiment/astra-early-zone-route-026",
@@ -526,7 +526,9 @@
           "official_submission_status": "Validated, never submitted"
         }
       ],
-      "submitted_at_display": "Sat 6:42 PM"
+      "submitted_at_display": "Sat 6:42 PM",
+      "selected": false,
+      "assessment": "Rejected by 0.02 against the 2.90 parent. Faster approach in isolated obstacle crossings did not produce a higher official mean. Earlier arrival can change exposure and loot timing. The scorer does not publish a per-match breakdown. Test regeneration shelter next and retain urgent-only routing."
     },
     {
       "id": "EXP-027",
@@ -556,7 +558,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-21T23:42:15.541588+00:00",
+  "last_updated_at": "2026-11-21T23:45:47.593286+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-21T18:35:00-05:00",
     "rank": 240,
