@@ -27,6 +27,61 @@ class Strategy:
         # Remain on the quieter side of the next circle, leaving escape space.
         fraction = min(1, radius*.55/max(d, 1))
         goal = [center[k]+(pos[k]-center[k])*fraction for k in range(2)]
+        # [CHATGPT_FIX_2026-11-21] V1-specific, narrow crossfire escape.
+        # Two opponents opposite one another can cancel the original local
+        # planner's separation rewards while the zone goal equals our position.
+        # Keep the V1 movement, collision, boosting, combat and mode logic.
+        if mode == 'conservative' and not s.urgent:
+            threats = [
+                e for e in s.enemies
+                if math.dist(e['pos'][:2], pos[:2]) < 135
+            ]
+            if len(threats) >= 2:
+                safe_radius = max(0., z['next_radius'] - 8.)
+                nearest_now = min(
+                    math.dist(e['pos'][:2], pos[:2]) for e in threats
+                )
+                best = None
+                for i in range(16):
+                    angle = i * math.tau / 16
+                    # [CHATGPT_ENHANCEMENT_2026-11-21] Select a nearby
+                    # separation goal; the original Navigator still checks
+                    # map geometry and projectile danger before moving.
+                    candidate = [
+                        pos[0] + 24. * math.cos(angle),
+                        pos[1] + 24. * math.sin(angle),
+                    ]
+                    zone_dist = math.dist(candidate, center)
+                    if (zone_dist > safe_radius
+                            and zone_dist > math.dist(pos[:2], center)):
+                        continue
+                    distances = []
+                    for e in threats:
+                        velocity = e.get('vel', [0, 0, 0])
+                        projected = [
+                            e['pos'][0] + .75 * velocity[0],
+                            e['pos'][1] + .75 * velocity[1],
+                        ]
+                        distances.append(math.dist(candidate, projected))
+                    nearest = min(distances)
+                    # The minimum discourages escaping toward a flanker;
+                    # average spacing differentiates equally safe routes.
+                    score = nearest * 3. + sum(
+                        min(160., distance) for distance in distances
+                    ) / len(distances)
+                    # Allow original zone logic to dominate near its edge.
+                    score -= max(0., zone_dist - safe_radius * .8) * 2.
+                    if best is None or score > best[0]:
+                        best = (score, candidate)
+                if best is not None:
+                    # Do not take a sideways detour that is significantly
+                    # closer to the nearest threat than staying put.
+                    if min(
+                        math.dist(best[1], e['pos'][:2])
+                        for e in threats
+                    ) >= max(0., nearest_now - 8.):
+                        return best[1]
+
         if s.urgent:
             return goal
         candidates = []
