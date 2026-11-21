@@ -83,6 +83,11 @@ class NpcCubeOpportunityTests(unittest.TestCase):
         self.obs['mechs'] = [self.drone(40)]
         self.assertIsNone(self.combat.act(self.situation(),'balanced')[1][0]
                           or None)
+        # [CHATGPT_FIX_2026-11-21] A 160m kill would strand cubes beyond
+        # the inherited 130m safe cube-collection goal.
+        self.obs['mechs'] = [self.drone(160)]
+        self.combat.act(self.situation(), 'balanced')
+        self.assertNotEqual(self.combat.target_id, 105)
         self.obs['mechs'] = [self.drone(120)]
         self.obs['self']['weapons'][0]['ammo'] = 4
         self.combat.act(self.situation(),'balanced')
