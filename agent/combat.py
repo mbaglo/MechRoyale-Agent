@@ -57,7 +57,10 @@ class Combat:
         if safe_drone_farming:
             # A drone is 3.5 m tall. Keep distance for safe ranged farming and
             # do not target beyond the observed gun's projectile range.
-            safe_max = min(180., gun['stats'].get('range', 230.) - 10.)
+            # [CHATGPT_FIX_2026-11-21] Cubes outside the inherited 130m
+            # collection radius may be abandoned after the drone dies.
+            # Limit farming to a distance where earned cubes stay reachable.
+            safe_max = min(125., gun['stats'].get('range', 230.) - 10.)
             targets = [
                 dict(npc)
                 for npc in obs.get('mechs', [])
