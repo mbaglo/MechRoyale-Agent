@@ -7,7 +7,7 @@
     "commit": "8a87e8a467dde525d25fcf9cb5181087c6e55fd7",
     "submission_id": "BB-6CB32C3E",
     "score": 2.1,
-    "selected": "Verified: Entered in the final (your best score); left unchanged",
+    "selected": "Historical V1 best; now superseded by EXP-003 with official 2.19",
     "source": "Verified on authenticated competition page on 2026-11-21"
   },
   "experiments": [
@@ -27,15 +27,16 @@
       "branch": "experiment/v1-defensive-fire-2026-11-21",
       "hypothesis": "Gun retaliation against a recent attacker can avoid prolonged unanswered damage while retreating",
       "changed_policy": "Allow only gun fire at the visible targeted mech for 0.6 seconds after observed non-zone damage from its ID",
-      "official_submission_status": "Scoring",
+      "official_submission_status": "Scored",
       "submission_id": "BB-DA35D253",
-      "official_score": null,
+      "official_score": 2.19,
       "promotion_rule": "Only select if official score exceeds 2.10; retain every evaluated commit",
       "revision_record": "Immutable submitted commit recorded explicitly; later ledger updates are not new candidates",
       "submissions_attempted_in_this_session": 1,
       "commit": "28afe8bcba8480f7483dc65280afdc270c0120ac",
-      "stage": "Fetching",
-      "submitted_at": "2026-11-21T11:52:00-05:00"
+      "stage": "complete",
+      "submitted_at": "2026-11-21T11:52:00-05:00",
+      "status": "new best; selected automatically by competition"
     },
     {
       "id": "EXP-XF01",
@@ -56,12 +57,24 @@
           "candidate": 130
         }
       },
-      "official_submission_status": "not submitted; wait for existing team entry to complete",
-      "submission_id": null,
+      "official_submission_status": "Scoring",
+      "submission_id": "BB-28A2E7AE",
       "official_score": null,
-      "technical_validation": "16 local tests passed; official checker 300/300; Docker CI pending",
+      "technical_validation": "16 tests, official checker and Linux Docker sandbox CI passed",
       "input_evidence": "No action differences on official 300-observation recording; synthetic tests exercise wider safe pickup pursuit",
-      "promotion_rule": "Only select if official score exceeds best verified score"
+      "promotion_rule": "Only select if official score exceeds best verified score",
+      "commit": "2f30e3d217461379eedebeea49751b6209397c79",
+      "stage": "Fetching",
+      "submitted_at": "2026-11-21T12:01:00-05:00",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44927603840"
     }
-  ]
+  ],
+  "best_official_entry": {
+    "experiment": "EXP-003",
+    "commit": "28afe8bcba8480f7483dc65280afdc270c0120ac",
+    "submission_id": "BB-DA35D253",
+    "score": 2.19,
+    "selected": "Verified automatic best-scoring final entry",
+    "source": "Authenticated Buildathon page"
+  }
 }
