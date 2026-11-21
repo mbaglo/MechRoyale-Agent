@@ -204,17 +204,18 @@
           "candidate": 115
         }
       },
-      "official_submission_status": "ready; pending current evaluation",
-      "submission_id": null,
+      "official_submission_status": "Scoring",
+      "submission_id": "BB-D1BCAB2F",
       "official_score": null,
-      "technical_validation": "32 tests; official checker 300/300; exact-source Docker CI in progress",
+      "technical_validation": "32 tests; official checker 300/300; exact-source Docker CI passed",
       "promotion_rule": "Promote only on a new official best; target >=10.00",
-      "status": "Rebuilt magazine priority on official 2.38 best; validating",
+      "status": "Official evaluation pending",
       "prepared_predecessor_commits": [
         "088ee223247c071188de4417bfff1e9c34f5f770"
       ],
       "commit": "7e5b3565ce616be3e798255588e1c88ab7f86f46",
-      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44946429043"
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44946429043",
+      "submitted_at": "2026-11-21T15:29:00-05:00"
     },
     {
       "id": "EXP-012",
@@ -241,7 +242,7 @@
     "source": "Authenticated official page"
   },
   "quota_observed": {
-    "remaining": 3,
+    "remaining": 2,
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
