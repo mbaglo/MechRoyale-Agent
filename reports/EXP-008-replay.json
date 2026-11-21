@@ -1,0 +1,18 @@
+{
+  "experiment": "EXP-008",
+  "kind": "recorded observations; not a game simulation",
+  "baseline_commit": "2f30e3d217461379eedebeea49751b6209397c79",
+  "baseline_official_score": 2.25,
+  "observations": 300,
+  "changed_actions": 0,
+  "roof_sites": 277,
+  "phases": {
+    "baseline": 300
+  },
+  "candidate_ms": {
+    "p50": 2.427500003250316,
+    "p99": 7.471399992937222,
+    "maximum": 9.431800019228831
+  },
+  "official_score": null
+}

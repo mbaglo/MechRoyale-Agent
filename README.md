@@ -3,6 +3,13 @@ Autonomous AI combat agent for Builders Buildathon 2026. Features adaptive comba
 
 [CODEX_ENHANCEMENT_2026-11-21]
 
+**EXP-008 roof-refuge candidate:** `experiment/best-roof-refuge-2026-11-21`,
+based on the selected official **2.25** commit
+`2f30e3d217461379eedebeea49751b6209397c79`. It adds a bounded map/energy-checked
+roof escape and quiet hold, retaining the original policy as fallback. No boost
+hysteresis, retaliation or kiting changes are included. Candidate performance is
+unmeasured. Goal remains official **10.00+** before cutoff; see `reports/EXP-008.md`.
+
 **EXP-004:** branch `experiment/v1-weapon-reach-2026-11-21`, based directly on
 V1 `8a87e8a467dde525d25fcf9cb5181087c6e55fd7`. Its only tactical change is
 weapon-search radius: 65 to 130 meters. Existing safety filters are preserved.
