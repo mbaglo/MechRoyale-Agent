@@ -26,7 +26,8 @@ class Bot:
         s = self.observer.parse(obs)
         self.mode = self.strategy.choose(s)
         goal = self.strategy.goal(s,self.mode)
-        goal = self.zone_route.waypoint(s,goal)
+        quiet_zone_trip = self.strategy.zone_goal and not s.enemies and obs['t'] - self.observer.last_damage >= 3
+        goal = self.zone_route.waypoint(s,goal,early=quiet_zone_trip)
         move, boost = self.navigator.move(s,goal,self.mode,zone_detour=bool(self.zone_route.path))
         aim, fire, reload = self.combat.act(s,self.mode)
         action = dict(tick=obs['tick'],move=move,boost=boost,jump=False,aim=aim,fire=fire,reload=reload)

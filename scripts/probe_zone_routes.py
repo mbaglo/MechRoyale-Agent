@@ -84,11 +84,14 @@ def main():
     for start,end in legs(world,frame['self']['stats'],12,'--vertical' in sys.argv,12 if '--holdout' in sys.argv else 0):
         bot = Bot(hello)
         if '--direct' in sys.argv:
-            bot.zone_route.waypoint = lambda situation, goal: goal
+            bot.zone_route.waypoint = lambda situation, goal, **kwargs: goal
         me = frame['self']
         me.update(pos=start[:],vel=[0,0,0],energy=100,grounded=True,in_zone=False)
         frame['zone'] = dict(center=end[:2],next_center=end[:2],radius=9,next_radius=9,
                              shrink_start=0,shrink_end=80,dps=20)
+        if '--early' in sys.argv:
+            me['in_zone'] = True
+            frame['zone'].update(radius=180,shrink_start=60)
         since_spend = 0.
         for i in range(140):
             frame.update(t=i*.1,tick=i*2)
