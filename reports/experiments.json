@@ -156,7 +156,7 @@
       "base_official_score": 2.25,
       "hypothesis": "Persisting a no-target attacker bearing may finish defensive torso turns and protect front armor",
       "changed_policy": "No-target bearing attention lasts a bounded turn-rate-derived interval; original fresh-stimulus choice and visible-target behavior retained",
-      "official_submission_status": "Queued",
+      "official_submission_status": "Scoring",
       "submission_id": "BB-0BF60252",
       "official_score": null,
       "technical_validation": "21 tests; official checker; Linux AMD64 Docker sandbox CI passed",
@@ -181,8 +181,11 @@
       "official_submission_status": "not submitted; wait for EXP-009 and live quota",
       "submission_id": null,
       "official_score": null,
-      "technical_validation": "22 local tests and official checker passed; recorded stream shows zero action differences",
-      "promotion_rule": "Promote only on an official score exceeding the current best; objective >=10.00"
+      "technical_validation": "22 tests, official checker and Linux AMD64 Docker sandbox CI passed",
+      "promotion_rule": "Promote only on an official score exceeding the current best; objective >=10.00",
+      "commit": "0cbd1a2b96572176dad9ec7be9c88c6996795020",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44934443591",
+      "status": "Ready; review base after current evaluation"
     }
   ],
   "best_official_entry": {
