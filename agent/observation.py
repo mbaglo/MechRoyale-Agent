@@ -11,6 +11,8 @@ class Situation:
     health: float
     damage: float
     urgent: bool
+    # [ASTRA_ENHANCEMENT_2026-11-21] Observed crate on the current equipment route.
+    equipment_crate: int | None = None
 
 
 class Observer:

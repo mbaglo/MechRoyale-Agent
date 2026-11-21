@@ -38,11 +38,14 @@ class Combat:
         targets = list(s.enemies)
         if not targets and mode != 'conservative':
             targets = [dict(c, kind='crate', vel=[0,0,0]) for c in obs.get('crates', [])
-                       if math.dist(c['pos'],me['pos']) < 65]
+                       # [ASTRA_ENHANCEMENT_2026-11-21] Open a designated crate during the approach.
+                       if c['id'] == s.equipment_crate or math.dist(c['pos'],me['pos']) < 65]
         def priority(e):
             d = math.dist(e['pos'],me['pos'])
             return d + e.get('hp',1400)*.025 - (15 if e['id'] == self.target_id else 0)
         targets.sort(key=priority)
+        if s.equipment_crate is not None and not s.enemies:
+            targets.sort(key=lambda target: target['id'] != s.equipment_crate)
         target = None
         for e in targets[:8]:
             height = {'mech':4.5*(1+.05*e.get('cubes',0)), 'npc':1.75, 'crate':1.2}[e['kind']]
