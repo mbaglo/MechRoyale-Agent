@@ -6,7 +6,7 @@
     "commit": "8a87e8a467dde525d25fcf9cb5181087c6e55fd7",
     "submission_id": "BB-6CB32C3E",
     "score": 2.1,
-    "selected": "Historical V1 best; now superseded by EXP-003 with official 2.19",
+    "selected": "Historical V1 baseline; current verified best is recorded separately",
     "source": "Verified on authenticated competition page on 2026-11-21"
   },
   "experiments": [
@@ -204,16 +204,17 @@
           "candidate": 115
         }
       },
-      "official_submission_status": "not submitted; review base after current result and validate exact CI",
+      "official_submission_status": "ready; pending current evaluation",
       "submission_id": null,
       "official_score": null,
-      "technical_validation": "26 tests and official checker passed; exact CI pending",
+      "technical_validation": "26 tests, official checker and exact-source Linux Docker sandbox CI passed",
       "promotion_rule": "Promote only on a new official best; target >=10.00",
       "status": "Rebuilt one upgrade priority on current best; revalidate",
       "prepared_predecessor_commits": [
         "088ee223247c071188de4417bfff1e9c34f5f770"
       ],
-      "commit": "d8336b8ce06215842220bd7ad5d7278a46458484"
+      "commit": "d8336b8ce06215842220bd7ad5d7278a46458484",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44945322817"
     },
     {
       "id": "EXP-012",
@@ -222,11 +223,13 @@
       "base_official_score": 2.31,
       "hypothesis": "Aligned ranged gun counterpressure during retreat may improve survival against pursuers",
       "changed_policy": "Gun no longer inherits the conservative >55m firing veto; all other gun gates and secondary vetoes retained",
-      "official_submission_status": "not submitted; await current evaluation and exact CI",
+      "official_submission_status": "ready; pending prior evaluations",
       "submission_id": null,
       "official_score": null,
-      "technical_validation": "26 tests and official checker passed; 19 gun-fire changes only in recording",
-      "promotion_rule": "Promote only if official score exceeds current live best; goal >=10.00"
+      "technical_validation": "26 tests, official checker and exact-source Linux Docker sandbox CI passed",
+      "promotion_rule": "Promote only if official score exceeds current live best; goal >=10.00",
+      "commit": "8935f8dfe3aadaea604771adca2466b50ded2290",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44945520635"
     }
   ],
   "best_official_entry": {
@@ -238,9 +241,9 @@
     "source": "Authenticated official page"
   },
   "quota_observed": {
-    "remaining": 4,
-    "source": "Authenticated official page"
+    "remaining": 3,
+    "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-21T20:12:45.057095+00:00"
+  "last_updated_at": "2026-11-21T20:18:59.688998+00:00"
 }
