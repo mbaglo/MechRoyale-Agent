@@ -398,10 +398,11 @@
       "hypothesis": "Use hit, damaged, HP loss and zone-entry observations to preserve imminent HP regeneration when a distant target is optional. Resume fire under pressure or for a finishing opportunity.",
       "technical_validation": "43 tests passed, official checker 300/300 with an 8.6ms local maximum. Isolated firing tests cover ongoing combat, outgoing hits, zone re-entry, low enemy HP and laser response. Initial replay audit changed two fire decisions.",
       "official_score": null,
-      "submission_id": null,
-      "official_submission_status": "Validated, unsubmitted",
+      "submission_id": "BB-1EDBB6E6",
+      "official_submission_status": "Scoring",
       "commit": "a4b1857bb7a1484af3458bd68d7e2b805918395f",
-      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44956779928"
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44956779928",
+      "submitted_at_display": "Sat 5:41 PM"
     }
   ],
   "best_official_entry": {
@@ -418,7 +419,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-21T22:38:44.281301+00:00",
+  "last_updated_at": "2026-11-21T22:41:54.425593+00:00",
   "leaderboard_observation": {
     "score": 2.48,
     "rank": 256,
