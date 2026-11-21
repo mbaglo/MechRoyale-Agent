@@ -1,6 +1,7 @@
 """[CODEX_ENHANCEMENT_2026-11-21] Observation interpretation and bounded state."""
 import math
 from dataclasses import dataclass
+from .engagement import Engagement
 
 
 @dataclass
@@ -11,6 +12,8 @@ class Situation:
     health: float
     damage: float
     urgent: bool
+    # [ASTRA_ENHANCEMENT_2026-11-21] Set once by the authoritative controller.
+    engagement: Engagement | None = None
 
 
 class Observer:

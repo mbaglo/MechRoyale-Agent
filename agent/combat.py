@@ -44,6 +44,10 @@ class Combat:
             return d + e.get('hp',1400)*.025 - (15 if e['id'] == self.target_id else 0)
         targets.sort(key=priority)
         target = None
+        # [ASTRA_ENHANCEMENT_2026-11-21] Use the clear shot already evaluated by strategy.
+        if s.engagement and s.engagement.focus:
+            target = s.engagement.focus
+            targets = []
         for e in targets[:8]:
             height = {'mech':4.5*(1+.05*e.get('cubes',0)), 'npc':1.75, 'crate':1.2}[e['kind']]
             point = [e['pos'][0],e['pos'][1],e['pos'][2]+height]

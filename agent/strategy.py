@@ -7,6 +7,18 @@ class Strategy:
         self.mode = 'balanced'
 
     def choose(self, s):
+        # [ASTRA_ENHANCEMENT_2026-11-21] Account for exposure and the current magazine.
+        plan = s.engagement
+        if plan is not None:
+            if s.urgent or s.health < .42:
+                self.mode = 'conservative'
+            elif plan.can_finish:
+                self.mode = 'aggressive'
+            elif plan.exposed >= 2:
+                self.mode = 'conservative'
+            elif s.health > .55 or self.mode != 'conservative':
+                self.mode = 'balanced'
+            return self.mode
         close = [e for e in s.enemies if math.dist(e['pos'], s.me['pos']) < 100]
         weak = close and close[0].get('hp', 1400) < s.me['hp']*.5
         if s.health < .42 or len(close) >= 2 or s.urgent:
@@ -29,6 +41,16 @@ class Strategy:
         goal = [center[k]+(pos[k]-center[k])*fraction for k in range(2)]
         if s.urgent:
             return goal
+        # [ASTRA_ENHANCEMENT_2026-11-21] Route around the same opponent the torso tracks.
+        plan = s.engagement
+        if mode == 'aggressive' and plan is not None and plan.focus:
+            opponent = plan.focus['pos']
+            dx, dy = pos[0] - opponent[0], pos[1] - opponent[1]
+            length = max(1., math.hypot(dx, dy))
+            point = [opponent[0] + dx * plan.spacing / length,
+                     opponent[1] + dy * plan.spacing / length]
+            if math.dist(point, center) < z['next_radius'] - 10:
+                return point
         candidates = []
         for p in o.get('cubes', []):
             # [CODEX_ENHANCEMENT_2026-11-21] EXP-010: recover safe visible

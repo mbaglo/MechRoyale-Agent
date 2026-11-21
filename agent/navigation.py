@@ -44,6 +44,9 @@ class Navigator:
                 ep = enemy['pos']
                 before, after = math.dist(pos[:2],ep[:2]), math.dist(end[:2],ep[:2])
                 desired = 130 if mode == 'conservative' else 75
+                # [ASTRA_ENHANCEMENT_2026-11-21] Keep gun/arc range consistent with the goal.
+                if mode == 'aggressive' and s.engagement and s.engagement.focus is enemy:
+                    desired = s.engagement.spacing
                 score += (min(desired,after)-min(desired,before))*(2.5 if mode == 'conservative' else .8)
                 # Use cover when retreating. Ray queries only for nearby threats.
                 if mode == 'conservative' and before < 160:

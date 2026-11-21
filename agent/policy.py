@@ -5,6 +5,7 @@ from .observation import Observer
 from .strategy import Strategy
 from .navigation import Navigator
 from .combat import Combat
+from .engagement import assess
 
 
 class Bot:
@@ -22,6 +23,8 @@ class Bot:
 
     def act(self, obs):
         s = self.observer.parse(obs)
+        # [ASTRA_ENHANCEMENT_2026-11-21] Share one engagement assessment across decisions.
+        s.engagement = assess(s, self.config, self.world, self.combat.target_id)
         self.mode = self.strategy.choose(s)
         goal = self.strategy.goal(s,self.mode)
         move, boost = self.navigator.move(s,goal,self.mode)
