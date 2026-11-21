@@ -13,7 +13,7 @@ jobs:
           python-version: '3.13'
       - run: python -m unittest discover -s tests -v
       # [ASTRA_ENHANCEMENT_2026-11-21] Compare against the officially scored parent.
-      - run: python scripts/compare_policy.py 2c56fcfa037fcc63d78978478b6ca82ed12f0bfd
+      - run: python scripts/compare_policy.py 27662b9a02c0677ca8b914fda223067d11065988
       - run: docker build --platform linux/amd64 -t mechroyale-agent .
       - name: Official checker under competition sandbox
         run: >-

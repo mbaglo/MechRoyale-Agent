@@ -1,5 +1,6 @@
 """[CODEX_ENHANCEMENT_2026-11-21] Intercepts, weapon control and fire discipline."""
 import math
+from .scan import QuietScan
 
 
 def angle_delta(a, b):
@@ -25,6 +26,7 @@ def intercept(origin, target, velocity, speed):
 class Combat:
     def __init__(self, config, world):
         self.config, self.world = config, world
+        self.quiet_scan = QuietScan(config['vision'])
         self.target_id = None
         # [CODEX_ENHANCEMENT_2026-11-21] EXP-009: finish looking toward a
         # heard attacker before returning to the original no-target scan.
@@ -35,6 +37,7 @@ class Combat:
 
     def act(self, s, mode):
         me, obs = s.me, s.obs
+        self.quiet_scan.observe(obs['t'],me['aim'][0],s.enemies)
         origin = list(me['pos'])
         origin[2] += me['stats']['muzzle_height']
         targets = list(s.enemies)
@@ -85,6 +88,10 @@ class Combat:
                     pitch = math.atan2(delta[2],math.hypot(*delta[:2]))
                     pitch = max(me['stats']['min_pitch'],min(me['stats']['max_pitch'],pitch))
                     return [bearing,pitch],[False,False],reload
+            quiet_since = max(self.attention_until,self.quiet_scan.last_contact)
+            if (not s.enemies and not s.urgent and s.health > .8
+                    and obs['t']-quiet_since >= self.config['vision']['memory_s']):
+                yaw = self.quiet_scan.heading(obs['t'],me['aim'][0])
             return [angle_delta(yaw,0),0.], [False,False], reload
         self.target_id = target['id']
         height = 1.2 if target['kind']=='crate' else 4.5*(1+.05*target.get('cubes',0))
