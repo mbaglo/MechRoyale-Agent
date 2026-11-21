@@ -464,6 +464,19 @@
           "official_submission_status": "Validated, same game policy; no submission"
         }
       ]
+    },
+    {
+      "id": "EXP-025",
+      "branch": "experiment/astra-occluded-contact-025",
+      "base_commit": "a4b1857bb7a1484af3458bd68d7e2b805918395f",
+      "base_official_score": 2.56,
+      "hypothesis": "When a lone in-range opponent is still tracked behind cover, keep its bearing in the front arc. Preserve stronger near/mid warnings or incoming damage from another direction. No firing into blocked geometry.",
+      "technical_validation": "47 tests, checker 300/300, max 6.7 ms locally. In 57 recorded observations of one occluded opponent the parent commanded 42 rear-facing orientations relative to the tracked contact; the candidate commanded zero. Only aim changed on replay. This measures commanded torso direction, not armor damage or official performance.",
+      "commit": "e06a26ec5f46d4c1780d2ad214ac2c0a7f3947a0",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44960409177",
+      "submission_id": null,
+      "official_score": null,
+      "official_submission_status": "Validated, unsubmitted"
     }
   ],
   "best_official_entry": {
@@ -480,7 +493,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-21T23:07:33.773894+00:00",
+  "last_updated_at": "2026-11-21T23:11:07.424855+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-21T18:02:00-05:00",
     "rank": 257,
