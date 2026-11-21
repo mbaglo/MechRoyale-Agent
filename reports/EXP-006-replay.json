@@ -1,0 +1,17 @@
+{
+  "experiment": "EXP-006",
+  "kind": "recorded-input audit; NOT gameplay simulation",
+  "baseline_commit": "2f30e3d217461379eedebeea49751b6209397c79",
+  "observations": 300,
+  "changed_actions": 3,
+  "additional_gun_trigger_decisions": 3,
+  "non_gun_action_changes": 0,
+  "candidate_ms": {
+    "p50": 2.4228999973274767,
+    "p99": 8.938299986766651,
+    "maximum": 15.233300015097484
+  },
+  "official_score": null,
+  "official_status": "not submitted",
+  "submission_id": null
+}

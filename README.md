@@ -3,12 +3,19 @@ Autonomous AI combat agent for Builders Buildathon 2026. Features adaptive comba
 
 [CODEX_ENHANCEMENT_2026-11-21]
 
+**EXP-006:** `experiment/best-combine-verified-2026-11-21` combines the verified
+EXP-004 weapon-search source (official **2.25**, `BB-28A2E7AE`) with only the
+EXP-003 combat source (official **2.19**, `BB-DA35D253`). Combined performance is
+unknown; preserve the selected 2.25 entry unless a higher score is verified.
+Use `python scripts/experiment_combined.py` for the current input audit; historical
+audit scripts apply to their original experiment branches. See the ledger.
+
 **EXP-004:** branch `experiment/v1-weapon-reach-2026-11-21`, based directly on
 V1 `8a87e8a467dde525d25fcf9cb5181087c6e55fd7`. Its only tactical change is
 weapon-search radius: 65 to 130 meters. Existing safety filters are preserved.
 The official 300-observation replay produced no changed actions; synthetic tests
-cover the additional safe pickup opportunities. Official performance is unknown.
-Keep the verified 2.10 V1 entry selected. See `reports/experiments.json` for results.
+cover the additional safe pickup opportunities. EXP-004 subsequently scored 2.25
+and is selected. See `reports/experiments.json` for the latest verified results.
 
 Working deterministic Python agent for `mechfight/1`, using only the standard
 library and official starter kit. **Gameplay strength is unmeasured:** the kit
