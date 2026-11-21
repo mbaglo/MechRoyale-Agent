@@ -36,6 +36,34 @@ class Combat:
         origin = list(me['pos'])
         origin[2] += me['stats']['muzzle_height']
         targets = list(s.enemies)
+        # [CHATGPT_ENHANCEMENT_2026-11-21] Opportunistic power-cube farming:
+        # NPC drones drop TWO cubes, yet the baseline never targets NPCs.
+        # Only acquire a drone while healthy, safely inside the zone, equipped
+        # to finish it with the gun, and with NO visible competing mech. Never
+        # rush into its 45 m retaliation range. This preserves all prior mech
+        # selection and baseline combat decisions in contested situations.
+        gun = next((w for w in me['weapons'] if w and w['kind'] == 'gun'), None)
+        safe_drone_farming = bool(
+            not targets
+            and mode != 'conservative'
+            and not s.urgent
+            and me.get('in_zone', False)
+            and s.health >= .85
+            and not any(e.get('type') == 'damaged' for e in obs.get('events', []))
+            and gun
+            and gun.get('reload', 0) == 0
+            and gun.get('ammo', 0) >= 8
+        )
+        if safe_drone_farming:
+            # A drone is 3.5 m tall. Keep distance for safe ranged farming and
+            # do not target beyond the observed gun's projectile range.
+            safe_max = min(180., gun['stats'].get('range', 230.) - 10.)
+            targets = [
+                dict(npc)
+                for npc in obs.get('mechs', [])
+                if npc.get('kind') == 'npc'
+                and 95. <= math.dist(npc['pos'][:2], me['pos'][:2]) <= safe_max
+            ]
         if not targets and mode != 'conservative':
             targets = [dict(c, kind='crate', vel=[0,0,0]) for c in obs.get('crates', [])
                        if math.dist(c['pos'],me['pos']) < 65]
@@ -65,7 +93,11 @@ class Combat:
             yaw = self.attention_yaw if obs['t']<self.attention_until else obs['t']*.6
             return [angle_delta(yaw,0),0.], [False,False], reload
         self.target_id = target['id']
-        height = 1.2 if target['kind']=='crate' else 4.5*(1+.05*target.get('cubes',0))
+        # [CHATGPT_FIX_2026-11-21] A selected NPC's actual center is 1.75m
+        # above its feet, NOT the center of a 9m mech. Otherwise shots miss.
+        height = {'crate':1.2, 'npc':1.75}.get(
+            target['kind'], 4.5*(1+.05*target.get('cubes',0))
+        )
         point = [target['pos'][0], target['pos'][1], target['pos'][2]+height]
         distance = math.dist(origin,point)
         weapons = me['weapons']
@@ -74,6 +106,10 @@ class Combat:
                          (w.get('cooldown',0)<=.1 or w.get('charge',0)>0) and
                          distance < w['stats'].get('range',220)), None)
         selected = selected or next((w for w in weapons if w), None)
+        # [CHATGPT_ENHANCEMENT_2026-11-21] NPC farming uses the renewable
+        # starting gun, not rare ammunition, mortar splash or escape energy.
+        if target['kind'] == 'npc':
+            selected = gun
         aim_point = point
         pitch = None
         if selected and selected['kind']=='gun':
@@ -96,6 +132,10 @@ class Combat:
             if not w:
                 continue
             kind, st = w['kind'], w['stats']
+            # [CHATGPT_ENHANCEMENT_2026-11-21] Never spend secondary weapon
+            # resources on a farm target; preserve original player logic.
+            if target['kind'] == 'npc' and kind != 'gun':
+                continue
             allowed = aligned and not retreat and w.get('cooldown',0)<=.1
             if kind=='gun':
                 # Do not fire the gun along the mortar's elevated trajectory.
