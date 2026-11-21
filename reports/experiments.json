@@ -1,6 +1,5 @@
 {
   "tag": "[CODEX_ENHANCEMENT_2026-11-21]",
-  "objective_official_practice_score_above": 6.0,
   "deadline": "2026-11-22T11:00:00-05:00",
   "best_verified_by_user": {
     "version": "V1",
@@ -101,15 +100,16 @@
       "branch": "experiment/best-combine-verified-2026-11-21",
       "hypothesis": "Test whether separately positive weapon-search and defensive-fire changes combine beneficially",
       "source_of_added_combat": "28afe8bcba8480f7483dc65280afdc270c0120ac",
-      "official_submission_status": "not submitted; quota exhausted until live page permits",
-      "submission_id": null,
-      "official_score": null,
+      "official_submission_status": "Scored",
+      "submission_id": "BB-37C0AF2A",
+      "official_score": 2.19,
       "promotion_rule": "Only promote if the official score exceeds the current best official score; recheck live selection",
       "commit": "e45d9eac7e53861c6f6305bee8c1f875749a3f25",
       "technical_validation": "22 tests, official checker and Linux AMD64 Docker sandbox CI passed",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44928587769",
-      "status": "Ready for official evaluation; quota currently zero",
-      "automation": "Bounded local watcher will submit only this validated hash at most once when live quota permits, then record result; never changes final selection"
+      "status": "regression relative to 2.25; not selected",
+      "automation": "Bounded local watcher will submit only this validated hash at most once when live quota permits, then record result; never changes final selection",
+      "submitted_at": "2026-11-21T12:29:00-05:00"
     }
   ],
   "best_official_entry": {
@@ -122,7 +122,8 @@
   },
   "quota_observed": {
     "remaining": 0,
-    "next_slot": "2026-11-21T12:28:00-05:00",
-    "source": "Authenticated competition page; do not submit until live quota permits"
-  }
+    "next_slot": "2026-11-21T12:52:00-05:00",
+    "source": "Authenticated official page"
+  },
+  "objective_official_practice_score_at_least": 10.0
 }
