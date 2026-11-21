@@ -19,7 +19,8 @@
       "submission_id": "BB-A5C7EF7B",
       "score_reported_by_user": 1.31,
       "status": "regression; preserve branch, do not select",
-      "official_score": 1.31
+      "official_score": 1.31,
+      "promotion_rule": "Only promote if the official score exceeds the current best official score; recheck live selection"
     },
     {
       "id": "EXP-003",
@@ -30,7 +31,7 @@
       "official_submission_status": "Scored",
       "submission_id": "BB-DA35D253",
       "official_score": 2.19,
-      "promotion_rule": "Only select if official score exceeds 2.10; retain every evaluated commit",
+      "promotion_rule": "Only promote if the official score exceeds the current best official score; recheck live selection",
       "revision_record": "Immutable submitted commit recorded explicitly; later ledger updates are not new candidates",
       "submissions_attempted_in_this_session": 1,
       "commit": "28afe8bcba8480f7483dc65280afdc270c0120ac",
@@ -44,7 +45,8 @@
       "submission_id": "BB-AA474FE7",
       "official_score": 1.96,
       "status": "regression; do not select",
-      "source": "Authenticated official competition page; separately prepared V1 crossfire candidate"
+      "source": "Authenticated official competition page; separately prepared V1 crossfire candidate",
+      "promotion_rule": "Only promote if the official score exceeds the current best official score; recheck live selection"
     },
     {
       "id": "EXP-004",
@@ -62,7 +64,7 @@
       "official_score": 2.25,
       "technical_validation": "16 tests, official checker and Linux Docker sandbox CI passed",
       "input_evidence": "No action differences on official 300-observation recording; synthetic tests exercise wider safe pickup pursuit",
-      "promotion_rule": "Only select if official score exceeds best verified score",
+      "promotion_rule": "Only promote if the official score exceeds the current best official score; recheck live selection",
       "commit": "2f30e3d217461379eedebeea49751b6209397c79",
       "stage": "complete",
       "submitted_at": "2026-11-21T12:01:00-05:00",
@@ -81,15 +83,16 @@
         }
       },
       "hypothesis": "Prevent stationary exposure to nearby enemies at a held goal",
-      "official_submission_status": "Scoring",
+      "official_submission_status": "Scored",
       "submission_id": "BB-840FF3B9",
-      "official_score": null,
-      "promotion_rule": "Select only if official score exceeds current best 2.19",
+      "official_score": 1.94,
+      "promotion_rule": "Only promote if the official score exceeds the current best official score; recheck live selection",
       "commit": "50fcaf476db0814965c34063102342949266f09c",
-      "stage": "Fetching",
+      "stage": "complete",
       "submitted_at": "2026-11-21T12:08:00-05:00",
       "technical_validation": "22 tests, official checker, Linux Docker sandbox CI passed",
-      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44928054304"
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44928054304",
+      "status": "regression; rejected; not selected"
     },
     {
       "id": "EXP-006",
@@ -101,7 +104,12 @@
       "official_submission_status": "not submitted; quota exhausted until live page permits",
       "submission_id": null,
       "official_score": null,
-      "promotion_rule": "Only promote on a new official best; combined improvement is not assumed"
+      "promotion_rule": "Only promote if the official score exceeds the current best official score; recheck live selection",
+      "commit": "e45d9eac7e53861c6f6305bee8c1f875749a3f25",
+      "technical_validation": "22 tests, official checker and Linux AMD64 Docker sandbox CI passed",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44928587769",
+      "status": "Ready for official evaluation; quota currently zero",
+      "automation": "Bounded local watcher will submit only this validated hash at most once when live quota permits, then record result; never changes final selection"
     }
   ],
   "best_official_entry": {
