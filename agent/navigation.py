@@ -2,6 +2,31 @@
 import math
 
 
+def imminent_crossings(me, projectiles):
+    """[ASTRA_ENHANCEMENT_2026-11-21] Near-term crossings of the moving game cylinder."""
+    if not me['grounded']:
+        return {}
+    pos, velocity, stats = me['pos'], me['vel'], me['stats']
+    crossings = {}
+    for shot in projectiles:
+        if shot['kind'] not in ('gun','npc'):
+            continue
+        rx, ry = shot['pos'][0] - pos[0], shot['pos'][1] - pos[1]
+        vx, vy = shot['vel'][0] - velocity[0], shot['vel'][1] - velocity[1]
+        speed = math.hypot(vx,vy)
+        if speed < 1:
+            continue
+        time = -(rx*vx + ry*vy)/(speed*speed)
+        if not 0 < time <= .65:
+            continue
+        height = shot['pos'][2] - pos[2] + (shot['vel'][2]-velocity[2])*time
+        nx, ny = -vy/speed, vx/speed
+        miss = rx*nx + ry*ny
+        if -1 < height < stats['height']+1 and abs(miss) < stats['radius']+2:
+            crossings[shot['id']] = time, miss, nx, ny
+    return crossings
+
+
 class Navigator:
     def __init__(self, world):
         self.world = world
@@ -44,6 +69,13 @@ class Navigator:
         best, best_score = (0., 0.), -float('inf')
         # Limit detailed collision checks to the nearest projectiles.
         bullets = sorted(o.get('projectiles', []), key=lambda p:math.dist(p['pos'],pos))[:16]
+        # [ASTRA_ENHANCEMENT_2026-11-21] [CODEX_ENHANCEMENT_2026-11-21]
+        # A command first accelerates from the observed velocity.
+        crossings = imminent_crossings(me, bullets)
+        boost = bool(me['energy'] > 30 and (s.urgent or (mode == 'conservative' and s.enemies)))
+        running = stats['boost_speed' if boost else 'walk_speed']
+        if any(w and w.get('charge',0) > 0 for w in me['weapons']):
+            running *= stats['charge_move_mult']
         for dx, dy in candidates:
             end = [pos[0]+dx*look, pos[1]+dy*look, pos[2]]
             if (dx or dy) and not self.world.walkable(pos, end, stats):
@@ -75,7 +107,16 @@ class Navigator:
                     lateral = abs((end[0]-ep[0])*math.sin(yaw)-(end[1]-ep[1])*math.cos(yaw))
                     score += min(lateral, 12)*.7
             speed = stats['walk_speed']
+            if crossings:
+                change_x, change_y = dx*running - me['vel'][0], dy*running - me['vel'][1]
+                ramp = math.hypot(change_x,change_y)/max(1,stats['ground_accel'])
             for bullet in bullets:
+                if bullet['id'] in crossings:
+                    t, miss, nx, ny = crossings[bullet['id']]
+                    span = t - ramp*.5 if t >= ramp else .5*t*t/ramp
+                    separation = abs(miss - span*(nx*change_x + ny*change_y))
+                    score -= max(0,stats['radius']+2-separation)*5
+                    continue
                 rel = [bullet['pos'][k]-pos[k] for k in range(3)]
                 vel = [bullet['vel'][0]-dx*speed, bullet['vel'][1]-dy*speed, bullet['vel'][2]]
                 vv = sum(v*v for v in vel)
@@ -87,8 +128,7 @@ class Navigator:
             if score > best_score:
                 best, best_score = (dx,dy), score
         self.previous = best
-        boost = bool(me['energy'] > 30 and (s.urgent or (mode == 'conservative' and s.enemies)))
         # Do not spend energy or create footstep sounds while already at a quiet goal.
-        if distance < 2 and not s.enemies and not s.urgent:
+        if distance < 2 and not s.enemies and not s.urgent and not crossings:
             best, boost = (0., 0.), False
         return list(best), boost
