@@ -1,0 +1,21 @@
+{
+  "experiment": "EXP-010",
+  "kind": "recorded-input audit; not gameplay",
+  "baseline_commit": "2f30e3d217461379eedebeea49751b6209397c79",
+  "baseline_official_score": 2.25,
+  "parameter": {
+    "cube_search_radius_m": {
+      "baseline": 55,
+      "candidate": 130
+    }
+  },
+  "observations": 300,
+  "changed_actions": 0,
+  "non_movement_changes": 0,
+  "candidate_ms": {
+    "p50": 2.202600007876754,
+    "p99": 8.576199994422495,
+    "maximum": 9.176799998385832
+  },
+  "official_score": null
+}

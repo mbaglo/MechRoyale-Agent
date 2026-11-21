@@ -3,6 +3,12 @@ Autonomous AI combat agent for Builders Buildathon 2026. Features adaptive comba
 
 [CODEX_ENHANCEMENT_2026-11-21]
 
+**EXP-010 safe cube pursuit:** `experiment/best-cube-reach-2026-11-21`, based on
+official best **2.25** (`2f30e3d217461379eedebeea49751b6209397c79`). Only the
+safe cube-search radius changes, from 55 to 130 meters. Enemy-contestation,
+future-zone, height and urgent-zone checks remain. Performance is unmeasured;
+the acceptance target remains official **10.00+**. See `reports/EXP-010.md`.
+
 **EXP-004:** branch `experiment/v1-weapon-reach-2026-11-21`, based directly on
 V1 `8a87e8a467dde525d25fcf9cb5181087c6e55fd7`. Its only tactical change is
 weapon-search radius: 65 to 130 meters. Existing safety filters are preserved.

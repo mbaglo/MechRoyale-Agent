@@ -31,7 +31,9 @@ class Strategy:
             return goal
         candidates = []
         for p in o.get('cubes', []):
-            candidates.append((p, 1.0, 55))
+            # [CODEX_ENHANCEMENT_2026-11-21] EXP-010: recover safe visible
+            # drops beyond the old 55 m limit, including ordinary gun kills.
+            candidates.append((p, 1.0, 130))
         if any(w is None for w in me['weapons']):
             for p in o.get('pickups', []):
                 if p['kind'] not in [w['kind'] for w in me['weapons'] if w]:
