@@ -355,9 +355,9 @@
       "base_official_score": 2.48,
       "hypothesis": "Acquire the first secondary during a budgeted opening trip to a ground weapon or a breakable crate. Terrain height distinguishes hillside loot from rooftops. Recheck pressure, time and sight every decision.",
       "technical_validation": "43 tests passed, 300/300 official checker, local max 12.5 ms, 21 movement changes on recorded input versus selected 2.48.",
-      "official_score": null,
+      "official_score": 2.4,
       "submission_id": "BB-59627F04",
-      "official_submission_status": "Scoring",
+      "official_submission_status": "Scored",
       "commit": "657e59354d3d3f9da51521e73307f91e8f9ad8c8",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44955079365",
       "prepared_predecessors": [
@@ -368,7 +368,10 @@
           "official_submission_status": "Validated, never submitted"
         }
       ],
-      "submitted_at_display": "Sat 5:17 PM"
+      "submitted_at_display": "Sat 5:17 PM",
+      "selected": false,
+      "status": "Rejected, selected best 2.48",
+      "interpretation": "Broader opening detours changed 21 recorded movements and regressed by 0.08. Extra travel and exposure are plausible costs. Match-level outcomes are unavailable."
     },
     {
       "id": "EXP-020",
@@ -398,5 +401,11 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-21T22:17:45.284068+00:00"
+  "last_updated_at": "2026-11-21T22:23:50.536340+00:00",
+  "leaderboard_observation": {
+    "score": 2.48,
+    "rank": 256,
+    "teams": 305,
+    "observed_at": "2026-11-21T17:22:00-05:00"
+  }
 }
