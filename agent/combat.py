@@ -69,16 +69,24 @@ class Combat:
         point = [target['pos'][0], target['pos'][1], target['pos'][2]+height]
         distance = math.dist(origin,point)
         weapons = me['weapons']
+        retreat = mode=='conservative' and distance > 55
+        gun = next((w for w in weapons if w and w['kind']=='gun'), None)
         # A ready/charging secondary takes aim priority; gun otherwise.
         selected = next((w for w in weapons if w and w['kind']!='gun' and
                          (w.get('cooldown',0)<=.1 or w.get('charge',0)>0) and
                          distance < w['stats'].get('range',220)), None)
-        selected = selected or next((w for w in weapons if w), None)
+        # [ASTRA_FIX_2026-11-21] [CODEX_FIX_2026-11-21] A vetoed secondary
+        # must yield the shared torso aim to the gun that can still fire.
+        if selected and gun:
+            secondary_stats = selected['stats']
+            if (retreat or
+                    (selected['kind'] == 'mortar' and distance <= secondary_stats['splash_radius']*2+8) or
+                    (selected['kind'] == 'lightning' and me['energy'] <= secondary_stats['energy']+15)):
+                selected = gun
+        selected = selected or gun or next((w for w in weapons if w), None)
         aim_point = point
         pitch = None
-        if selected and selected['kind']=='gun':
-            aim_point = intercept(origin, point, target.get('vel',[0,0,0]), selected['stats']['speed'])
-        elif selected and selected['kind']=='mortar':
+        if selected and selected['kind']=='mortar':
             st = selected['stats']
             aim_point = intercept(origin,point,target.get('vel',[0,0,0]),st['speed'])
             r = math.dist(origin[:2],aim_point[:2]); dz = aim_point[2]-origin[2]
@@ -86,11 +94,14 @@ class Combat:
             discriminant = v**4-g*(g*r*r+2*dz*v*v)
             if discriminant >= 0 and r > 1:
                 pitch = math.atan((v*v-math.sqrt(discriminant))/(g*r))
+            if gun and (pitch is None or not me['stats']['min_pitch'] <= pitch <= me['stats']['max_pitch']):
+                selected, pitch = gun, None
+        if selected and selected['kind']=='gun':
+            aim_point = intercept(origin, point, target.get('vel',[0,0,0]), selected['stats']['speed'])
         yaw = math.atan2(aim_point[1]-origin[1],aim_point[0]-origin[0])
         pitch = pitch if pitch is not None else math.atan2(aim_point[2]-origin[2],math.dist(origin[:2],aim_point[:2]))
         pitch = max(me['stats']['min_pitch'],min(me['stats']['max_pitch'],pitch))
         aligned = abs(angle_delta(yaw,me['aim'][0])) < math.atan2(2,max(distance,1))+.015 and abs(pitch-me['aim'][1]) < .04
-        retreat = mode=='conservative' and distance > 55
         fire = [False,False]
         for i,w in enumerate(weapons):
             if not w:

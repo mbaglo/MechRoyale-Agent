@@ -4,15 +4,11 @@ Deterministic Python agent for the official `mechfight/1` protocol, using the st
 
 [CODEX_ENHANCEMENT_2026-11-21]
 
-**Official best: 2.42**, receipt **BB-D1BCAB2F**, commit
-`7e5b3565ce616be3e798255588e1c88ab7f86f46`, selected automatically by the site.
-The objective remains **10.00+** and has not been reached. Original V1 and all evaluated source commits are preserved.
+[ASTRA_ENHANCEMENT_2026-11-21]
 
-EXP-011 magazine priority scored 2.42 as BB-D1BCAB2F at exact commit
-`7e5b3565ce616be3e798255588e1c88ab7f86f46`.
-This branch prepares EXP-012, gun counterpressure during retreat, on the verified
-2.42 baseline. Submitted as BB-B18CA477 at `4ba12f9cf9da12dbdcbe35dc104a352879347414`; its score is pending and it is not selected.
-See `reports/experiments.json` and `reports/SCOREBOARD.md` for evaluations.
+The selected entry scored **2.46** on the official evaluator. Its receipt is BB-B18CA477 and its commit is `4ba12f9cf9da12dbdcbe35dc104a352879347414`. The championship objective is 10.00.
+
+The experiment history lists the parent, decision change, validations and official result for each candidate. See [experiment records](reports/experiments.json).
 
 The supplied kit has a recorded observation checker, not an interactive match
 simulator. Protocol tests and replay timings do not measure competitive strength;
