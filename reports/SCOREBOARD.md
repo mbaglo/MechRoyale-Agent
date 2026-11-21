@@ -2,11 +2,12 @@
 
 [CODEX_ENHANCEMENT_2026-11-21]
 
-Verified best **2.42**, selected. Objective **>=10.00** remains unmet.
+Verified best **2.46**, selected. Objective **>=10.00** remains unmet.
 
 | Experiment | Commit | Receipt | Official score / status |
 |---|---|---|---|
-| EXP-002 | `` | BB-A5C7EF7B | 1.31 |
+| V1 | `8a87e8a467dde525d25fcf9cb5181087c6e55fd7` | BB-6CB32C3E | 2.10 |
+| EXP-002 | `146d3e87c65cbd041e63a12c107cd4ef8bc3ca8f` | BB-A5C7EF7B | 1.31 |
 | EXP-003 | `28afe8bcba8480f7483dc65280afdc270c0120ac` | BB-DA35D253 | 2.19 |
 | EXP-XF01 | `c270febacfb9d57d570d7823bac6803aa6231bbc` | BB-AA474FE7 | 1.96 |
 | EXP-004 | `2f30e3d217461379eedebeea49751b6209397c79` | BB-28A2E7AE | 2.25 |
@@ -17,4 +18,5 @@ Verified best **2.42**, selected. Objective **>=10.00** remains unmet.
 | EXP-009 | `644baa44fe773c5e2429bec5c715f91787770ab1` | BB-0BF60252 | 2.31 |
 | EXP-010 | `581009b54f2331846ff52d0d553e15e400248baa` | BB-CDD245D9 | 2.38 |
 | EXP-011 | `7e5b3565ce616be3e798255588e1c88ab7f86f46` | BB-D1BCAB2F | 2.42 |
-| EXP-012 | `4ba12f9cf9da12dbdcbe35dc104a352879347414` | BB-B18CA477 | Scoring |
+| EXP-012 | `4ba12f9cf9da12dbdcbe35dc104a352879347414` | BB-B18CA477 | 2.46 |
+| EXP-013 | `e29c8dc1b66afb73f093a7cb935322c38af0154a` | BB-CDA30EDB | 2.13 |
