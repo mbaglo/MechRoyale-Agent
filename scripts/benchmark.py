@@ -31,8 +31,10 @@ def main():
                   decision_ms=dict(mean=statistics.mean(samples),p50=statistics.median(samples),p99=ordered[int(.99*len(samples))],maximum=max(samples)),
                   modes=modes, full_matches=0, average_placement=None, survival_duration=None, win_rate=None,
                   damage_received=None, damage_dealt=None, official_score=None,
-                  blockers=['Official kit provides no simulator; official scoring requires track submission.',
-                            'Docker unavailable on development host; container sandbox validation pending.'])
+                  blockers=['Official kit provides no simulator; official scoring requires track submission.'],
+                  container_validation=dict(status='passed in GitHub Actions',
+                                            source_commit='85de6f8588f4134d6714bda8b290cbc51d09a787',
+                                            url='https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44910472403'))
     (ROOT/'reports'/'benchmark.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result,indent=2))
 

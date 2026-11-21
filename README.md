@@ -65,9 +65,14 @@ November 21, 2026, Windows development host:
   zero stale replies; p50 3.5 ms, p90 7.3 ms, p99 9.1 ms, maximum 9.4 ms.
 - These are replay-input tests, **not simulations**. Placement, survival duration,
   win rate, damage and official score remain unavailable. See `reports/benchmark.json`.
-- Docker is not installed on the development host. The included GitHub Actions
-  workflow builds linux/amd64 and runs the official checker under match limits.
-  Container validation remains pending until that workflow succeeds.
+- Docker is not installed on the development host. GitHub Actions successfully
+  built linux/amd64 and passed all ten tests and the official checker under the
+  competition sandbox for source commit `85de6f8`:
+  https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44910472403
+
+The repeat local checker after the initialization fix also passed 300/300, with
+p50 3.5 ms, p99 9.1 ms and maximum 10.1 ms. Container check success is verified
+from the completed CI job; local timings above are not container timings.
 
 No gameplay improvement is claimed. Test scenarios check intended behavior;
 they do not establish competitive strength. Use the official 48-match practice

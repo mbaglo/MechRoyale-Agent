@@ -2,10 +2,10 @@
   "kind": "recorded-input decision benchmark; NOT a simulation",
   "observations": 300,
   "decision_ms": {
-    "mean": 3.1787666675518267,
-    "p50": 2.381099999183789,
-    "p99": 8.201799995731562,
-    "maximum": 9.194300015224144
+    "mean": 3.2094476670802883,
+    "p50": 2.3913499899208546,
+    "p99": 8.038700005272403,
+    "maximum": 10.842200019396842
   },
   "modes": {
     "balanced": 122,
@@ -19,7 +19,11 @@
   "damage_dealt": null,
   "official_score": null,
   "blockers": [
-    "Official kit provides no simulator; official scoring requires track submission.",
-    "Docker unavailable on development host; container sandbox validation pending."
-  ]
+    "Official kit provides no simulator; official scoring requires track submission."
+  ],
+  "container_validation": {
+    "status": "passed in GitHub Actions",
+    "source_commit": "85de6f8588f4134d6714bda8b290cbc51d09a787",
+    "url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44910472403"
+  }
 }
