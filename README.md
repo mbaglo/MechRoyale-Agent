@@ -11,7 +11,7 @@ The objective remains **10.00+** and has not been reached. Original V1 and all e
 EXP-011 magazine priority scored 2.42 as BB-D1BCAB2F at exact commit
 `7e5b3565ce616be3e798255588e1c88ab7f86f46`.
 This branch prepares EXP-012, gun counterpressure during retreat, on the verified
-2.42 baseline. Its score is unknown and it is not selected.
+2.42 baseline. Submitted as BB-B18CA477 at `4ba12f9cf9da12dbdcbe35dc104a352879347414`; its score is pending and it is not selected.
 See `reports/experiments.json` and `reports/SCOREBOARD.md` for evaluations.
 
 The supplied kit has a recorded observation checker, not an interactive match

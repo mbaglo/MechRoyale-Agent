@@ -224,14 +224,15 @@
       "base_official_score": 2.42,
       "hypothesis": "Aligned ranged gun counterpressure during retreat may improve survival against pursuers",
       "changed_policy": "Gun no longer inherits the conservative >55m firing veto; all other gun gates and secondary vetoes retained",
-      "official_submission_status": "ready; pending prior evaluations",
-      "submission_id": null,
+      "official_submission_status": "Scoring",
+      "submission_id": "BB-B18CA477",
       "official_score": null,
-      "technical_validation": "32 tests; official checker 300/300; exact-source Linux Docker sandbox CI passed",
+      "technical_validation": "37 tests; official checker 300/300, max 19.4ms locally; exact-source Linux Docker sandbox CI passed",
       "promotion_rule": "Promote only if official score exceeds current live best; goal >=10.00",
-      "commit": null,
-      "ci_url": null,
-      "status": "Rebuilt gun-only change on official 2.42 winner; validating"
+      "commit": "4ba12f9cf9da12dbdcbe35dc104a352879347414",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44947260251",
+      "status": "Official evaluation pending",
+      "submitted_at": "2026-11-21T15:39:00-05:00"
     }
   ],
   "best_official_entry": {
@@ -243,9 +244,9 @@
     "source": "Authenticated official page"
   },
   "quota_observed": {
-    "remaining": 2,
+    "remaining": 1,
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-21T20:27:49.128165+00:00"
+  "last_updated_at": "2026-11-21T20:39:43.564143+00:00"
 }
