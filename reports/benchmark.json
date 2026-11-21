@@ -1,0 +1,25 @@
+{
+  "kind": "recorded-input decision benchmark; NOT a simulation",
+  "observations": 300,
+  "decision_ms": {
+    "mean": 3.1787666675518267,
+    "p50": 2.381099999183789,
+    "p99": 8.201799995731562,
+    "maximum": 9.194300015224144
+  },
+  "modes": {
+    "balanced": 122,
+    "conservative": 178
+  },
+  "full_matches": 0,
+  "average_placement": null,
+  "survival_duration": null,
+  "win_rate": null,
+  "damage_received": null,
+  "damage_dealt": null,
+  "official_score": null,
+  "blockers": [
+    "Official kit provides no simulator; official scoring requires track submission.",
+    "Docker unavailable on development host; container sandbox validation pending."
+  ]
+}
