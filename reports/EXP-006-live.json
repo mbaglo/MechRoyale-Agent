@@ -1,0 +1,12 @@
+{
+  "experiment": "EXP-006",
+  "commit": "e45d9eac7e53861c6f6305bee8c1f875749a3f25",
+  "repository": "https://github.com/mbaglo/MechRoyale-Agent",
+  "submission_id": "BB-37C0AF2A",
+  "official_score": 2.19,
+  "submission_attempts": 1,
+  "status": "Scored",
+  "observed_at": "2026-11-21T17:35:17.570864+00:00",
+  "next_slot_reported": "2026-11-21T12:28:00-05:00",
+  "entered_in_final": false
+}

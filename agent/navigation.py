@@ -10,6 +10,23 @@ class Navigator:
         self.anchor_t = 0
         self.escape_until = 0
         self.side = 1
+        # [CODEX_ENHANCEMENT_2026-11-21] EXP-007: ground retreat recharge latch.
+        self.boost_recovering = False
+
+    def manage_boost(self, s, requested):
+        """[CODEX_FIX_2026-11-21] Avoid repeatedly resetting energy regen
+        just above the original 30-energy cutoff. Preserve urgent/air behavior.
+        """
+        me = s.me
+        if s.urgent or not me.get('grounded',True):
+            return requested
+        capacity = me.get('max_energy',100)
+        lower, upper = min(30,capacity*.3),capacity*.85
+        if me['energy']<=lower:
+            self.boost_recovering = True
+        elif me['energy']>=upper:
+            self.boost_recovering = False
+        return bool(requested and not self.boost_recovering)
 
     def move(self, s, goal, mode):
         me, o = s.me, s.obs
@@ -67,6 +84,7 @@ class Navigator:
                 best, best_score = (dx,dy), score
         self.previous = best
         boost = bool(me['energy'] > 30 and (s.urgent or (mode == 'conservative' and s.enemies)))
+        boost = self.manage_boost(s,boost)
         # Do not spend energy or create footstep sounds while already at a quiet goal.
         if distance < 2 and not s.enemies and not s.urgent:
             best, boost = (0., 0.), False

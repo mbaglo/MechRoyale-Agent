@@ -3,6 +3,13 @@ Autonomous AI combat agent for Builders Buildathon 2026. Features adaptive comba
 
 [CODEX_ENHANCEMENT_2026-11-21]
 
+**EXP-007:** `experiment/best-boost-recovery-2026-11-21`, based on official best
+`2f30e3d217461379eedebeea49751b6209397c79` (**2.25**, selected).
+Only non-urgent grounded boost recovery changes: after energy drops to 30,
+recharge to 85% capacity before boosting again. Urgent-zone and airborne behavior
+are unchanged. Objective: official **10.00+** before cutoff. Candidate score is
+unknown. See `reports/experiments.json` and `reports/EXP-007.md`.
+
 **EXP-004:** branch `experiment/v1-weapon-reach-2026-11-21`, based directly on
 V1 `8a87e8a467dde525d25fcf9cb5181087c6e55fd7`. Its only tactical change is
 weapon-search radius: 65 to 130 meters. Existing safety filters are preserved.
