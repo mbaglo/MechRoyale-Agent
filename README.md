@@ -3,6 +3,11 @@ Autonomous AI combat agent for Builders Buildathon 2026. Features adaptive comba
 
 [CODEX_ENHANCEMENT_2026-11-21]
 
+**EXP-011 magazine-priority candidate:** `experiment/best-magazine-priority-2026-11-21`,
+based on selected official **2.25** source `2f30e3d217461379eedebeea49751b6209397c79`.
+Only the `gun_mag` upgrade preference changes (62 to 115). The official score is
+unknown. Goal remains official **10.00+**; see `reports/EXP-011.md` and the ledger.
+
 **EXP-004:** branch `experiment/v1-weapon-reach-2026-11-21`, based directly on
 V1 `8a87e8a467dde525d25fcf9cb5181087c6e55fd7`. Its only tactical change is
 weapon-search radius: 65 to 130 meters. Existing safety filters are preserved.
