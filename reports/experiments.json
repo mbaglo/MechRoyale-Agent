@@ -224,29 +224,66 @@
       "base_official_score": 2.42,
       "hypothesis": "Aligned ranged gun counterpressure during retreat may improve survival against pursuers",
       "changed_policy": "Gun no longer inherits the conservative >55m firing veto; all other gun gates and secondary vetoes retained",
-      "official_submission_status": "Scoring",
+      "official_submission_status": "Scored",
       "submission_id": "BB-B18CA477",
-      "official_score": null,
+      "official_score": 2.46,
       "technical_validation": "37 tests; official checker 300/300, max 19.4ms locally; exact-source Linux Docker sandbox CI passed",
       "promotion_rule": "Promote only if official score exceeds current live best; goal >=10.00",
       "commit": "4ba12f9cf9da12dbdcbe35dc104a352879347414",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44947260251",
-      "status": "Official evaluation pending",
+      "status": "Verified new best, selected by site",
       "submitted_at": "2026-11-21T15:39:00-05:00"
+    },
+    {
+      "id": "EXP-013",
+      "branch": "experiment/astra-engagement-013",
+      "base_commit": "4ba12f9cf9da12dbdcbe35dc104a352879347414",
+      "base_official_score": 2.46,
+      "hypothesis": "Finish exposed opponents using current ammo and time to turn, and route toward the selected opponent at useful weapon range.",
+      "technical_validation": "40 tests passed, 300/300 protocol, maximum 8.5 ms locally. No replay action differences. Recording contains no simultaneous opponents.",
+      "official_submission_status": "Scoring",
+      "official_score": null,
+      "submission_id": "BB-CDA30EDB",
+      "commit": "e29c8dc1b66afb73f093a7cb935322c38af0154a",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44949004758",
+      "submitted_at": "2026-11-21T15:58:00-05:00"
+    },
+    {
+      "id": "EXP-014",
+      "branch": "experiment/astra-resource-memory-014",
+      "base_commit": "4ba12f9cf9da12dbdcbe35dc104a352879347414",
+      "base_official_score": 2.46,
+      "hypothesis": "Retain recently observed ground pickups and cubes across view loss to complete safe collection trips.",
+      "technical_validation": "40 tests, official protocol 300/300 locally, max 9.8 ms. Replay has 15 weapon reacquisitions but zero changed actions. Scenario tests exercise collection and abandonment.",
+      "official_score": null,
+      "submission_id": null,
+      "official_submission_status": "Prepared, held for stronger replay evidence from EXP-015",
+      "commit": "76cb349a9077cb6c09b79b922929848d240245dd"
+    },
+    {
+      "id": "EXP-015",
+      "branch": "experiment/astra-laser-cover-015",
+      "base_commit": "4ba12f9cf9da12dbdcbe35dc104a352879347414",
+      "base_official_score": 2.46,
+      "hypothesis": "Route to a walkable point shielded from a visible charging laser while zone travel is safe.",
+      "technical_validation": "40 tests, official checker 300/300 max 13.6ms locally. Replay changes 13 movement and 2 boost decisions, 0 aim or fire decisions.",
+      "official_score": null,
+      "submission_id": null,
+      "official_submission_status": "Awaiting CI"
     }
   ],
   "best_official_entry": {
-    "experiment": "EXP-011",
-    "commit": "7e5b3565ce616be3e798255588e1c88ab7f86f46",
-    "submission_id": "BB-D1BCAB2F",
-    "score": 2.42,
+    "experiment": "EXP-012",
+    "commit": "4ba12f9cf9da12dbdcbe35dc104a352879347414",
+    "submission_id": "BB-B18CA477",
+    "score": 2.46,
     "selected": "Verified automatic best-scoring final entry",
     "source": "Authenticated official page"
   },
   "quota_observed": {
-    "remaining": 1,
+    "remaining": 0,
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-21T20:39:43.564143+00:00"
+  "last_updated_at": "2026-11-21T21:01:03.882494+00:00"
 }
