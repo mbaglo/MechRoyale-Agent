@@ -11,6 +11,38 @@ class Navigator:
         self.escape_until = 0
         self.side = 1
 
+    def arc_duel(self, s, mode):
+        """[ASTRA_ENHANCEMENT_2026-11-21] [CODEX_ENHANCEMENT_2026-11-21]
+        Close a short gap to a lone laser carrier when the game arc can disable it.
+        """
+        if mode == 'conservative' or s.urgent or s.health < .65 or len(s.enemies) != 1:
+            return None
+        enemy = s.enemies[0]
+        if 'laser' not in enemy.get('weapons', ()) or 'mortar' in enemy['weapons']:
+            return None
+        me = s.me
+        arc = next((w for w in me['weapons'] if w and w['kind'] == 'lightning'), None)
+        if not arc:
+            return None
+        reach, cost = arc['stats']['range'], arc['stats']['energy']
+        if me['energy'] <= 15 + 4*cost:
+            return None
+        p, q = me['pos'], enemy['pos']
+        if any(d['lands_in'] <= 0 and math.dist(p[:2],d['pos'][:2]) <= d['radius']
+               for d in s.obs.get('drops', [])):
+            return None
+        distance = math.dist(p,q)
+        if not 1 < distance <= reach + me['stats']['boost_speed']*arc['stats']['short_s']:
+            return None
+        z = s.obs['zone']
+        if math.dist(q[:2], z['next_center']) >= z['next_radius'] - me['stats']['radius']:
+            return None
+        source = [*p[:2], p[2]+me['stats']['muzzle_height']]
+        target = [*q[:2], q[2]+4.5*(1+.05*enemy.get('cubes',0))]
+        if not self.world.clear(source, target):
+            return None
+        return reach
+
     def move(self, s, goal, mode):
         me, o = s.me, s.obs
         pos, stats = me['pos'], me['stats']
@@ -23,6 +55,7 @@ class Navigator:
         base = math.atan2(goal[1]-pos[1], goal[0]-pos[0])
         candidates = [(0., 0.)] + [(math.cos(base+i*math.pi/8), math.sin(base+i*math.pi/8)) for i in range(16)]
         zone = o['zone']
+        arc_range = self.arc_duel(s, mode)
         look = min(8, max(3, distance))
         # [ASTRA_ENHANCEMENT_2026-11-21] [CODEX_ENHANCEMENT_2026-11-21]
         # The inner-circle goal follows our current position. Holding it during
@@ -65,7 +98,12 @@ class Navigator:
                 ep = enemy['pos']
                 before, after = math.dist(pos[:2],ep[:2]), math.dist(end[:2],ep[:2])
                 desired = 130 if mode == 'conservative' else 75
-                score += (min(desired,after)-min(desired,before))*(2.5 if mode == 'conservative' else .8)
+                if arc_range is None:
+                    score += (min(desired,after)-min(desired,before))*(2.5 if mode == 'conservative' else .8)
+                else:
+                    # The normal 75 m spacing can keep the arc outside its firing range.
+                    desired = .78 * arc_range
+                    score += 3 * (abs(before-desired) - abs(after-desired))
                 # Use cover when retreating. Ray queries only for nearby threats.
                 if mode == 'conservative' and before < 160:
                     if not self.world.clear([ep[0],ep[1],ep[2]+7], [end[0],end[1],end[2]+4.5]):
@@ -88,6 +126,8 @@ class Navigator:
                 best, best_score = (dx,dy), score
         self.previous = best
         boost = bool(me['energy'] > 30 and (s.urgent or (mode == 'conservative' and s.enemies)))
+        if arc_range and me['energy'] > 45 and math.dist(pos, s.enemies[0]['pos']) > arc_range:
+            boost = bool(best[0] or best[1])
         # Do not spend energy or create footstep sounds while already at a quiet goal.
         if distance < 2 and not s.enemies and not s.urgent:
             best, boost = (0., 0.), False
