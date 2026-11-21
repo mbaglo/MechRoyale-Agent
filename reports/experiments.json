@@ -408,16 +408,37 @@
     },
     {
       "id": "EXP-022",
-      "branch": "experiment/astra-projectile-movement-022",
-      "base_commit": "e24fcdad447c5ebdec006774e6c28cd1d492e290",
-      "base_official_score": 2.48,
+      "branch": "experiment/astra-projectile-on-256",
+      "base_commit": "a4b1857bb7a1484af3458bd68d7e2b805918395f",
+      "base_official_score": 2.56,
       "hypothesis": "Score visible imminent gun/NPC crossings with the observed velocity and permitted ground acceleration. Do not cancel an effective dodge merely because there is no current mech contact.",
-      "technical_validation": "43 tests passed, official checker 300/300 max 10.1ms locally. Five recorded movement changes. In seven synthetic short ground routes on the official map, four candidate paths crossed one mech radius laterally before the crossing versus zero for the parent.",
+      "technical_validation": "46 tests passed, official checker 300/300 with a 17.0ms local maximum. Replay against 2.56 changes five movement decisions and zero other measured fields.",
       "official_score": null,
       "submission_id": null,
       "official_submission_status": "Validated, unsubmitted",
-      "commit": "9806b9eb3c3108724246aa141b2df1166c40efdc",
-      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44958243528"
+      "commit": "e4dff24c80d260631c5a6701f35b4d6b4de43dd4",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44958784342",
+      "prepared_predecessors": [
+        {
+          "commit": "9806b9eb3c3108724246aa141b2df1166c40efdc",
+          "branch": "experiment/astra-projectile-movement-022",
+          "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44958243528",
+          "official_submission_status": "Validated, never submitted"
+        }
+      ]
+    },
+    {
+      "id": "EXP-023",
+      "branch": "experiment/astra-recovery-cover-023",
+      "base_commit": "a4b1857bb7a1484af3458bd68d7e2b805918395f",
+      "base_official_score": 2.56,
+      "hypothesis": "Seek nearby walkable shelter against a lone visible opponent only when the observed regeneration delay has elapsed or is about to elapse. Hold briefly while sheltered, release on damage or zone urgency.",
+      "technical_validation": "46 tests passed. Official checker 300/300 on time, maximum 9.4 ms locally. Twelve movement changes in 300 recorded observations, no aim or fire changes. No full-match local simulator.",
+      "official_score": null,
+      "submission_id": null,
+      "commit": "c9955a3941ba43550af7ee718daa45d317e5a7bd",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44959181839",
+      "official_submission_status": "Validated, unsubmitted"
     }
   ],
   "best_official_entry": {
@@ -434,7 +455,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-21T22:49:09.349569+00:00",
+  "last_updated_at": "2026-11-21T22:56:30.662352+00:00",
   "leaderboard_observation": {
     "score": 2.48,
     "rank": 256,
