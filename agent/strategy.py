@@ -5,6 +5,32 @@ import math
 class Strategy:
     def __init__(self):
         self.mode = 'balanced'
+        # [ASTRA_ENHANCEMENT_2026-11-21] Static ground loot can leave our vision wedge.
+        self.loot_memory = {'pickups': {}, 'cubes': {}}
+
+    def ground_loot(self, s, field):
+        """Keep a short-lived destination after losing sight of a static item."""
+        now = s.obs['t']
+        visible = {item['id']: item for item in s.obs.get(field, [])}
+        pos = s.me['pos']
+        # One walk across the existing search radius is a useful upper bound.
+        lifetime = min(15., 130 / max(1., s.me['stats']['walk_speed']))
+        memory = self.loot_memory[field]
+        for item_id, (seen, item) in list(memory.items()):
+            if item_id in visible:
+                continue
+            at_destination = (math.dist(pos[:2], item['pos'][:2]) < 8 and
+                              abs(pos[2] - item['pos'][2]) <= 4)
+            if now - seen > lifetime or at_destination:
+                del memory[item_id]
+        for item_id, item in visible.items():
+            memory[item_id] = (now, item)
+        if len(memory) > 64:
+            # Keep recent sightings for future frames. All current sightings
+            # remain eligible for this decision even in a dense late-game pile.
+            for item_id in sorted(memory, key=lambda key: memory[key][0])[:-64]:
+                del memory[item_id]
+        return [*visible.values(), *(item for key, (_, item) in memory.items() if key not in visible)]
 
     def choose(self, s):
         close = [e for e in s.enemies if math.dist(e['pos'], s.me['pos']) < 100]
@@ -27,15 +53,17 @@ class Strategy:
         # Remain on the quieter side of the next circle, leaving escape space.
         fraction = min(1, radius*.55/max(d, 1))
         goal = [center[k]+(pos[k]-center[k])*fraction for k in range(2)]
+        cubes = self.ground_loot(s, 'cubes')
+        pickups = self.ground_loot(s, 'pickups')
         if s.urgent:
             return goal
         candidates = []
-        for p in o.get('cubes', []):
+        for p in cubes:
             # [CODEX_ENHANCEMENT_2026-11-21] EXP-010: recover safe visible
             # drops beyond the old 55 m limit, including ordinary gun kills.
             candidates.append((p, 1.0, 130))
         if any(w is None for w in me['weapons']):
-            for p in o.get('pickups', []):
+            for p in pickups:
                 if p['kind'] not in [w['kind'] for w in me['weapons'] if w]:
                     # [CODEX_ENHANCEMENT_2026-11-21] EXP-004: the only
                     # tactical change from V1 is weapon search reach (65 -> 130 m).
