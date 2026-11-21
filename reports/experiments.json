@@ -451,7 +451,8 @@
       "submission_id": null,
       "commit": null,
       "ci_url": null,
-      "official_submission_status": "Awaiting CI"
+      "official_submission_status": "Awaiting CI",
+      "probe_sensitivity": "With approximate axis-wise wall sliding and delayed energy regeneration, the planner reached 20/24 initial routes versus 7/24. On the additional 23 obstacle crossings it reached 10 versus 0. No opponent physics or match scores."
     }
   ],
   "best_official_entry": {

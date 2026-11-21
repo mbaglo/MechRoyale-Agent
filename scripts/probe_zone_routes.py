@@ -36,7 +36,7 @@ def legs(world, stats, count, vertical, skip):
     return routes
 
 
-def advance(world, me, action):
+def advance(world, me, action, since_spend, slide):
     dt = .05
     for _ in range(2):
         stats = me['stats']
@@ -50,8 +50,24 @@ def advance(world, me, action):
             me['pos'],me['vel'] = end,[*vel,0]
         else:
             me['vel'] = [0,0,0]
-        if action['boost']:
+            # Approximate wall sliding using independent horizontal components.
+            # The kit does not supply its continuous collision solver.
+            if slide:
+                for k in sorted(range(2),key=lambda k: abs(vel[k]),reverse=True):
+                    candidate = me['pos'][:]
+                    candidate[k] += dt*vel[k]
+                    candidate[2] = world.ground(*candidate[:2])
+                    if world.walkable(me['pos'],candidate,stats):
+                        me['pos'] = candidate
+                        me['vel'][k] = vel[k]
+        if action['boost'] and any(action['move']):
             me['energy'] = max(0,me['energy']-dt*stats['boost_drain'])
+            since_spend = 0.
+        else:
+            since_spend += dt
+            if since_spend >= stats['energy_regen_delay']:
+                me['energy'] = min(stats['energy'],me['energy']+dt*stats['energy_regen'])
+    return since_spend
 
 
 def main():
@@ -73,12 +89,13 @@ def main():
         me.update(pos=start[:],vel=[0,0,0],energy=100,grounded=True,in_zone=False)
         frame['zone'] = dict(center=end[:2],next_center=end[:2],radius=9,next_radius=9,
                              shrink_start=0,shrink_end=80,dps=20)
+        since_spend = 0.
         for i in range(140):
             frame.update(t=i*.1,tick=i*2)
             begin = time.perf_counter()
             action = bot.act(frame)
             timings.append((time.perf_counter()-begin)*1000)
-            advance(world,me,action)
+            since_spend = advance(world,me,action,since_spend,'--slide' in sys.argv)
             if math.dist(me['pos'][:2],end[:2]) < 9:
                 break
         results.append(round((i+1)*.1,1) if math.dist(me['pos'][:2],end[:2]) < 9 else None)
