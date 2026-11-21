@@ -139,14 +139,14 @@
       "base_official_score": 2.25,
       "hypothesis": "Reachable roof cover may create sustained quiet regeneration windows under pursuit",
       "changed_policy": "Energy- and map-checked approach, vertical jump/jet, traverse, land, hold refuge; original policy fallback",
-      "official_submission_status": "Scoring",
+      "official_submission_status": "Scored",
       "submission_id": "BB-B1CAEBA4",
-      "official_score": null,
+      "official_score": 1.42,
       "technical_validation": "27 tests and official checker; Linux AMD64 Docker sandbox CI passed",
       "promotion_rule": "Only select if an official score exceeds the live best; target 10.00+",
       "commit": "2ccc8124a335972fcf3b613e9a1ea655bb17c312",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44932183078",
-      "status": "Awaiting official score; current best 2.25 remains selected",
+      "status": "Substantial regression; rejected; not selected",
       "submitted_at": "2026-11-21T13:03:00-05:00"
     },
     {
@@ -156,14 +156,15 @@
       "base_official_score": 2.25,
       "hypothesis": "Persisting a no-target attacker bearing may finish defensive torso turns and protect front armor",
       "changed_policy": "No-target bearing attention lasts a bounded turn-rate-derived interval; original fresh-stimulus choice and visible-target behavior retained",
-      "official_submission_status": "not submitted; require exact CI and available quota",
-      "submission_id": null,
+      "official_submission_status": "Queued",
+      "submission_id": "BB-0BF60252",
       "official_score": null,
       "technical_validation": "21 tests; official checker; Linux AMD64 Docker sandbox CI passed",
       "promotion_rule": "Promote only on a new official best; goal remains >=10.00",
       "commit": "644baa44fe773c5e2429bec5c715f91787770ab1",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44932906509",
-      "status": "Ready; independent single-change candidate; no official result yet"
+      "status": "Awaiting official evaluation; 2.25 remains selected",
+      "submitted_at": "2026-11-21T13:09:00-05:00"
     }
   ],
   "best_official_entry": {
@@ -176,8 +177,8 @@
   },
   "quota_observed": {
     "remaining": 0,
-    "next_slot": "2026-11-21T13:01:00-05:00",
-    "source": "Authenticated official submission page"
+    "next_slot": "2026-11-21T13:29:00-05:00",
+    "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
   "last_updated_at": "2026-11-21T18:05:49.122842+00:00"
