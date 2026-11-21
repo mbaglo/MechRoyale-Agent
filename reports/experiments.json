@@ -249,7 +249,7 @@
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44947260251",
       "status": "Verified new best, selected by site",
       "submitted_at": "2026-11-21T15:39:00-05:00",
-      "selected": true
+      "selected": false
     },
     {
       "id": "EXP-013",
@@ -338,19 +338,35 @@
       "base_official_score": 2.46,
       "hypothesis": "Move across the firing line during an isolated exposed duel at the stationary safe-zone goal. Existing navigation scores choose the open side, while cover and supply capture still permit holding position.",
       "technical_validation": "40 tests and 300/300 checker, maximum 10.7ms locally. For 60 synthetic clear 95m duels on the official map, the baseline stopped in 60 and the candidate moved laterally in 60. Original recording unchanged.",
+      "official_score": 2.48,
+      "submission_id": "BB-167AA858",
+      "official_submission_status": "Scored",
+      "commit": "e24fcdad447c5ebdec006774e6c28cd1d492e290",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44952733688",
+      "ground_route_probe": "19 synthetic official-map positions, 2 seconds of ground movement. Median transverse displacement 0.0m baseline versus 22.52m candidate. 18/19 candidate routes crossed one mech radius, 0/19 baseline.",
+      "submitted_at_display": "Sat 4:59 PM",
+      "selected": true,
+      "status": "Official new best at 2.48, site selected."
+    },
+    {
+      "id": "EXP-019",
+      "branch": "experiment/astra-opening-equipment-019",
+      "base_commit": "4ba12f9cf9da12dbdcbe35dc104a352879347414",
+      "base_official_score": 2.46,
+      "hypothesis": "Acquire the first secondary during a budgeted opening trip to a ground weapon or a breakable crate. Terrain height distinguishes hillside loot from rooftops. Recheck pressure, time and sight every decision.",
+      "technical_validation": "40 tests passed. Official checker 300/300 on time, local max 10.9ms. 21 recorded move changes, versus 2 for the inward-only experiment. No match score inferred.",
       "official_score": null,
       "submission_id": null,
       "official_submission_status": "Validated, unsubmitted",
-      "commit": "e24fcdad447c5ebdec006774e6c28cd1d492e290",
-      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44952733688",
-      "ground_route_probe": "19 synthetic official-map positions, 2 seconds of ground movement. Median transverse displacement 0.0m baseline versus 22.52m candidate. 18/19 candidate routes crossed one mech radius, 0/19 baseline."
+      "commit": "abb771d63acd6dbb247fb906e0e08fcb94c1a7d1",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44953634231"
     }
   ],
   "best_official_entry": {
-    "experiment": "EXP-012",
-    "commit": "4ba12f9cf9da12dbdcbe35dc104a352879347414",
-    "submission_id": "BB-B18CA477",
-    "score": 2.46,
+    "experiment": "EXP-018",
+    "commit": "e24fcdad447c5ebdec006774e6c28cd1d492e290",
+    "submission_id": "BB-167AA858",
+    "score": 2.48,
     "selected": "Verified automatic best-scoring final entry",
     "source": "Authenticated official page"
   },
@@ -360,5 +376,5 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-21T21:46:41.695991+00:00"
+  "last_updated_at": "2026-11-21T22:06:18.762253+00:00"
 }
