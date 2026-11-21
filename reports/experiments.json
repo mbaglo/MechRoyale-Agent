@@ -380,11 +380,28 @@
       "base_official_score": 2.48,
       "hypothesis": "Use a healthy, sufficiently energized lightning mech to close a short interval against one exposed laser carrier. Respect cover, supply capture, zone and pressure.",
       "technical_validation": "44 tests passed and official checker 300/300 max 12.9ms locally. On ten synthetic official-map routes the selected baseline reached arc fire range in 0/10 and the candidate in 10/10 within three seconds. Median candidate first trigger was 1.4s. Opponent position held fixed.",
+      "official_score": 2.38,
+      "submission_id": "BB-A83D4DBF",
+      "official_submission_status": "Scored",
+      "commit": "9a15661b7cd80b26399ac0cecf9864d396347929",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44955367401",
+      "submitted_at_display": "Sat 5:31 PM",
+      "selected": false,
+      "status": "Rejected, retained selected 2.48.",
+      "interpretation": "Closing on a laser opponent was effective at reaching arc range in the isolated scenario. The 48-match score fell. Exposure during approach or energy cost could explain the loss, but the official result does not identify which."
+    },
+    {
+      "id": "EXP-021",
+      "branch": "experiment/astra-recovery-window-021",
+      "base_commit": "e24fcdad447c5ebdec006774e6c28cd1d492e290",
+      "base_official_score": 2.48,
+      "hypothesis": "Use hit, damaged, HP loss and zone-entry observations to preserve imminent HP regeneration when a distant target is optional. Resume fire under pressure or for a finishing opportunity.",
+      "technical_validation": "43 tests passed, official checker 300/300 with an 8.6ms local maximum. Isolated firing tests cover ongoing combat, outgoing hits, zone re-entry, low enemy HP and laser response. Initial replay audit changed two fire decisions.",
       "official_score": null,
       "submission_id": null,
       "official_submission_status": "Validated, unsubmitted",
-      "commit": "9a15661b7cd80b26399ac0cecf9864d396347929",
-      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44955367401"
+      "commit": "a4b1857bb7a1484af3458bd68d7e2b805918395f",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44956779928"
     }
   ],
   "best_official_entry": {
@@ -401,7 +418,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-21T22:23:50.536340+00:00",
+  "last_updated_at": "2026-11-21T22:38:44.281301+00:00",
   "leaderboard_observation": {
     "score": 2.48,
     "rank": 256,
