@@ -249,7 +249,7 @@
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44947260251",
       "status": "Verified new best, selected by site",
       "submitted_at": "2026-11-21T15:39:00-05:00",
-      "selected": true
+      "selected": false
     },
     {
       "id": "EXP-013",
@@ -322,11 +322,14 @@
       "base_official_score": 2.46,
       "hypothesis": "Recover a missed secondary weapon en route into the next safe circle when the pre-shrink time budget covers both legs.",
       "technical_validation": "40 tests, 300/300 checker maximum 11.0ms locally. Two recorded movement changes. Tests cover clock, route direction, view loss, contention and inner loot priority.",
-      "official_score": null,
-      "submission_id": null,
-      "official_submission_status": "Validated, unsubmitted",
+      "official_score": 2.46,
+      "submission_id": "BB-021245C3",
+      "official_submission_status": "Scored",
       "commit": "42db3bc95b273139da2cfa25f6d184cdbb297ea9",
-      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44950973356"
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44950973356",
+      "submitted_at_display": "Sat 4:40 PM",
+      "selected": false,
+      "status": "Tied 2.46. Original best remains selected."
     },
     {
       "id": "EXP-018",
@@ -335,16 +338,89 @@
       "base_official_score": 2.46,
       "hypothesis": "Move across the firing line during an isolated exposed duel at the stationary safe-zone goal. Existing navigation scores choose the open side, while cover and supply capture still permit holding position.",
       "technical_validation": "40 tests and 300/300 checker, maximum 10.7ms locally. For 60 synthetic clear 95m duels on the official map, the baseline stopped in 60 and the candidate moved laterally in 60. Original recording unchanged.",
+      "official_score": 2.48,
+      "submission_id": "BB-167AA858",
+      "official_submission_status": "Scored",
+      "commit": "e24fcdad447c5ebdec006774e6c28cd1d492e290",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44952733688",
+      "ground_route_probe": "19 synthetic official-map positions, 2 seconds of ground movement. Median transverse displacement 0.0m baseline versus 22.52m candidate. 18/19 candidate routes crossed one mech radius, 0/19 baseline.",
+      "submitted_at_display": "Sat 4:59 PM",
+      "selected": true,
+      "status": "Official new best at 2.48, site selected."
+    },
+    {
+      "id": "EXP-019",
+      "branch": "experiment/astra-equipment-on-248",
+      "base_commit": "e24fcdad447c5ebdec006774e6c28cd1d492e290",
+      "base_official_score": 2.48,
+      "hypothesis": "Acquire the first secondary during a budgeted opening trip to a ground weapon or a breakable crate. Terrain height distinguishes hillside loot from rooftops. Recheck pressure, time and sight every decision.",
+      "technical_validation": "43 tests passed, 300/300 official checker, local max 12.5 ms, 21 movement changes on recorded input versus selected 2.48.",
+      "official_score": 2.4,
+      "submission_id": "BB-59627F04",
+      "official_submission_status": "Scored",
+      "commit": "657e59354d3d3f9da51521e73307f91e8f9ad8c8",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44955079365",
+      "prepared_predecessors": [
+        {
+          "commit": "abb771d63acd6dbb247fb906e0e08fcb94c1a7d1",
+          "branch": "experiment/astra-opening-equipment-019",
+          "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44953634231",
+          "official_submission_status": "Validated, never submitted"
+        }
+      ],
+      "submitted_at_display": "Sat 5:17 PM",
+      "selected": false,
+      "status": "Rejected, selected best 2.48",
+      "interpretation": "Broader opening detours changed 21 recorded movements and regressed by 0.08. Extra travel and exposure are plausible costs. Match-level outcomes are unavailable."
+    },
+    {
+      "id": "EXP-020",
+      "branch": "experiment/astra-arc-control-020",
+      "base_commit": "e24fcdad447c5ebdec006774e6c28cd1d492e290",
+      "base_official_score": 2.48,
+      "hypothesis": "Use a healthy, sufficiently energized lightning mech to close a short interval against one exposed laser carrier. Respect cover, supply capture, zone and pressure.",
+      "technical_validation": "44 tests passed and official checker 300/300 max 12.9ms locally. On ten synthetic official-map routes the selected baseline reached arc fire range in 0/10 and the candidate in 10/10 within three seconds. Median candidate first trigger was 1.4s. Opponent position held fixed.",
+      "official_score": 2.38,
+      "submission_id": "BB-A83D4DBF",
+      "official_submission_status": "Scored",
+      "commit": "9a15661b7cd80b26399ac0cecf9864d396347929",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44955367401",
+      "submitted_at_display": "Sat 5:31 PM",
+      "selected": false,
+      "status": "Rejected, retained selected 2.48.",
+      "interpretation": "Closing on a laser opponent was effective at reaching arc range in the isolated scenario. The 48-match score fell. Exposure during approach or energy cost could explain the loss, but the official result does not identify which."
+    },
+    {
+      "id": "EXP-021",
+      "branch": "experiment/astra-recovery-window-021",
+      "base_commit": "e24fcdad447c5ebdec006774e6c28cd1d492e290",
+      "base_official_score": 2.48,
+      "hypothesis": "Use hit, damaged, HP loss and zone-entry observations to preserve imminent HP regeneration when a distant target is optional. Resume fire under pressure or for a finishing opportunity.",
+      "technical_validation": "43 tests passed, official checker 300/300 with an 8.6ms local maximum. Isolated firing tests cover ongoing combat, outgoing hits, zone re-entry, low enemy HP and laser response. Initial replay audit changed two fire decisions.",
+      "official_score": null,
+      "submission_id": "BB-1EDBB6E6",
+      "official_submission_status": "Scoring",
+      "commit": "a4b1857bb7a1484af3458bd68d7e2b805918395f",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44956779928",
+      "submitted_at_display": "Sat 5:41 PM"
+    },
+    {
+      "id": "EXP-022",
+      "branch": "experiment/astra-projectile-movement-022",
+      "base_commit": "e24fcdad447c5ebdec006774e6c28cd1d492e290",
+      "base_official_score": 2.48,
+      "hypothesis": "Score visible imminent gun/NPC crossings with the observed velocity and permitted ground acceleration. Do not cancel an effective dodge merely because there is no current mech contact.",
+      "technical_validation": "43 tests passed, official checker 300/300 max 10.1ms locally. Five recorded movement changes. In seven synthetic short ground routes on the official map, four candidate paths crossed one mech radius laterally before the crossing versus zero for the parent.",
       "official_score": null,
       "submission_id": null,
       "official_submission_status": "Awaiting CI"
     }
   ],
   "best_official_entry": {
-    "experiment": "EXP-012",
-    "commit": "4ba12f9cf9da12dbdcbe35dc104a352879347414",
-    "submission_id": "BB-B18CA477",
-    "score": 2.46,
+    "experiment": "EXP-018",
+    "commit": "e24fcdad447c5ebdec006774e6c28cd1d492e290",
+    "submission_id": "BB-167AA858",
+    "score": 2.48,
     "selected": "Verified automatic best-scoring final entry",
     "source": "Authenticated official page"
   },
@@ -354,5 +430,11 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-21T21:37:27.226963+00:00"
+  "last_updated_at": "2026-11-21T22:41:54.425593+00:00",
+  "leaderboard_observation": {
+    "score": 2.48,
+    "rank": 256,
+    "teams": 305,
+    "observed_at": "2026-11-21T17:22:00-05:00"
+  }
 }
