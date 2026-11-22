@@ -76,6 +76,17 @@ class MortarCoverTests(unittest.TestCase):
         self.assertGreater(lob[1], .45)
         self.assertAlmostEqual(lob[0],0.,places=3)
 
+    def test_high_arc_leads_laterally_moving_target(self):
+        """[CHATGPT_FIX_2026-11-21] Do not reuse low-arc flight time."""
+        enemy = self.obs['mechs'][0]
+        enemy['vel'] = [0., 5., 0.]
+        lob = mortar_lob_solution(
+            self.obs['self'], enemy, self.world, self.weapon['stats']
+        )
+        self.assertIsNotNone(lob)
+        # High-angle rounds remain airborne longer than direct gun shots.
+        self.assertGreater(lob[0], .08)
+
     def test_unreachable_high_wall_is_rejected(self):
         """[CHATGPT_FIX_2026-11-21] Never claim ballistic feasibility through rock."""
         self.world.wall_height = 200.
