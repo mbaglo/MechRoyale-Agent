@@ -930,6 +930,21 @@
       "official_score": null,
       "selected": false,
       "assessment": "Distinct navigation reliability experiment based on explicitly observed items, not new estimated positions. Official placement effect unknown. Do not submit until current quota and all pending submissions are reconciled. The selected best remains EXP-044 (3.06)."
+    },
+    {
+      "id": "CHATGPT-INCOMING-FIRE-001",
+      "branch": "experiment/chatgpt-impact-evasion-2026-11-22",
+      "base_commit": "b0d240270a180f2f5a5b4a238e7a9faf1afa58e6",
+      "base_official_score": 3.06,
+      "commit": "25e6fe8146700f131e41c70f1a734d8c7cef70c4",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44993311532",
+      "hypothesis": "Avoid incoming visible mortar splash using short-horizon gravity, ground/building impact and wall cover, while canceling the unconditional quiet-goal idle override for imminent incoming bullets. Original navigation treated every projectile as straight and forced idle with no tracked enemies, even under fire.",
+      "technical_validation": "Eight synthetic focused incoming-fire regression tests added. GitHub Actions 44993311532 completed successfully for this exact commit, including full unittest discover, official recorded-action comparator, linux/amd64 Docker build, and official protocol checker under competition sandbox. New behavior is limited to observed near-term projectile threats. No interactive match or placement score inferred.",
+      "official_submission_status": "Validated, unsubmitted",
+      "submission_id": null,
+      "official_score": null,
+      "selected": false,
+      "assessment": "Distinct high-impact defensive survival experiment; 3.06 scorer best preserved. Score effect unknown. Do not automatically submit until authenticated competition state and rolling quota reconciled."
     }
   ],
   "best_official_entry": {
