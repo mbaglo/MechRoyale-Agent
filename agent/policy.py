@@ -17,7 +17,7 @@ class Bot:
             raise ValueError('unsupported protocol')
         self.config = hello['config']
         self.world = World(hello['map']['dir'])
-        self.observer, self.strategy = Observer(), Strategy()
+        self.observer, self.strategy = Observer(), Strategy(self.world,self.config)
         self.navigator = Navigator(self.world)
         self.zone_route = ZoneRoute(self.world)
         self.combat = Combat(self.config,self.world)

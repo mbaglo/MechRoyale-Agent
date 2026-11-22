@@ -1,15 +1,19 @@
 """[CODEX_ENHANCEMENT_2026-11-21] Placement-first mode transitions and goals."""
 import math
+from .engagement import isolated_finish
 
 
 class Strategy:
-    def __init__(self):
+    def __init__(self, world=None, config=None):
         self.mode = 'balanced'
+        self.world, self.config = world, config
 
     def choose(self, s):
         close = [e for e in s.enemies if math.dist(e['pos'], s.me['pos']) < 100]
         weak = close and close[0].get('hp', 1400) < s.me['hp']*.5
-        if s.health < .42 or len(close) >= 2 or s.urgent:
+        if len(close)==2 and self.world and isolated_finish(s,close,self.world,self.config):
+            self.mode = 'balanced'
+        elif s.health < .42 or len(close) >= 2 or s.urgent:
             self.mode = 'conservative'
         elif s.health > .72 and weak and len(close) == 1:
             self.mode = 'aggressive'
