@@ -773,7 +773,7 @@
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44981920990",
       "hypothesis": "Suppress deadline-driven retreat when already inside the next zone safety margin. Keep outside-zone and final-circle urgency.",
       "technical_validation": "54 tests; official checker 300/300 within 9.8 ms locally. No movement, target, mode, boost, fire, take or aim differences on the recording. Near-deadline scenarios confirm aggressive mode in the interior, conservative mode at the margin and urgency at zero radius.",
-      "official_submission_status": "Validated, unsubmitted",
+      "official_submission_status": "Superseded by EXP-042 on selected 2.94 source",
       "submission_id": null,
       "official_score": null
     },
@@ -852,6 +852,18 @@
       },
       "submitted_at_display": "Sat 11:31 PM",
       "selected": false
+    },
+    {
+      "id": "EXP-042",
+      "branch": "experiment/astra-zone-deadline-on-294",
+      "commit": "280e38c51798b41671f0379b76c73b092a4ad7b6",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44985973930",
+      "hypothesis": "On the 2.94 drone farming baseline, retain normal strategy at the shrink deadline if already inside the future safety margin.",
+      "technical_validation": "63 tests passed; official checker 300/300, 7.8 ms local maximum. No recorded action differences on the starter stream; late-window targeted tests cover the decision change.",
+      "official_submission_status": "Scoring",
+      "submission_id": "BB-F48B82B2",
+      "official_score": null,
+      "submitted_at_display": "Sat 11:39 PM"
     }
   ],
   "best_official_entry": {
@@ -863,12 +875,12 @@
     "source": "Authenticated official page"
   },
   "quota_observed": {
-    "display": "3 of 6 left this hour",
+    "display": "2 of 6 left this hour",
     "team_limit_per_rolling_hour": 4,
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10,
-  "last_updated_at": "2026-11-22T04:38:05.138603+00:00",
+  "last_updated_at": "2026-11-22T04:39:53.563253+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-22T03:55:35.820568+00:00",
     "rank": 268,
