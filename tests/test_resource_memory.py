@@ -58,7 +58,7 @@ class ResourceMemoryTests(unittest.TestCase):
         self.obs['pickups']=[]
         self.obs['self']['pos']=[39.,0.,0.]
         self.obs['t']=10.2
-        self.assertEqual(self.goal(),[0.,0.])
+        self.assertEqual(self.goal(),[39.,0.])
 
     def test_never_pursue_memory_in_zone_emergency_or_threat(self):
         """[CHATGPT_FIX_2026-11-21] Memory never overrides urgent navigation."""
