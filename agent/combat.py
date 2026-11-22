@@ -1,5 +1,6 @@
 """[CODEX_ENHANCEMENT_2026-11-21] Intercepts, weapon control and fire discipline."""
 import math
+from .neutral_farm import NeutralFarm  # [CHATGPT_ENHANCEMENT_2026-11-21]
 
 
 def angle_delta(a, b):
@@ -24,7 +25,9 @@ def intercept(origin, target, velocity, speed):
 
 class Combat:
     def __init__(self, config, world):
+        """[CHATGPT_ENHANCEMENT_2026-11-21] Preserve combat state and guarded neutral-farm policy."""
         self.config, self.world = config, world
+        self.neutral_farm = NeutralFarm(world)
         self.target_id = None
         # [CODEX_ENHANCEMENT_2026-11-21] EXP-009: finish looking toward a
         # heard attacker before returning to the original no-target scan.
@@ -34,12 +37,17 @@ class Combat:
         self.near_warning_until = -float('inf')
 
     def act(self, s, mode):
+        """[CHATGPT_ENHANCEMENT_2026-11-21] Preserve combat; farm visible safe NPCs using the gun."""
         me, obs = s.me, s.obs
+        neutral_targets = self.neutral_farm.targets(s)
         origin = list(me['pos'])
         origin[2] += me['stats']['muzzle_height']
         targets = list(s.enemies)
         if not targets and mode != 'conservative':
-            targets = [dict(c, kind='crate', vel=[0,0,0]) for c in obs.get('crates', [])
+            # [CHATGPT_ENHANCEMENT_2026-11-21] Safe drone kills produce two
+            # cubes; historical crate selection and all player engagements
+            # retain their exact original priority and limitations.
+            targets = neutral_targets + [dict(c, kind='crate', vel=[0,0,0]) for c in obs.get('crates', [])
                        if math.dist(c['pos'],me['pos']) < 65]
         def priority(e):
             d = math.dist(e['pos'],me['pos'])
@@ -87,7 +95,10 @@ class Combat:
                     return [bearing,pitch],[False,False],reload
             return [angle_delta(yaw,0),0.], [False,False], reload
         self.target_id = target['id']
-        height = 1.2 if target['kind']=='crate' else 4.5*(1+.05*target.get('cubes',0))
+        # [CHATGPT_FIX_2026-11-21] The official NPC is 3.5 m tall,
+        # not the 9 m mech; aim at 1.75 m for an NPC center-of-mass hit.
+        height = (1.2 if target['kind']=='crate' else 1.75 if target['kind']=='npc'
+                  else 4.5*(1+.05*target.get('cubes',0)))
         point = [target['pos'][0], target['pos'][1], target['pos'][2]+height]
         distance = math.dist(origin,point)
         weapons = me['weapons']
@@ -96,6 +107,10 @@ class Combat:
                          (w.get('cooldown',0)<=.1 or w.get('charge',0)>0) and
                          distance < w['stats'].get('range',220)), None)
         selected = selected or next((w for w in weapons if w), None)
+        if target['kind'] == 'npc':
+            # [CHATGPT_ENHANCEMENT_2026-11-21] Don't waste a scarce mortar,
+            # laser charge, or lightning energy on neutral farming.
+            selected = next((w for w in weapons if w and w['kind']=='gun'), selected)
         aim_point = point
         pitch = None
         if selected and selected['kind']=='gun':
