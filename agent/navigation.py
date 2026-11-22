@@ -11,7 +11,7 @@ class Navigator:
         self.escape_until = 0
         self.side = 1
 
-    def move(self, s, goal, mode, zone_detour=False):
+    def move(self, s, goal, mode, zone_detour=False, duel=False):
         me, o = s.me, s.obs
         pos, stats = me['pos'], me['stats']
         if self.anchor is None or o['t']-self.anchor_t > 1.5:
@@ -49,7 +49,7 @@ class Navigator:
             if (dx or dy) and not self.world.walkable(pos, end, stats):
                 continue
             progress = distance-math.dist(end[:2], goal)
-            score = progress*(4 if s.urgent else 1)
+            score = progress*(4 if s.urgent or duel else 1)
             if lateral_axis is not None:
                 # Both tangents are legal. Existing obstacle, hazard, zone and
                 # momentum scores choose the feasible side and maintain it.

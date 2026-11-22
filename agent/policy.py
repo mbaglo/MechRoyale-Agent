@@ -7,6 +7,7 @@ from .navigation import Navigator
 from .combat import Combat
 from .zone_route import ZoneRoute
 from .supply import finishing_drop, stay_inside
+from .laser_duel import LaserDuel
 
 
 class Bot:
@@ -20,6 +21,7 @@ class Bot:
         self.observer, self.strategy = Observer(), Strategy()
         self.navigator = Navigator(self.world)
         self.zone_route = ZoneRoute(self.world)
+        self.laser_duel = LaserDuel(self.world,self.config)
         self.combat = Combat(self.config,self.world)
         self.mode = 'balanced'
 
@@ -29,7 +31,8 @@ class Bot:
         drop = finishing_drop(s,self.config)
         goal = drop['pos'][:2] if drop else self.strategy.goal(s,self.mode)
         goal = self.zone_route.waypoint(s,goal)
-        move, boost = self.navigator.move(s,goal,self.mode,zone_detour=bool(self.zone_route.path))
+        duel = self.laser_duel.goal(s)
+        move, boost = self.navigator.move(s,duel or goal,self.mode,zone_detour=bool(self.zone_route.path),duel=duel is not None)
         if drop:
             move,boost = stay_inside(s,drop,move,boost,self.world)
         aim, fire, reload = self.combat.act(s,self.mode)
