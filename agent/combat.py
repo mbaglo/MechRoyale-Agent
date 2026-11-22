@@ -32,6 +32,36 @@ class Combat:
         self.attention_until = -float('inf')
         self.near_warning_yaw = 0.
         self.near_warning_until = -float('inf')
+        self.drone_seen = -float('inf')
+
+    def starter_drone(self, s):
+        """[ASTRA_ENHANCEMENT_2026-11-21] [CODEX_ENHANCEMENT_2026-11-21]
+        Engage a lone nearby drone when its cubes are reachable and the starter magazine can finish it.
+        """
+        me,o = s.me,s.obs
+        if s.urgent or s.health < .8 or sum(w is not None for w in me['weapons']) != 1:
+            return None
+        gun = next(w for w in me['weapons'] if w is not None)
+        if gun['kind']!='gun' or gun.get('reload',0)>0 or not gun.get('ammo',0):
+            return None
+        pos = me['pos']
+        nearby = [m for m in o['mechs'] if m['kind']=='npc' and
+                  math.dist(pos,m['pos']) <= self.config['npc']['aggro_range']]
+        if len(nearby)!=1:
+            return None
+        drone = nearby[0]
+        point,zone = drone['pos'],o['zone']
+        cubes = self.config['cubes']
+        damage = gun['stats']['damage']*(1+cubes['damage_per_cube']*min(me['cubes'],cubes['stat_cap']))
+        continuing = self.target_id == drone['id'] and o['t']-self.drone_seen < .3
+        if ((not continuing and gun['ammo']*damage < drone.get('hp',self.config['npc']['hp']))
+                or math.dist(point[:2],zone['next_center'])+8 > zone['next_radius']
+                or abs(point[2]-pos[2])>4):
+            return None
+        if (any(e.get('type')=='damaged' and e.get('by') is not None and e['by']<16 for e in o.get('events',[]))
+                or any(a['kind'] in ('gun','laser_charge','lightning') and a['dist']!='far' for a in o.get('sounds',[]))):
+            return None
+        return drone if self.world.walkable(pos,point,me['stats']) else None
 
     def act(self, s, mode):
         me, obs = s.me, s.obs
@@ -41,6 +71,10 @@ class Combat:
         if not targets and mode != 'conservative':
             targets = [dict(c, kind='crate', vel=[0,0,0]) for c in obs.get('crates', [])
                        if math.dist(c['pos'],me['pos']) < 65]
+            if not targets:
+                drone = self.starter_drone(s)
+                if drone is not None:
+                    targets.append(drone)
         def priority(e):
             d = math.dist(e['pos'],me['pos'])
             return d + e.get('hp',1400)*.025 - (15 if e['id'] == self.target_id else 0)
@@ -52,8 +86,9 @@ class Combat:
             if self.world.clear(origin,point):
                 target = e
                 break
+        between_fights = not s.enemies and (not target or target['kind']!='npc')
         reload = any(w and w['kind']=='gun' and w.get('reload',0)==0 and
-                     (w.get('ammo',0)==0 or (not s.enemies and w.get('ammo',0)<w['stats']['mag']*.6)) for w in me['weapons'])
+                     (w.get('ammo',0)==0 or (between_fights and w.get('ammo',0)<w['stats']['mag']*.6)) for w in me['weapons'])
         if target is None:
             # Face a heard attacker before scanning; preserve front armor.
             bearings = [e['bearing'] for e in obs.get('events',[]) if e['type']=='damaged' and e.get('bearing') is not None]
@@ -88,6 +123,10 @@ class Combat:
             return [angle_delta(yaw,0),0.], [False,False], reload
         self.target_id = target['id']
         height = 1.2 if target['kind']=='crate' else 4.5*(1+.05*target.get('cubes',0))
+        if target['kind']=='npc':
+            # [ASTRA_FIX_2026-11-21] [CODEX_FIX_2026-11-21] Aim inside the game's shorter NPC cylinder.
+            height = self.config['npc']['height']*.5
+            self.drone_seen = obs['t']
         point = [target['pos'][0], target['pos'][1], target['pos'][2]+height]
         distance = math.dist(origin,point)
         weapons = me['weapons']
