@@ -558,9 +558,10 @@
       "technical_validation": "55 tests passed. Official checker 300/300 max 6.5 ms locally, no recorded action changes; the starter recording lacks simultaneous opponents. Across eight fixed two-opponent reload scenarios with the official torso turn rate, rear-facing opponent-ticks fell from 200 to 50 and aim returned within floating-point precision when the gun was ready. No inferred match damage or placement.",
       "commit": "1ebe62781e975006ced3d95013a432f8cb262063",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44963568161",
-      "submission_id": null,
+      "submission_id": "BB-ECFD930D",
       "official_score": null,
-      "official_submission_status": "Validated, unsubmitted"
+      "official_submission_status": "Scoring",
+      "submitted_at_display": "Sat 7:33 PM"
     },
     {
       "id": "EXP-029",
@@ -575,6 +576,19 @@
       "submission_id": null,
       "official_score": null,
       "official_submission_status": "Rejected locally, never submitted"
+    },
+    {
+      "id": "EXP-030",
+      "branch": "experiment/astra-drone-defense-030",
+      "base_commit": "27662b9a02c0677ca8b914fda223067d11065988",
+      "base_official_score": 2.9,
+      "hypothesis": "Use the starter gun against a lone nearby drone when the current magazine can finish it and its two cubes are reachable in the future circle. An exposed mech or existing crate remains higher priority. Preserve recovery, zone travel and the magazine when the fight is unsafe.",
+      "technical_validation": "54 tests passed; checker 300/300 max 7.5 ms locally. Six controlled eligible drone scenarios yielded six aligned fire actions versus zero from the parent. A stationary full-health scenario completed eight hit updates without a mid-burst reload. The official recording contains no drones, and all 300 recorded actions matched the 2.90 source. No inferred match damage, cube count or placement.",
+      "commit": "e91bfe42e89e8677af2aa513e6980bb5497123a3",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44966555493",
+      "submission_id": null,
+      "official_score": null,
+      "official_submission_status": "Validated, unsubmitted"
     }
   ],
   "best_official_entry": {
@@ -591,7 +605,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-22T00:23:40.493968+00:00",
+  "last_updated_at": "2026-11-22T00:33:19.133479+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-21T18:35:00-05:00",
     "rank": 240,
