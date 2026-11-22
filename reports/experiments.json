@@ -620,9 +620,9 @@
       "technical_validation": "56 tests, checker 300/300 max 23.5 ms locally, 21 movement changes compared with the 2.92 parent. Supply finish tests and laser cycle tests both passed. The predecessor record includes unchanged local geometry-probe outcomes.",
       "commit": "1108e449bcd1801c489d1ece994b8caae405302c",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44969883578",
-      "submission_id": null,
+      "submission_id": "BB-DF2C33D2",
       "official_score": null,
-      "official_submission_status": "Validated, unsubmitted",
+      "official_submission_status": "Scoring",
       "prepared_predecessors": [
         {
           "branch": "experiment/astra-firing-cover-032",
@@ -632,7 +632,21 @@
           "technical_validation": "53 tests, checker 300/300 max 17.5 ms locally. 21 recorded movement decisions changed. All five observed beam releases replayed on approximate ground paths produced one fully sheltered release for both controllers and 110 firing lanes each. In 18 synthetic cycles anchored to recorded poses with a stationary shooter, 11 versus 6 were sheltered at the next release; open firing lanes during the first second were 119 versus 121. Both checks are geometry probes.",
           "official_submission_status": "Validated, never submitted"
         }
-      ]
+      ],
+      "submitted_at_display": "Sat 8:20 PM"
+    },
+    {
+      "id": "EXP-033",
+      "branch": "experiment/astra-attacker-reacquisition-033",
+      "base_commit": "76dcb1f15e5b4d27db9e2a196deef6916ac54a04",
+      "base_official_score": 2.92,
+      "hypothesis": "Orient toward the last reported location of a single confirmed attacking opponent after the engine track expires, while the estimated travel envelope fits in the field of view. Discard confirmed kills and ambiguous tracks, preserve nearer warnings and never fire at an absent opponent.",
+      "technical_validation": "56 tests, checker 300/300 max 6.2 ms locally; 82 recorded aim changes only. For the sole continuously recorded return of contact, the preceding command was 16.8 degrees from the returning bearing versus 140.1 degrees for the parent. A second return followed a 6.4-second observation gap and is excluded from the continuous comparison.",
+      "commit": "be77e0362b1bda0660c00f6f80d722eed5122e3e",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44970104273",
+      "submission_id": null,
+      "official_score": null,
+      "official_submission_status": "Validated, unsubmitted"
     }
   ],
   "best_official_entry": {
@@ -649,7 +663,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-22T01:07:44.557962+00:00",
+  "last_updated_at": "2026-11-22T01:20:21.507521+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-21T20:05:00-05:00",
     "rank": 252,
