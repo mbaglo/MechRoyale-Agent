@@ -542,9 +542,10 @@
       "technical_validation": "52 tests; checker 300/300 max 6.7 ms locally. Only aim changed on 39 recorded frames. In 72 stationary open-view cases (24 bearings, three starting yaws, published slew rate), average time until the bearing entered view dropped from 1.783 to 0.381 seconds and maximum from 7.1 to 1.1. Time to sight is a local geometry measure.",
       "commit": "b34e3cc01d6926d10201d9b466d94c0cc773d259",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44962881931",
-      "submission_id": null,
+      "submission_id": "BB-02F7618E",
       "official_score": null,
-      "official_submission_status": "Validated, unsubmitted"
+      "official_submission_status": "Scoring",
+      "submitted_at_display": "Sat 7:19 PM"
     },
     {
       "id": "EXP-028",
@@ -558,6 +559,20 @@
       "submission_id": null,
       "official_score": null,
       "official_submission_status": "Validated, unsubmitted"
+    },
+    {
+      "id": "EXP-029",
+      "branch": "experiment/astra-observed-motion-029",
+      "base_commit": "27662b9a02c0677ca8b914fda223067d11065988",
+      "base_official_score": 2.9,
+      "hypothesis": "Estimate how much recent opponent velocity persists at the current gun travel horizon, using only previously observed motion and a regularized estimate.",
+      "technical_validation": "Local diagnostic only. Interpolated observed positions at projectile travel time. First 79 usable forecasts: mean horizontal error 4.025m versus 3.816m for constant velocity; within one radius 30 versus 33. Later 74 forecasts: error 2.141m versus 1.721m; within one radius 52 versus 58. Both segments favored the existing constant-velocity predictor.",
+      "assessment": "Rejected locally before integration; keep the existing gun aim. No official evaluation or submission slot used.",
+      "commit": "ffd31a8a47a0cd264161aa5edaa38f3f35bcf5fd",
+      "ci_url": null,
+      "submission_id": null,
+      "official_score": null,
+      "official_submission_status": "Rejected locally, never submitted"
     }
   ],
   "best_official_entry": {
@@ -574,7 +589,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-22T00:04:44.801662+00:00",
+  "last_updated_at": "2026-11-22T00:19:22.449026+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-21T18:35:00-05:00",
     "rank": 240,
