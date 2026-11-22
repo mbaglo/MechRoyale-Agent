@@ -4,7 +4,7 @@
 
 - **Selected best:** EXP-044, **3.06**, exact source commit `b0d240270a180f2f5a5b4a238e7a9faf1afa58e6`, receipt `BB-2F33846B`. Verified in the authenticated competition-result ledger.
 - Mortar `BB-46438060`: **2.90**. Recovery combination `BB-CCC1C2D4`: **2.83**. Unseen-fire escape `BB-79FE36C6`: **2.90**. All have been scored; do not resubmit.
-- **Latest fully validated unsubmitted candidate:** safe early supply staging, source `3544e1a28f4f7aa43ee125f08ac1af98f366201a`, GitHub Actions [45014432619](https://github.com/mbaglo/MechRoyale-Agent/actions/runs/45014432619): 76 unit tests, Linux AMD64 Docker, official checker 300/300. Competitive score **unknown**. Many other unsubmitted candidates also exist in `reports/experiments.json`.
+- **Most recently validated unsubmitted candidate:** guarded charging-laser lane escape, exact source `2765aa19ecec0bb3d51a19424af2650badbe2b2e`, GitHub Actions [45023768984](https://github.com/mbaglo/MechRoyale-Agent/actions/runs/45023768984): 71 unit tests, Linux AMD64 Docker, official checker 300/300. Competitive score **unknown**. Earlier safe-supply staging `3544e1a28f4f7aa43ee125f08ac1af98f366201a` and other unsubmitted candidates remain separate in `reports/experiments.json`.
 - The bot is **not** authorized for an authenticated competition-browser submission through available connected tools in this session. No new submission was made. Reconcile live quota and any external submissions before submitting manually.
 - Deadline: November 22, 2026, **11:00 AM America/New_York**. This status supersedes historical point-in-time instructions below.
 
