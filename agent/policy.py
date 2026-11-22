@@ -7,6 +7,7 @@ from .navigation import Navigator
 from .combat import Combat
 from .zone_route import ZoneRoute
 from .supply import finishing_drop, stay_inside
+from .drop_approach import stage_supply_goal  # [CHATGPT_ENHANCEMENT_2026-11-21]
 
 
 class Bot:
@@ -24,10 +25,14 @@ class Bot:
         self.mode = 'balanced'
 
     def act(self, obs):
+        """[CHATGPT_ENHANCEMENT_2026-11-21] Preserve decisions; stage only safe announced drops."""
         s = self.observer.parse(obs)
         self.mode = self.strategy.choose(s)
         drop = finishing_drop(s,self.config)
         goal = drop['pos'][:2] if drop else self.strategy.goal(s,self.mode)
+        if not drop:
+            # The original goal wins over staging whenever it chose a resource.
+            goal = stage_supply_goal(s,goal,self.mode,self.world)
         goal = self.zone_route.waypoint(s,goal)
         move, boost = self.navigator.move(s,goal,self.mode,zone_detour=bool(self.zone_route.path))
         if drop:
