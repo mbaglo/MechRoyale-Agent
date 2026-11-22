@@ -900,6 +900,17 @@
       "official_submission_status": "Validated, unsubmitted",
       "submission_id": null,
       "official_score": null
+    },
+    {
+      "id": "EXP-046",
+      "branch": "experiment/astra-ground-sprint-046",
+      "commit": "f03ef9078b8ab00773470f097246e2c50c1d5b75",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44987276771",
+      "hypothesis": "Restrict sprint to ground movement. The official protocol maps the same command to upward thrust while airborne; the ground planner does not request climbs.",
+      "technical_validation": "Baseline replay had 65 moving ground boosts and six airborne boosts, zero stationary boosts. Candidate changed only the six airborne boost flags in the compared action fields. 65 tests; checker 300/300 max 9.3 ms locally. Replay cannot establish actual energy saved or survival effect.",
+      "official_submission_status": "Validated, unsubmitted",
+      "submission_id": null,
+      "official_score": null
     }
   ],
   "best_official_entry": {
@@ -916,7 +927,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10,
-  "last_updated_at": "2026-11-22T04:51:12.841111+00:00",
+  "last_updated_at": "2026-11-22T04:58:31.059951+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-22T04:51:48.658447+00:00",
     "rank": 275,
