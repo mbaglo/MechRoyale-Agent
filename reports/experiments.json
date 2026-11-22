@@ -822,6 +822,17 @@
         ],
         "decisions_per_condition": 320
       }
+    },
+    {
+      "id": "EXP-041",
+      "branch": "experiment/astra-pincer-clearance-041",
+      "commit": "a0c1204b656e07aaa09eb6d641e412aafc46fad8",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44982586788",
+      "hypothesis": "Avoid reducing the closest flank distance on a candidate navigation step while no projectile needs dodging.",
+      "technical_validation": "54 tests; checker 300/300 with 7.0 ms local maximum. Across 18 feasible synthetic pincer layouts from eight designated map sites and eight orientations per site, two seconds of closing at 5 m/s: mean clearance change was -9.992 m for the selected agent, -3.630 m for EXP-040 and -3.034 m for EXP-041. Worst cases were -10.000, -18.257 and -9.860 m. At the original recorded pose the 16-orientation closing mean regressed from -2.103 to -3.342 m versus EXP-040. Opponent pursuit ignored obstacles; no damage or official placement measured.",
+      "official_submission_status": "Held for EXP-040 official result",
+      "submission_id": null,
+      "official_score": null
     }
   ],
   "best_official_entry": {
@@ -838,7 +849,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10,
-  "last_updated_at": "2026-11-22T03:49:39.909950+00:00",
+  "last_updated_at": "2026-11-22T03:53:12.261066+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-21T20:05:00-05:00",
     "rank": 252,
