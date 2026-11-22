@@ -889,6 +889,17 @@
       "official_score": 3.06,
       "submitted_at_display": "Sat 11:45 PM",
       "selected": true
+    },
+    {
+      "id": "EXP-045",
+      "branch": "experiment/astra-paired-cubes-045",
+      "commit": "aa29c981b126e7f22ce3d969360afe453380647b",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44986787654",
+      "hypothesis": "Collect two visible cubes together beyond 130m and within the established drone engagement range while healthy, free of tracked opponents and visible projectiles, inside normal zone and elevation checks.",
+      "technical_validation": "65 tests passed; checker 300/300 at 9.7 ms local maximum. Baseline failed to select the pair at 148m; candidate selected it and declined the detour for a singleton or when an opponent was tracked. No recorded policy differences in the standard action comparison; actual collection and placement are unknown.",
+      "official_submission_status": "Validated, unsubmitted",
+      "submission_id": null,
+      "official_score": null
     }
   ],
   "best_official_entry": {
@@ -905,7 +916,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10,
-  "last_updated_at": "2026-11-22T04:49:08.256168+00:00",
+  "last_updated_at": "2026-11-22T04:51:12.841111+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-22T03:55:35.820568+00:00",
     "rank": 268,

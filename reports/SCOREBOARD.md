@@ -55,3 +55,4 @@ The selected entry is **EXP-044** at **3.06**. The target is **10.00**.
 | EXP-042 | [280e38c51798b41671f0379b76c73b092a4ad7b6](https://github.com/mbaglo/MechRoyale-Agent/commit/280e38c51798b41671f0379b76c73b092a4ad7b6) | BB-F48B82B2 | 2.98 |
 | EXP-043 | [a57dc2d45cf593149edd699a77edbf581c7e880a](https://github.com/mbaglo/MechRoyale-Agent/commit/a57dc2d45cf593149edd699a77edbf581c7e880a) | Unsubmitted | Superseded by EXP-044 on the 2.98 baseline |
 | EXP-044 | [b0d240270a180f2f5a5b4a238e7a9faf1afa58e6](https://github.com/mbaglo/MechRoyale-Agent/commit/b0d240270a180f2f5a5b4a238e7a9faf1afa58e6) | BB-2F33846B | 3.06 |
+| EXP-045 | [aa29c981b126e7f22ce3d969360afe453380647b](https://github.com/mbaglo/MechRoyale-Agent/commit/aa29c981b126e7f22ce3d969360afe453380647b) | Unsubmitted | Validated, unsubmitted |
