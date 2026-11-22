@@ -85,6 +85,23 @@ class Combat:
                     pitch = math.atan2(delta[2],math.hypot(*delta[:2]))
                     pitch = max(me['stats']['min_pitch'],min(me['stats']['max_pitch'],pitch))
                     return [bearing,pitch],[False,False],reload
+            # [ASTRA_ENHANCEMENT_2026-11-21] [CODEX_ENHANCEMENT_2026-11-21]
+            # A lost opponent supplies no new position. Face its last reported bearing
+            # while its estimated travel envelope still fits within our field of view.
+            if s.last_opponent and not s.urgent:
+                stamp, enemy = s.last_opponent
+                age=obs['t']-stamp
+                dx,dy=[enemy['pos'][k]-me['pos'][k] for k in (0,1)]
+                distance=math.hypot(dx,dy)
+                vision=self.config['vision']
+                speed=max(self.config['mech']['boost_speed'],math.hypot(*enemy['vel'][:2]))
+                bearing=math.atan2(dy,dx)
+                plausible=(0<=age<=vision['memory_s'] and vision['near_range']<distance<self.config['weapons']['gun']['range']
+                           and age*speed<distance*math.sin(math.radians(vision['fov_deg']/2)))
+                if plausible:
+                    warning=(obs['t']<self.near_warning_until and
+                             abs(angle_delta(bearing,self.near_warning_yaw))>math.pi/4)
+                    yaw=self.near_warning_yaw if warning else bearing
             return [angle_delta(yaw,0),0.], [False,False], reload
         self.target_id = target['id']
         height = 1.2 if target['kind']=='crate' else 4.5*(1+.05*target.get('cubes',0))
