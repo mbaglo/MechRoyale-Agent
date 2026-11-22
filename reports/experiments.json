@@ -438,10 +438,10 @@
       "hypothesis": "Seek nearby walkable shelter against a lone visible opponent only when the observed regeneration delay has elapsed or is about to elapse. Hold briefly while sheltered, release on damage or zone urgency.",
       "technical_validation": "53 tests passed. Official checker 300/300 max 8.2 ms locally. Twelve recorded movement changes versus the selected 2.90 policy; all other action fields identical. Existing urgent path and torso attention behavior retained.",
       "official_score": null,
-      "submission_id": null,
+      "submission_id": "BB-FBD989B7",
       "commit": "d1cdbcd1289b2d809bdf13a694b180135b4c56c0",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44962669786",
-      "official_submission_status": "Validated, unsubmitted",
+      "official_submission_status": "Scoring",
       "prepared_predecessors": [
         {
           "branch": "experiment/astra-recovery-cover-023",
@@ -451,7 +451,8 @@
           "technical_validation": "46 tests passed. Official checker 300/300 on time, maximum 9.4 ms locally. Twelve movement changes in 300 recorded observations, no aim or fire changes. No full-match local simulator.",
           "official_submission_status": "Validated, never submitted"
         }
-      ]
+      ],
+      "submitted_at_display": "Sat 7:01 PM"
     },
     {
       "id": "EXP-024",
@@ -542,6 +543,19 @@
       "submission_id": null,
       "official_score": null,
       "official_submission_status": "Validated, unsubmitted"
+    },
+    {
+      "id": "EXP-028",
+      "branch": "experiment/astra-reload-guard-028",
+      "base_commit": "27662b9a02c0677ca8b914fda223067d11065988",
+      "base_official_score": 2.9,
+      "hypothesis": "While the only gun is reloading against multiple engaged shooters, use the front armor arc to cover more bearings and restore aim before the gun becomes ready. No change to active firing, movement or secondary attacks.",
+      "technical_validation": "55 tests passed. Official checker 300/300 max 6.5 ms locally, no recorded action changes; the starter recording lacks simultaneous opponents. Across eight fixed two-opponent reload scenarios with the official torso turn rate, rear-facing opponent-ticks fell from 200 to 50 and aim returned within floating-point precision when the gun was ready. No inferred match damage or placement.",
+      "commit": "1ebe62781e975006ced3d95013a432f8cb262063",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44963568161",
+      "submission_id": null,
+      "official_score": null,
+      "official_submission_status": "Validated, unsubmitted"
     }
   ],
   "best_official_entry": {
@@ -558,7 +572,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-21T23:45:47.593286+00:00",
+  "last_updated_at": "2026-11-22T00:01:17.413540+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-21T18:35:00-05:00",
     "rank": 240,
