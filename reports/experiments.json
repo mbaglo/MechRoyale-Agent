@@ -695,9 +695,10 @@
       "commit": "ee5931e5759e20befb46a8bb0ba2845441774ce5",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44973362843",
       "submission_id": "BB-C4DF100C",
-      "official_score": null,
-      "official_submission_status": "Scoring",
-      "submitted_at_display": "Sat 10:30 PM"
+      "official_score": 2.92,
+      "official_submission_status": "Scored",
+      "submitted_at_display": "Sat 10:30 PM",
+      "selected": false
     },
     {
       "id": "CHATGPT-MORTAR-001",
@@ -720,9 +721,10 @@
       "commit": "5ca3abdddf0bf9b7bc7f8cd6ae4e97aa7a4409f0",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44981043540",
       "hypothesis": "Reload a partial magazine during confirmed hard cover. First request at 20.3s in a recorded occlusion ending at 24.1s; 2.4s reload. Checker 300/300 max 7.9ms locally.",
-      "official_submission_status": "Unsubmitted",
-      "submission_id": null,
-      "official_score": null
+      "official_submission_status": "Scoring",
+      "submission_id": "BB-98EBDC6C",
+      "official_score": null,
+      "submitted_at_display": "Sat 10:34 PM"
     },
     {
       "id": "UNSEEN-FIRE",
@@ -754,12 +756,12 @@
     "source": "Authenticated official page"
   },
   "quota_observed": {
-    "display": "5 of 6 left this hour",
+    "display": "4 of 6 left this hour",
     "team_limit_per_rolling_hour": 4,
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10,
-  "last_updated_at": "2026-11-22T03:31:56.730939+00:00",
+  "last_updated_at": "2026-11-22T03:34:56.898582+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-21T20:05:00-05:00",
     "rank": 252,
