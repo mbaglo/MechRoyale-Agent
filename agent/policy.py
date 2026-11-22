@@ -6,6 +6,7 @@ from .strategy import Strategy
 from .navigation import Navigator
 from .combat import Combat
 from .zone_route import ZoneRoute
+from .supply import finishing_drop, stay_inside
 
 
 class Bot:
@@ -25,9 +26,12 @@ class Bot:
     def act(self, obs):
         s = self.observer.parse(obs)
         self.mode = self.strategy.choose(s)
-        goal = self.strategy.goal(s,self.mode)
+        drop = finishing_drop(s,self.config)
+        goal = drop['pos'][:2] if drop else self.strategy.goal(s,self.mode)
         goal = self.zone_route.waypoint(s,goal)
         move, boost = self.navigator.move(s,goal,self.mode,zone_detour=bool(self.zone_route.path))
+        if drop:
+            move,boost = stay_inside(s,drop,move,boost,self.world)
         aim, fire, reload = self.combat.act(s,self.mode)
         action = dict(tick=obs['tick'],move=move,boost=boost,jump=False,aim=aim,fire=fire,reload=reload)
         offer = obs.get('offer')
