@@ -694,9 +694,10 @@
       "technical_validation": "57 tests, checker 300/300 max 6.5 ms locally. The original stream has only a starter gun and all 300 commands were unchanged. With a full-charge laser injected into the same poses, 10 release commands changed to holds, all on rays outside the target cylinder. Scenario coverage includes a blocked upper-body intersection and a legal close-range release. This is pose-level release validation.",
       "commit": "ee5931e5759e20befb46a8bb0ba2845441774ce5",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44973362843",
-      "submission_id": null,
+      "submission_id": "BB-C4DF100C",
       "official_score": null,
-      "official_submission_status": "Validated, unsubmitted"
+      "official_submission_status": "Scoring",
+      "submitted_at_display": "Sat 10:30 PM"
     },
     {
       "id": "CHATGPT-MORTAR-001",
@@ -710,7 +711,38 @@
       "hypothesis": "Geometry-checked high-arc mortar attack against an enemy behind direct fire cover",
       "status": "Regression relative to selected 2.92; preserve candidate and never promote",
       "selected": false,
-      "promotion_rule": "Keep EXP-031 (2.92) selected; promote only new official score above 2.92"
+      "promotion_rule": "Keep EXP-031 (2.92) selected; promote only new official score above 2.92",
+      "submitted_at_display": "Sat 9:14 PM"
+    },
+    {
+      "id": "EXP-037",
+      "branch": "experiment/astra-covered-reload-037",
+      "commit": "5ca3abdddf0bf9b7bc7f8cd6ae4e97aa7a4409f0",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44981043540",
+      "hypothesis": "Reload a partial magazine during confirmed hard cover. First request at 20.3s in a recorded occlusion ending at 24.1s; 2.4s reload. Checker 300/300 max 7.9ms locally.",
+      "official_submission_status": "Unsubmitted",
+      "submission_id": null,
+      "official_score": null
+    },
+    {
+      "id": "UNSEEN-FIRE",
+      "branch": "experiment/solo-unseen-fire-escape-2026-11-21",
+      "commit": "6f24f0019b81c559275bbcd405b92f4f60eb0f83",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44977788911",
+      "hypothesis": "Move away from an observed damage bearing when an unseen attacker hits a stationary mech in the safe zone.",
+      "official_submission_status": "Unsubmitted",
+      "submission_id": null,
+      "official_score": null
+    },
+    {
+      "id": "RECOVERY-COMBINATION",
+      "branch": "experiment/best292-recovery-cover-combination-2026-11-21",
+      "commit": "beede6315d13da949fcf87943d916797d994d7c8",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44974099620",
+      "hypothesis": "Combine sheltered recovery with existing supply-finish priority. Earlier separate shelter trial scored 2.81.",
+      "official_submission_status": "Unsubmitted",
+      "submission_id": null,
+      "official_score": null
     }
   ],
   "best_official_entry": {
@@ -722,12 +754,12 @@
     "source": "Authenticated official page"
   },
   "quota_observed": {
-    "display": "2 of 6 left this hour",
+    "display": "5 of 6 left this hour",
     "team_limit_per_rolling_hour": 4,
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10,
-  "last_updated_at": "2026-11-22T02:06:54.117424+00:00",
+  "last_updated_at": "2026-11-22T03:31:56.730939+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-21T20:05:00-05:00",
     "rank": 252,
