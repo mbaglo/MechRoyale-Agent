@@ -697,6 +697,20 @@
       "submission_id": null,
       "official_score": null,
       "official_submission_status": "Validated, unsubmitted"
+    },
+    {
+      "id": "CHATGPT-MORTAR-001",
+      "branch": "experiment/solo-mortar-covered-target-2026-11-21",
+      "commit": "65feeefda930083bb4701a148afbfc40f92c6008",
+      "submission_id": "BB-46438060",
+      "official_score": 2.9,
+      "official_submission_status": "Scored",
+      "source": "User-provided Buildathon official score on 2026-11-21",
+      "technical_validation": "GitHub Actions 44974851691 success, official protocol and Docker validation",
+      "hypothesis": "Geometry-checked high-arc mortar attack against an enemy behind direct fire cover",
+      "status": "Regression relative to selected 2.92; preserve candidate and never promote",
+      "selected": false,
+      "promotion_rule": "Keep EXP-031 (2.92) selected; promote only new official score above 2.92"
     }
   ],
   "best_official_entry": {
@@ -712,7 +726,7 @@
     "team_limit_per_rolling_hour": 4,
     "source": "Authenticated competition page"
   },
-  "objective_official_practice_score_at_least": 10.0,
+  "objective_official_practice_score_at_least": 10,
   "last_updated_at": "2026-11-22T02:06:54.117424+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-21T20:05:00-05:00",
