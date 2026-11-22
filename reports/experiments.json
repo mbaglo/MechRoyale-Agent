@@ -990,6 +990,21 @@
       "official_score": null,
       "selected": false,
       "assessment": "Distinct safe obstacle navigation candidate. Submit only after authenticated quota/history reconciliation; preserve best official EXP-044 (3.06)."
+    },
+    {
+      "id": "CHATGPT-EARLY-SUPPLY-STAGING-001",
+      "branch": "experiment/chatgpt-early-supply-staging-2026-11-22",
+      "base_commit": "b0d240270a180f2f5a5b4a238e7a9faf1afa58e6",
+      "base_official_score": 3.06,
+      "commit": "376784eed06850653baa04d5f007054e2dbf64a0",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/45014322822",
+      "hypothesis": "The official protocol announces each of three supply drops 25s before landing and awards three cubes plus full HP and energy at capture. The baseline waits until <8s before landing and <100m before pursuing. Stage toward announced drops up to 22s ahead and 190m away only if reachable in time, healthy, in the future zone, free of tracked opponents and near-range hostile sounds/projectiles, and not already pursuing a higher-priority cube, weapon or urgent route.",
+      "technical_validation": "11 synthetic decision regressions added, 75 Python unit tests passed, recorded-action policy comparator passed, linux/amd64 Docker image passed, official competition sandbox checker 300/300 on time with zero late/missed/bad responses, max 5.6ms on runner. GitHub Actions 45014322822 successful for this exact hash. No official gameplay or placement simulation was performed.",
+      "official_submission_status": "Validated, unsubmitted",
+      "submission_id": null,
+      "official_score": null,
+      "selected": false,
+      "assessment": "Meaningful supply capture timing/resource acquisition hypothesis with guarded exposure, but no official competition score. Retain EXP-044 at 3.06 until higher authenticated official score is verified. No contest browser submission tool available to this session; do not claim submitted or consume quota."
     }
   ],
   "best_official_entry": {
