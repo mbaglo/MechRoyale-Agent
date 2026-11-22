@@ -44,7 +44,9 @@ class Observer:
         z = obs['zone']
         dist = math.dist(me['pos'][:2], z['next_center'])
         travel = max(0, dist-z['next_radius']+15)/max(1, me['stats']['walk_speed'])
-        urgent = not me['in_zone'] or obs['t']+travel+8 >= z['shrink_end']
+        # [ASTRA_FIX_2026-11-21] [CODEX_FIX_2026-11-21] A mech already inside
+        # the future safety margin has no remaining trip before this deadline.
+        urgent = not me['in_zone'] or (travel > 0 and obs['t']+travel+8 >= z['shrink_end'])
         health = me['hp']/max(1,me['max_hp'])
         recovery_window = (me['in_zone'] and health < .8 and
                            obs['t'] - self.last_exchange >= me['stats']['regen_delay'] - .5)
