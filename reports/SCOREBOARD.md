@@ -57,3 +57,4 @@ The selected entry is **EXP-044** at **3.06**. The target is **10.00**.
 | EXP-044 | [b0d240270a180f2f5a5b4a238e7a9faf1afa58e6](https://github.com/mbaglo/MechRoyale-Agent/commit/b0d240270a180f2f5a5b4a238e7a9faf1afa58e6) | BB-2F33846B | 3.06 |
 | EXP-045 | [aa29c981b126e7f22ce3d969360afe453380647b](https://github.com/mbaglo/MechRoyale-Agent/commit/aa29c981b126e7f22ce3d969360afe453380647b) | Unsubmitted | Validated, unsubmitted |
 | EXP-046 | [f03ef9078b8ab00773470f097246e2c50c1d5b75](https://github.com/mbaglo/MechRoyale-Agent/commit/f03ef9078b8ab00773470f097246e2c50c1d5b75) | Unsubmitted | Validated, unsubmitted |
+| CHATGPT-RESOURCE-MEMORY-001 | [df2f6bb061fc3ed5ee1274411b51131a0577731e](https://github.com/mbaglo/MechRoyale-Agent/commit/df2f6bb061fc3ed5ee1274411b51131a0577731e) | Unsubmitted | 71 tests / Docker / checker 300-300 passed; official score unknown |
