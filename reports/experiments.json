@@ -787,6 +787,17 @@
       "official_submission_status": "Validated, unsubmitted",
       "submission_id": null,
       "official_score": null
+    },
+    {
+      "id": "EXP-040",
+      "branch": "experiment/astra-pincer-escape-040",
+      "commit": "3dfbe14dcceaf5c1cbf91b9d51b9809b71e3a846",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44982323516",
+      "hypothesis": "Escape a stationary inner-circle hold when flanked by two nearby mechs. Rank feasible exits by nearest opponent clearance and evaluate perpendicular headings. Retain active supply and urgent zone control.",
+      "technical_validation": "54 tests; official protocol checker 300/300, max 7.3 ms locally. One-step navigation probe on official terrain at the recorded starting pose with 32 rotated diametrically opposed synthetic pairs, 55m away: parent held 31/32 and improved minimum clearance once. Candidate improved clearance at 8m on 32/32. No match or survival result inferred.",
+      "official_submission_status": "Validated, unsubmitted",
+      "submission_id": null,
+      "official_score": null
     }
   ],
   "best_official_entry": {
@@ -803,7 +814,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10,
-  "last_updated_at": "2026-11-22T03:47:16.889713+00:00",
+  "last_updated_at": "2026-11-22T03:49:39.909950+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-21T20:05:00-05:00",
     "rank": 252,
