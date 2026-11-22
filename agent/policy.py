@@ -7,6 +7,7 @@ from .navigation import Navigator
 from .combat import Combat
 from .zone_route import ZoneRoute
 from .supply import finishing_drop, stay_inside
+from .ambush_escape import AmbushEscape  # [CHATGPT_ENHANCEMENT_2026-11-21]
 
 
 class Bot:
@@ -21,6 +22,7 @@ class Bot:
         self.navigator = Navigator(self.world)
         self.zone_route = ZoneRoute(self.world)
         self.combat = Combat(self.config,self.world)
+        self.ambush_escape = AmbushEscape(self.world)  # [CHATGPT_ENHANCEMENT_2026-11-21]
         self.mode = 'balanced'
 
     def act(self, obs):
@@ -28,6 +30,14 @@ class Bot:
         self.mode = self.strategy.choose(s)
         drop = finishing_drop(s,self.config)
         goal = drop['pos'][:2] if drop else self.strategy.goal(s,self.mode)
+        # [CHATGPT_FIX_2026-11-21] The old safe-circle idle goal could
+        # leave us stationary under fire from an untracked opponent.
+        # Preserve every normal resource/zone/supply goal and only redirect
+        # an otherwise idle mech after confirmed, directional damage.
+        if not drop and math.dist(goal,s.me['pos'][:2]) < 3.:
+            escape_goal = self.ambush_escape.goal(s)
+            if escape_goal is not None:
+                goal = escape_goal
         goal = self.zone_route.waypoint(s,goal)
         move, boost = self.navigator.move(s,goal,self.mode,zone_detour=bool(self.zone_route.path))
         if drop:
