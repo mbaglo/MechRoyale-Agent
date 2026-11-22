@@ -504,7 +504,7 @@
         }
       ],
       "submitted_at_display": "Sat 6:32 PM",
-      "selected": true,
+      "selected": false,
       "assessment": "Selected by the official site. Against the 2.65 policy, this experiment raised the 48-match mean by 0.25. Changes to received damage, elimination count and individual placements are not exposed. Rebuild early-route and shelter experiments on this selected source."
     },
     {
@@ -588,9 +588,12 @@
       "technical_validation": "54 tests passed; checker 300/300 max 7.5 ms locally. Six controlled eligible drone scenarios yielded six aligned fire actions versus zero from the parent. A stationary full-health scenario completed eight hit updates without a mid-burst reload. The official recording contains no drones, and all 300 recorded actions matched the 2.90 source. No inferred match damage, cube count or placement.",
       "commit": "e91bfe42e89e8677af2aa513e6980bb5497123a3",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44966555493",
-      "submission_id": null,
-      "official_score": null,
-      "official_submission_status": "Validated, unsubmitted"
+      "submission_id": "BB-F494DF22",
+      "official_score": 2.9,
+      "official_submission_status": "Scored",
+      "submitted_at_display": "Sat 7:43 PM",
+      "selected": false,
+      "assessment": "Official tie with the selected source. Keep the earlier submission selected. The score does not reveal how many drone encounters occurred. Test preserving existing supply capture progress next."
     },
     {
       "id": "EXP-031",
@@ -599,6 +602,93 @@
       "base_official_score": 2.9,
       "hypothesis": "Preserve banked progress during the last 1.5 seconds of a supply capture when the observed holder is ourselves, zone travel is safe and known opponents cannot immediately contest the ring. Keep existing combat and safe movement within its boundary.",
       "technical_validation": "53 tests passed, official checker 300/300 max 7.0 ms locally. The official recording has no supply drops. Six controlled ground scenarios spanning three health values and two initial velocities completed six captures with the constraint versus zero with the parent behavior. This counts boundary crossings and simulated capture progress, not practice results.",
+      "commit": "76dcb1f15e5b4d27db9e2a196deef6916ac54a04",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44967708850",
+      "submission_id": "BB-33F280F9",
+      "official_score": 2.92,
+      "official_submission_status": "Scored",
+      "submitted_at_display": "Sat 8:02 PM",
+      "selected": true,
+      "assessment": "Promoted by official score at 2.92 versus 2.90. The reported result does not reveal how many late supply finishes occurred. Preserve as the baseline and test laser-cycle positioning separately."
+    },
+    {
+      "id": "EXP-032",
+      "branch": "experiment/astra-laser-cycle-on-292",
+      "base_commit": "76dcb1f15e5b4d27db9e2a196deef6916ac54a04",
+      "base_official_score": 2.92,
+      "hypothesis": "Pair a reachable firing position with nearby solid shelter while fighting a lone laser-equipped mech. Use a confirmed release to open a brief firing window and return to shelter before the next charge. Avoid permanent cover holding.",
+      "technical_validation": "56 tests, checker 300/300 max 23.5 ms locally, 21 movement changes compared with the 2.92 parent. Supply finish tests and laser cycle tests both passed. The predecessor record includes unchanged local geometry-probe outcomes.",
+      "commit": "1108e449bcd1801c489d1ece994b8caae405302c",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44969883578",
+      "submission_id": "BB-DF2C33D2",
+      "official_score": 2.92,
+      "official_submission_status": "Scored",
+      "prepared_predecessors": [
+        {
+          "branch": "experiment/astra-firing-cover-032",
+          "commit": "3dbe07e7902ba4c8abf9998b6f51526e1be62d04",
+          "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44968654823",
+          "base_commit": "27662b9a02c0677ca8b914fda223067d11065988",
+          "technical_validation": "53 tests, checker 300/300 max 17.5 ms locally. 21 recorded movement decisions changed. All five observed beam releases replayed on approximate ground paths produced one fully sheltered release for both controllers and 110 firing lanes each. In 18 synthetic cycles anchored to recorded poses with a stationary shooter, 11 versus 6 were sheltered at the next release; open firing lanes during the first second were 119 versus 121. Both checks are geometry probes.",
+          "official_submission_status": "Validated, never submitted"
+        }
+      ],
+      "submitted_at_display": "Sat 8:20 PM",
+      "selected": false,
+      "assessment": "Official tie against 2.92. Preserve the earlier supply-finish entry. The fixed-source shelter gain failed to increase official placement. The next trial evaluates contact reacquisition independently."
+    },
+    {
+      "id": "EXP-033",
+      "branch": "experiment/astra-attacker-reacquisition-033",
+      "base_commit": "76dcb1f15e5b4d27db9e2a196deef6916ac54a04",
+      "base_official_score": 2.92,
+      "hypothesis": "Orient toward the last reported location of a single confirmed attacking opponent after the engine track expires, while the estimated travel envelope fits in the field of view. Discard confirmed kills and ambiguous tracks, preserve nearer warnings and never fire at an absent opponent.",
+      "technical_validation": "56 tests, checker 300/300 max 6.2 ms locally; 82 recorded aim changes only. For the sole continuously recorded return of contact, the preceding command was 16.8 degrees from the returning bearing versus 140.1 degrees for the parent. A second return followed a 6.4-second observation gap and is excluded from the continuous comparison.",
+      "commit": "be77e0362b1bda0660c00f6f80d722eed5122e3e",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44970104273",
+      "submission_id": "BB-28686770",
+      "official_score": 2.71,
+      "official_submission_status": "Scored",
+      "submitted_at_display": "Sat 8:34 PM",
+      "selected": false,
+      "assessment": "Rejected against 2.92. The last-reported bearing matched one recorded reacquisition, but continuing to orient toward stale contacts reduced the official mean. The winning policy retains current engine-provided tracking and resumes its normal behavior when reports end. Test actual geometric isolation next."
+    },
+    {
+      "id": "EXP-034",
+      "branch": "experiment/astra-isolated-finish-034",
+      "base_commit": "76dcb1f15e5b4d27db9e2a196deef6916ac54a04",
+      "base_official_score": 2.92,
+      "hypothesis": "Use balanced mode for a short loaded-gun finishing opportunity with two nearby mechs only when exactly one exposed target can be finished and the other remains screened over sampled reachable approaches. Preserve conservative behavior under active crossfire, low reserves or a third contact.",
+      "technical_validation": "57 tests; checker 300/300 max 6.9 ms locally. No recorded command changes because the kit stream has no simultaneous opponents. In 40 constructed two-opponent configurations on official geometry, the policy relaxed 7 from conservative to balanced. An independently denser approach-angle sweep found no exposed flank in those 7; max complete decision 6.61 ms locally. Geometry and damage timing are estimates, not match outcomes.",
+      "commit": "1006cdc8679b9f90b5234d52b2faced87cf61f99",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44971524357",
+      "submission_id": "BB-A59FBC9D",
+      "official_score": 2.92,
+      "official_submission_status": "Scored",
+      "submitted_at_display": "Sat 8:44 PM",
+      "selected": false,
+      "assessment": "Official tie. Preserve the selected 2.92 source. The narrow two-opponent finishing geometry changed 7 of 40 constructed decisions, but exposure frequency in the official matches is unavailable. Proceed with the independently validated sloped-ground loot correction."
+    },
+    {
+      "id": "EXP-035",
+      "branch": "experiment/astra-ground-loot-035",
+      "base_commit": "76dcb1f15e5b4d27db9e2a196deef6916ac54a04",
+      "base_official_score": 2.92,
+      "hypothesis": "Recognize reachable ground-level weapons and cubes across sloping terrain within the existing search radius and zone safeguards. Apply the four-meter pickup-height rule when actually collecting, and continue rejecting inaccessible roof loot.",
+      "technical_validation": "56 tests, checker 300/300 max 7.3 ms locally. No recorded action changes. Of 1,600 deterministic geometry samples (seed 35), 145 had valid ground endpoints differing by at least 4 m. The parent selected none. The candidate selected all 52 with a direct walkable ground route and none of the 93 blocked routes. This is a navigation eligibility result.",
+      "commit": "169f1d53be564b30039d39359a4e430ac117287f",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44972526440",
+      "submission_id": null,
+      "official_score": null,
+      "official_submission_status": "Validated, unsubmitted"
+    },
+    {
+      "id": "EXP-036",
+      "branch": "experiment/astra-laser-release-036",
+      "base_commit": "76dcb1f15e5b4d27db9e2a196deef6916ac54a04",
+      "base_official_score": 2.92,
+      "hypothesis": "Release a fully charged game laser when its actual reported torso ray intersects a clear point on the opponent cylinder, including power-cube size scaling. Preserve the existing charging and retreat rules.",
+      "technical_validation": "57 tests, checker 300/300 max 6.5 ms locally. The original stream has only a starter gun and all 300 commands were unchanged. With a full-charge laser injected into the same poses, 10 release commands changed to holds, all on rays outside the target cylinder. Scenario coverage includes a blocked upper-body intersection and a legal close-range release. This is pose-level release validation.",
       "commit": null,
       "ci_url": null,
       "submission_id": null,
@@ -607,10 +697,10 @@
     }
   ],
   "best_official_entry": {
-    "experiment": "EXP-025",
-    "commit": "27662b9a02c0677ca8b914fda223067d11065988",
-    "submission_id": "BB-1DEA5990",
-    "score": 2.9,
+    "experiment": "EXP-031",
+    "commit": "76dcb1f15e5b4d27db9e2a196deef6916ac54a04",
+    "submission_id": "BB-33F280F9",
+    "score": 2.92,
     "selected": "Verified automatic best-scoring final entry",
     "source": "Authenticated official page"
   },
@@ -620,14 +710,14 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-22T00:36:46.433583+00:00",
+  "last_updated_at": "2026-11-22T01:47:54.522093+00:00",
   "leaderboard_observation": {
-    "observed_at": "2026-11-21T18:35:00-05:00",
-    "rank": 240,
-    "teams": 312,
-    "score": 2.9,
-    "rank_32_score": 6.06,
-    "highest_displayed_score": 6.38,
+    "observed_at": "2026-11-21T20:05:00-05:00",
+    "rank": 252,
+    "teams": 327,
+    "score": 2.92,
+    "rank_32_score": 6.13,
+    "highest_displayed_score": 6.44,
     "source": "Official expanded practice leaderboard"
   }
 }

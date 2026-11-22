@@ -22,6 +22,34 @@ def intercept(origin, target, velocity, speed):
     return [target[k]+velocity[k]*min(t,3) for k in range(3)]
 
 
+def laser_contact(origin, aim, feet, radius, height, reach):
+    """[ASTRA_FIX_2026-11-21] [CODEX_FIX_2026-11-21] First point on the game's upright mech cylinder."""
+    yaw,pitch=aim
+    ux,uy=math.cos(yaw),math.sin(yaw)
+    dx,dy=feet[0]-origin[0],feet[1]-origin[1]
+    along=dx*ux+dy*uy
+    across=dx*uy-dy*ux
+    half_sq=radius*radius-across*across
+    if half_sq<0:
+        return None
+    planar,dz=math.cos(pitch),math.sin(pitch)
+    enter,leave=0.,reach
+    if abs(planar)>1e-8:
+        half=math.sqrt(half_sq)
+        t0,t1=sorted(((along-half)/planar,(along+half)/planar))
+        enter,leave=max(enter,t0),min(leave,t1)
+    elif math.hypot(dx,dy)>radius:
+        return None
+    if abs(dz)>1e-8:
+        t0,t1=sorted(((feet[2]-origin[2])/dz,(feet[2]+height-origin[2])/dz))
+        enter,leave=max(enter,t0),min(leave,t1)
+    elif not feet[2]<=origin[2]<=feet[2]+height:
+        return None
+    if enter>leave:
+        return None
+    return [origin[0]+enter*planar*ux,origin[1]+enter*planar*uy,origin[2]+enter*dz]
+
+
 class Combat:
     def __init__(self, config, world):
         self.config, self.world = config, world
@@ -130,8 +158,14 @@ class Combat:
                 fire[i] = bool(not retreat and distance < st['range'] and me['energy'] > st['energy']+15 and abs(angle_delta(yaw,me['aim'][0])) < math.radians(st['cone_deg'])*.45 and w.get('cooldown',0)<=.1)
             elif kind=='laser':
                 charge = w.get('charge',0)
+                release = aligned
+                if charge>=st['charge'] and target['kind']=='mech' and not retreat and distance<st['range']:
+                    scale=1+self.config['cubes']['size_per_cube']*target.get('cubes',0)
+                    body=self.config['mech']
+                    impact=laser_contact(origin,me['aim'],target['pos'],body['radius']*scale,body['height']*scale,st['range'])
+                    release=impact is not None and self.world.clear(origin,impact)
                 fire[i] = bool(not retreat and distance < st['range'] and w.get('cooldown',0)<=.1 and
-                               (charge < st['charge'] or not aligned))
+                               (charge < st['charge'] or not release))
             elif kind=='mortar':
                 r = math.dist(origin[:2],aim_point[:2]); dz = aim_point[2]-origin[2]
                 possible = st['speed']**4-st['gravity']*(st['gravity']*r*r+2*dz*st['speed']**2)>=0
