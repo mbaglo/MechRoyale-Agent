@@ -130,7 +130,9 @@ class Combat:
         retreat = mode=='conservative' and distance > 55
         fire = [False,False]
         for i,w in enumerate(weapons):
-            if not w:
+            # [ASTRA_FIX_2026-11-21] [CODEX_FIX_2026-11-21] Selecting gun aim
+            # alone still lets independent secondary triggers fire at drones.
+            if not w or (target['kind'] == 'npc' and w['kind'] != 'gun'):
                 continue
             kind, st = w['kind'], w['stats']
             allowed = aligned and not retreat and w.get('cooldown',0)<=.1

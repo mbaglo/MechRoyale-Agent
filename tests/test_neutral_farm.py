@@ -72,6 +72,19 @@ class NeutralFarmTests(unittest.TestCase):
         _,fire,_=combat.act(situation,'balanced')
         self.assertEqual(fire,[True,False])
 
+    def test_drone_engagement_spends_only_gun_ammunition(self):
+        # [ASTRA_FIX_2026-11-21] [CODEX_FIX_2026-11-21]
+        self.npc['pos'][0] = 35.
+        me = self.obs['self']
+        for kind in ('lightning', 'laser', 'mortar'):
+            with self.subTest(kind=kind):
+                me['weapons'][1] = dict(kind=kind, cooldown=0., charge=0.,
+                    stats=self.hello['config']['weapons'][kind])
+                combat = Combat(self.hello['config'], OpenWorld())
+                me['aim'], _, _ = combat.act(self.situation(), 'balanced')
+                _, fire, _ = combat.act(self.situation(), 'balanced')
+                self.assertEqual(fire, [True, False])
+
     def test_never_farm_while_real_opponent_is_visible(self):
         """[CHATGPT_FIX_2026-11-21] Preserve human-mech combat priority."""
         self.obs['mechs'].append(dict(
