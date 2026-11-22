@@ -721,10 +721,11 @@
       "commit": "5ca3abdddf0bf9b7bc7f8cd6ae4e97aa7a4409f0",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44981043540",
       "hypothesis": "Reload a partial magazine during confirmed hard cover. First request at 20.3s in a recorded occlusion ending at 24.1s; 2.4s reload. Checker 300/300 max 7.9ms locally.",
-      "official_submission_status": "Scoring",
+      "official_submission_status": "Scored",
       "submission_id": "BB-98EBDC6C",
-      "official_score": null,
-      "submitted_at_display": "Sat 10:34 PM"
+      "official_score": 2.88,
+      "submitted_at_display": "Sat 10:34 PM",
+      "selected": false
     },
     {
       "id": "UNSEEN-FIRE",
@@ -732,9 +733,10 @@
       "commit": "6f24f0019b81c559275bbcd405b92f4f60eb0f83",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44977788911",
       "hypothesis": "Move away from an observed damage bearing when an unseen attacker hits a stationary mech in the safe zone.",
-      "official_submission_status": "Unsubmitted",
-      "submission_id": null,
-      "official_score": null
+      "official_submission_status": "Scoring",
+      "submission_id": "BB-79FE36C6",
+      "official_score": null,
+      "submitted_at_display": "Sat 10:38 PM"
     },
     {
       "id": "RECOVERY-COMBINATION",
@@ -756,12 +758,12 @@
     "source": "Authenticated official page"
   },
   "quota_observed": {
-    "display": "4 of 6 left this hour",
+    "display": "3 of 6 left this hour",
     "team_limit_per_rolling_hour": 4,
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10,
-  "last_updated_at": "2026-11-22T03:34:56.898582+00:00",
+  "last_updated_at": "2026-11-22T03:38:11.478977+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-21T20:05:00-05:00",
     "rank": 252,
