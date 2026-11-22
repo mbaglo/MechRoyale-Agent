@@ -38,35 +38,33 @@ def mortar_lob_solution(me, target, world, stats):
     if math.dist(point[:2], pos[:2]) <= splash*2 + 12:
         return None
 
-    # [CHATGPT_ENHANCEMENT_2026-11-21] Iterate target prediction and solve
-    # a height-corrected low and high ballistic arc. Both are tested for cover.
-    flight_time = 0.0
+    # [CHATGPT_FIX_2026-11-21] Lead EACH arc independently. Previously
+    # the high-angle solution inherited the low-angle flight time, which
+    # could make a long, lofted shot miss a moving opponent.
     options = []
-    for _ in range(2):
-        predicted = [point[k]+opponent_velocity[k]*min(3.,flight_time)
-                     for k in range(3)]
-        dx, dy = predicted[0]-origin[0], predicted[1]-origin[1]
-        horizontal = math.hypot(dx,dy)
-        dz = predicted[2]-origin[2]
-        if not 15. < horizontal < (speed*speed/gravity)*.99:
-            return None
-        square = speed**4 - gravity*(gravity*horizontal**2 + 2*dz*speed**2)
-        if square < 0:
-            return None
-        root = math.sqrt(square)
-        guesses = [
-            math.atan2(speed**2-root, gravity*horizontal),
-            math.atan2(speed**2+root, gravity*horizontal)
-        ]
-        options = []
-        for guess in guesses:
+    for branch in (0, 1):
+        flight_time = math.dist(point[:2],origin[:2])/speed
+        solution = None
+        for iteration in range(4):
+            predicted = [point[k]+opponent_velocity[k]*min(3.,flight_time)
+                         for k in range(3)]
+            dx, dy = predicted[0]-origin[0], predicted[1]-origin[1]
+            horizontal = math.hypot(dx,dy)
+            dz = predicted[2]-origin[2]
+            if not 15. < horizontal < (speed*speed/gravity)*.99:
+                break
+            square = speed**4 - gravity*(gravity*horizontal**2 + 2*dz*speed**2)
+            if square < 0:
+                break
+            root = math.sqrt(square)
+            guess = math.atan2(
+                speed**2-root if branch == 0 else speed**2+root,
+                gravity*horizontal
+            )
             angle = guess
-            # Solve for the physical muzzle displaced from the mech center.
-            # Newton refinement avoids systematic short shots near cover.
+            # Refine the analytical arc for the 3m displaced muzzle used
+            # by the game's projectile launcher.
             for _newton in range(5):
-                c, sn = math.cos(angle), math.sin(angle)
-                if c < .08:
-                    break
                 def error(theta):
                     cc, ss = math.cos(theta), math.sin(theta)
                     if cc <= .08:
@@ -88,17 +86,21 @@ def mortar_lob_solution(me, target, world, stats):
                     break
                 angle = adjusted
             if not (min_pitch <= angle <= max_pitch):
-                continue
+                break
             c = math.cos(angle)
-            t = (horizontal - muzzle_offset*c)/(speed*c)
+            t = (horizontal-muzzle_offset*c)/(speed*c)
             if t <= 0 or t > 7.:
-                continue
-            yaw = math.atan2(dy, dx)
-            options.append((t, yaw, angle, predicted, horizontal))
-        if not options:
-            return None
-        flight_time = min(v[0] for v in options)
+                break
+            yaw = math.atan2(dy,dx)
+            solution = (t, yaw, angle, predicted, horizontal)
+            if abs(t-flight_time) < .02:
+                break
+            flight_time = t
+        if solution is not None:
+            options.append(solution)
 
+    if not options:
+        return None
     # [CHATGPT_FIX_2026-11-21] The first clear ballistic arc is preferred.
     # The direct vision ray may hit a wall, but the projectile must not.
     for t, yaw, pitch, predicted, horizontal in options:
