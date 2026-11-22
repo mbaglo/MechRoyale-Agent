@@ -865,12 +865,12 @@
   "objective_official_practice_score_at_least": 10,
   "last_updated_at": "2026-11-22T03:54:42.808237+00:00",
   "leaderboard_observation": {
-    "observed_at": "2026-11-21T20:05:00-05:00",
-    "rank": 252,
-    "teams": 327,
+    "observed_at": "2026-11-22T03:55:35.820568+00:00",
+    "rank": 268,
+    "teams": 345,
     "score": 2.92,
-    "rank_32_score": 6.13,
-    "highest_displayed_score": 6.44,
+    "rank_32_score": 6.19,
+    "highest_displayed_score": 6.58,
     "source": "Official expanded practice leaderboard"
   }
 }
