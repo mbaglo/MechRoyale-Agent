@@ -945,6 +945,21 @@
       "official_score": null,
       "selected": false,
       "assessment": "Distinct high-impact defensive survival experiment; 3.06 scorer best preserved. Score effect unknown. Do not automatically submit until authenticated competition state and rolling quota reconciled."
+    },
+    {
+      "id": "CHATGPT-UPPER-BODY-COVER-001",
+      "branch": "experiment/chatgpt-partial-cover-gun-2026-11-22",
+      "base_commit": "b0d240270a180f2f5a5b4a238e7a9faf1afa58e6",
+      "base_official_score": 3.06,
+      "commit": "5dc57340bb1f49c610b1816b2faa9580fd584f0c",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44998116258",
+      "hypothesis": "With the enemy body partly hidden behind waist-high terrain, the former center-only LOS test discarded every shot. After preserving all existing unobstructed center-target options, permit a direct gun-only shot at the visible upper mech cylinder when the projectile lead ray also clears cover. Avoid secondary-weapon firing from that aim.",
+      "technical_validation": "70 Python unit tests passed including six focused new cover tests (direct-center priority, upper-center shot, blocked fallback, projected-lead check, protected secondary, and unchanged direct aim); CI Linux AMD64 Docker build succeeded; official sandbox checker answered 300/300 with zero late or missed responses on exact commit. Official gameplay/placement unknown; regression geometry is synthetic.",
+      "official_submission_status": "Validated, unsubmitted",
+      "submission_id": null,
+      "official_score": null,
+      "selected": false,
+      "assessment": "Distinct high-impact partial-cover gun attack experiment. Evaluations branch records only; existing official best EXP-044 3.06 remains selected. No authenticated competition browser available here; do not claim submission or score. Check current quota and histories before manual submission."
     }
   ],
   "best_official_entry": {
@@ -961,7 +976,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10,
-  "last_updated_at": "2026-11-22T04:58:31.059951+00:00",
+  "last_updated_at": "2026-11-22",
   "leaderboard_observation": {
     "observed_at": "2026-11-22T04:51:48.658447+00:00",
     "rank": 275,
