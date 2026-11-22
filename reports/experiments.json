@@ -646,6 +646,20 @@
       "technical_validation": "56 tests, checker 300/300 max 6.2 ms locally; 82 recorded aim changes only. For the sole continuously recorded return of contact, the preceding command was 16.8 degrees from the returning bearing versus 140.1 degrees for the parent. A second return followed a 6.4-second observation gap and is excluded from the continuous comparison.",
       "commit": "be77e0362b1bda0660c00f6f80d722eed5122e3e",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44970104273",
+      "submission_id": "BB-28686770",
+      "official_score": null,
+      "official_submission_status": "Scoring",
+      "submitted_at_display": "Sat 8:34 PM"
+    },
+    {
+      "id": "EXP-034",
+      "branch": "experiment/astra-isolated-finish-034",
+      "base_commit": "76dcb1f15e5b4d27db9e2a196deef6916ac54a04",
+      "base_official_score": 2.92,
+      "hypothesis": "Use balanced mode for a short loaded-gun finishing opportunity with two nearby mechs only when exactly one exposed target can be finished and the other remains screened over sampled reachable approaches. Preserve conservative behavior under active crossfire, low reserves or a third contact.",
+      "technical_validation": "57 tests; checker 300/300 max 6.9 ms locally. No recorded command changes because the kit stream has no simultaneous opponents. In 40 constructed two-opponent configurations on official geometry, the policy relaxed 7 from conservative to balanced. An independently denser approach-angle sweep found no exposed flank in those 7; max complete decision 6.61 ms locally. Geometry and damage timing are estimates, not match outcomes.",
+      "commit": "1006cdc8679b9f90b5234d52b2faced87cf61f99",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44971524357",
       "submission_id": null,
       "official_score": null,
       "official_submission_status": "Validated, unsubmitted"
@@ -665,7 +679,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-22T01:24:49.455394+00:00",
+  "last_updated_at": "2026-11-22T01:34:20.027507+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-21T20:05:00-05:00",
     "rank": 252,
