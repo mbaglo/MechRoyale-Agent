@@ -1,5 +1,6 @@
 """[CODEX_ENHANCEMENT_2026-11-21] Intercepts, weapon control and fire discipline."""
 import math
+from .reload_window import ReloadWindow
 
 
 def angle_delta(a, b):
@@ -25,6 +26,7 @@ def intercept(origin, target, velocity, speed):
 class Combat:
     def __init__(self, config, world):
         self.config, self.world = config, world
+        self.reload_window = ReloadWindow(world,config)
         self.target_id = None
         # [CODEX_ENHANCEMENT_2026-11-21] EXP-009: finish looking toward a
         # heard attacker before returning to the original no-target scan.
@@ -54,6 +56,8 @@ class Combat:
                 break
         reload = any(w and w['kind']=='gun' and w.get('reload',0)==0 and
                      (w.get('ammo',0)==0 or (not s.enemies and w.get('ammo',0)<w['stats']['mag']*.6)) for w in me['weapons'])
+        covered_reload = self.reload_window.can_reload(s,target)
+        reload = reload or covered_reload
         if target is None:
             # Face a heard attacker before scanning; preserve front armor.
             bearings = [e['bearing'] for e in obs.get('events',[]) if e['type']=='damaged' and e.get('bearing') is not None]
