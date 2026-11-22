@@ -504,7 +504,7 @@
         }
       ],
       "submitted_at_display": "Sat 6:32 PM",
-      "selected": true,
+      "selected": false,
       "assessment": "Selected by the official site. Against the 2.65 policy, this experiment raised the 48-match mean by 0.25. Changes to received damage, elimination count and individual placements are not exposed. Rebuild early-route and shelter experiments on this selected source."
     },
     {
@@ -605,9 +605,11 @@
       "commit": "76dcb1f15e5b4d27db9e2a196deef6916ac54a04",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44967708850",
       "submission_id": "BB-33F280F9",
-      "official_score": null,
-      "official_submission_status": "Scoring",
-      "submitted_at_display": "Sat 8:02 PM"
+      "official_score": 2.92,
+      "official_submission_status": "Scored",
+      "submitted_at_display": "Sat 8:02 PM",
+      "selected": true,
+      "assessment": "Promoted by official score at 2.92 versus 2.90. The reported result does not reveal how many late supply finishes occurred. Preserve as the baseline and test laser-cycle positioning separately."
     },
     {
       "id": "EXP-032",
@@ -624,10 +626,10 @@
     }
   ],
   "best_official_entry": {
-    "experiment": "EXP-025",
-    "commit": "27662b9a02c0677ca8b914fda223067d11065988",
-    "submission_id": "BB-1DEA5990",
-    "score": 2.9,
+    "experiment": "EXP-031",
+    "commit": "76dcb1f15e5b4d27db9e2a196deef6916ac54a04",
+    "submission_id": "BB-33F280F9",
+    "score": 2.92,
     "selected": "Verified automatic best-scoring final entry",
     "source": "Authenticated official page"
   },
@@ -637,12 +639,12 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-22T01:02:19.252607+00:00",
+  "last_updated_at": "2026-11-22T01:05:52.116727+00:00",
   "leaderboard_observation": {
-    "observed_at": "2026-11-21T19:46:00-05:00",
-    "rank": 248,
-    "teams": 323,
-    "score": 2.9,
+    "observed_at": "2026-11-21T20:05:00-05:00",
+    "rank": 252,
+    "teams": 327,
+    "score": 2.92,
     "rank_32_score": 6.13,
     "highest_displayed_score": 6.44,
     "source": "Official expanded practice leaderboard"
