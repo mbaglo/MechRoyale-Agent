@@ -12,8 +12,8 @@ resumed engineering. Do not restart Codex or submit the same candidate again.
 - Source CI: https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44974851691
 - CI: **SUCCESS**
 - Competition submission: **USER CONFIRMED**, not independently seen in competition UI
-- Competition receipt: **UNKNOWN**
-- Official practice score: **PENDING/UNKNOWN**
+- Competition receipt: **BB-46438060** (user reported)
+- Official practice score: **2.90** (Scored, user reported)
 - Existing best recorded official practice score: **2.92**
 - Best score commit: 76dcb1f15e5b4d27db9e2a196deef6916ac54a04
 - Selected final entry: keep the 2.92 winner unless a higher official score is verified.
@@ -25,9 +25,9 @@ beede6315d13da949fcf87943d916797d994d7c8
 (recovery-cover combination), and it must not be submitted without checking
 current quota and whether a stronger official result is already known.
 
-Next: retrieve the authenticated official score when a supported authorized
-route is available or after the user supplies their result; enter exact receipt,
-status and score in reports/experiments.json. Respect the November 22 11:00 AM
+Score and receipt have now been supplied by the user and recorded in
+reports/experiments.json and reports/SCOREBOARD.md. This experiment is below
+2.92; do not promote it. Respect the November 22 11:00 AM
 EST cutoff and the official team submission limit.
 
 ## Additional prepared survival experiment (not submitted)
@@ -38,8 +38,8 @@ EST cutoff and the official team submission limit.
 - Validation: **61 regression tests passed**, linux/amd64 Docker build passed,
   official conformance checker **300/300**, zero late or missing replies.
 - Official score: **UNKNOWN**; never infer score from conformance.
-- Submission: **NOT submitted**. Do not submit before checking the user-confirmed
-  mortar candidate's score and quota.
+- Submission: **NOT submitted**. The mortar result has since been received (2.90).
+  Check the current quota and pending entries before any submission.
 - Hypothesis: when the mech is already idle within a safe zone and is damaged
   by an unseen shooter, a brief collision-checked retreat/side-step from the
   confirmed attack bearing may improve survival. Preserve visible combat,
