@@ -2,7 +2,7 @@
 
 [ASTRA_ENHANCEMENT_2026-11-21]
 
-The selected entry is **EXP-042** at **2.98**. The target is **10.00**.
+The selected entry is **EXP-044** at **3.06**. The target is **10.00**.
 
 | Candidate | Exact commit | Official receipt | Score or status |
 |---|---|---|---|
@@ -54,4 +54,4 @@ The selected entry is **EXP-042** at **2.98**. The target is **10.00**.
 | EXP-041 | [a0c1204b656e07aaa09eb6d641e412aafc46fad8](https://github.com/mbaglo/MechRoyale-Agent/commit/a0c1204b656e07aaa09eb6d641e412aafc46fad8) | BB-1EAB94B7 | 2.56 |
 | EXP-042 | [280e38c51798b41671f0379b76c73b092a4ad7b6](https://github.com/mbaglo/MechRoyale-Agent/commit/280e38c51798b41671f0379b76c73b092a4ad7b6) | BB-F48B82B2 | 2.98 |
 | EXP-043 | [a57dc2d45cf593149edd699a77edbf581c7e880a](https://github.com/mbaglo/MechRoyale-Agent/commit/a57dc2d45cf593149edd699a77edbf581c7e880a) | Unsubmitted | Superseded by EXP-044 on the 2.98 baseline |
-| EXP-044 | [b0d240270a180f2f5a5b4a238e7a9faf1afa58e6](https://github.com/mbaglo/MechRoyale-Agent/commit/b0d240270a180f2f5a5b4a238e7a9faf1afa58e6) | BB-2F33846B | Scoring |
+| EXP-044 | [b0d240270a180f2f5a5b4a238e7a9faf1afa58e6](https://github.com/mbaglo/MechRoyale-Agent/commit/b0d240270a180f2f5a5b4a238e7a9faf1afa58e6) | BB-2F33846B | 3.06 |
