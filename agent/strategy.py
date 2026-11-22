@@ -1,10 +1,13 @@
 """[CODEX_ENHANCEMENT_2026-11-21] Placement-first mode transitions and goals."""
 import math
+from .resource_memory import ResourceMemory  # [CHATGPT_ENHANCEMENT_2026-11-21]
 
 
 class Strategy:
     def __init__(self):
+        """[CHATGPT_ENHANCEMENT_2026-11-21] Preserve selected strategy and observed resource memory."""
         self.mode = 'balanced'
+        self.resource_memory = ResourceMemory()
 
     def choose(self, s):
         close = [e for e in s.enemies if math.dist(e['pos'], s.me['pos']) < 100]
@@ -18,7 +21,9 @@ class Strategy:
         return self.mode
 
     def goal(self, s, mode):
+        """[CHATGPT_ENHANCEMENT_2026-11-21] Maintain visible-goal policy with safe last-seen fallback."""
         o, me = s.obs, s.me
+        remembered_resources = self.resource_memory.candidates(s)
         pos = me['pos']
         z = o['zone']
         center = z['next_center']
@@ -44,6 +49,10 @@ class Strategy:
         for p in o.get('drops', []):
             if p['lands_in'] < 8:
                 candidates.append((p, .6 if s.health < .7 else 1.2, 100))
+        # [CHATGPT_ENHANCEMENT_2026-11-21] Previously observed nearby loot
+        # can briefly outlive its FOV observation; current items keep the
+        # existing lower costs and all original filters remain authoritative.
+        candidates.extend(remembered_resources)
         options = []
         for p, cost, reach in candidates:
             distance = math.dist(p['pos'][:2], pos[:2])
