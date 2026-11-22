@@ -749,6 +749,21 @@
       "submission_id": "BB-CCC1C2D4",
       "official_score": null,
       "submitted_at_display": "Sat 10:41 PM"
+    },
+    {
+      "id": "CHATGPT-NPC-001",
+      "branch": "experiment/chatgpt-neutral-resource-farm-2026-11-21",
+      "base_commit": "76dcb1f15e5b4d27db9e2a196deef6916ac54a04",
+      "base_official_score": 2.92,
+      "commit": "9022abb52b826d2c282e88c69abe70f70a9f2de7",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44981840597",
+      "hypothesis": "Under safe conditions, gun down visible non-player drones from clear range; official protocol awards two cubes per NPC, but selected baseline completely ignores NPC combat. Keep visible-player combat unchanged and guard against recent damage, hostile sounds, incoming projectiles, low health and unsafe zone.",
+      "technical_validation": "Eight new focused tests added; complete repository Python unit test step, policy comparator and linux/amd64 Docker build all passed GitHub Actions 44981840597. No simulated match or official score inferred.",
+      "official_submission_status": "Validated, unsubmitted",
+      "submission_id": null,
+      "official_score": null,
+      "selected": false,
+      "assessment": "Significant new resource-growth strategy; unscored. Avoid submitting until pending official results and 4/hour quota are checked."
     }
   ],
   "best_official_entry": {
