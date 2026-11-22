@@ -20,16 +20,20 @@ class Bot:
         self.observer, self.strategy = Observer(), Strategy()
         self.navigator = Navigator(self.world)
         self.zone_route = ZoneRoute(self.world)
+        self.resource_route = ZoneRoute(self.world)  # [CHATGPT_ENHANCEMENT_2026-11-22]
         self.combat = Combat(self.config,self.world)
         self.mode = 'balanced'
 
     def act(self, obs):
+        """[CHATGPT_ENHANCEMENT_2026-11-22] Route safely around loot obstructions without altering combat."""
         s = self.observer.parse(obs)
         self.mode = self.strategy.choose(s)
         drop = finishing_drop(s,self.config)
         goal = drop['pos'][:2] if drop else self.strategy.goal(s,self.mode)
         goal = self.zone_route.waypoint(s,goal)
-        move, boost = self.navigator.move(s,goal,self.mode,zone_detour=bool(self.zone_route.path))
+        goal = self.resource_route.waypoint(s,goal,resource=bool(not drop and self.strategy.resource_goal))
+        move, boost = self.navigator.move(s,goal,self.mode,
+                                          zone_detour=bool(self.zone_route.path or self.resource_route.path))
         if drop:
             move,boost = stay_inside(s,drop,move,boost,self.world)
         aim, fire, reload = self.combat.act(s,self.mode)

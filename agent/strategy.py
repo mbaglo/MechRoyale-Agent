@@ -5,6 +5,7 @@ import math
 class Strategy:
     def __init__(self):
         self.mode = 'balanced'
+        self.resource_goal = False  # [CHATGPT_ENHANCEMENT_2026-11-22] Safe resource-path flag.
 
     def choose(self, s):
         close = [e for e in s.enemies if math.dist(e['pos'], s.me['pos']) < 100]
@@ -18,6 +19,8 @@ class Strategy:
         return self.mode
 
     def goal(self, s, mode):
+        """[CHATGPT_ENHANCEMENT_2026-11-22] Expose observed-resource routes without changing goal ranking."""
+        self.resource_goal = False
         o, me = s.obs, s.me
         pos = me['pos']
         z = o['zone']
@@ -52,6 +55,7 @@ class Strategy:
             if distance < reach and safe and not contested and abs(p['pos'][2]-pos[2]) < 4:
                 options.append((distance*cost, p['pos'][:2]))
         if options:
+            self.resource_goal = True  # [CHATGPT_ENHANCEMENT_2026-11-22] Only actual observed resources.
             return min(options, key=lambda p:p[0])[1]
         if mode == 'aggressive' and s.enemies:
             enemy = s.enemies[0]['pos']

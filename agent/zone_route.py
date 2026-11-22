@@ -18,6 +18,7 @@ class ZoneRoute:
         self.path = []
         self.frontier = []
         self.retry_at = 0
+        self.restrict = None  # [CHATGPT_ENHANCEMENT_2026-11-22] Optional safe-circle bounds for loot paths.
 
     def point(self, cell):
         x = self.anchor[0] + self.spacing*cell[0]
@@ -33,6 +34,7 @@ class ZoneRoute:
         self.path = []
 
     def expand(self, stats):
+        """[CHATGPT_ENHANCEMENT_2026-11-22] Keep optional resource routes inside both safe circles."""
         # Bound geometry queries per decision. Resume the same search on the next observation.
         for _ in range(3):
             if not self.frontier or len(self.cost) >= 420:
@@ -62,27 +64,51 @@ class ZoneRoute:
                 if total >= self.cost.get(other,math.inf):
                     continue
                 dest = self.point(other)
+                if self.restrict and any(math.dist(dest[:2],center) > radius
+                                         for center,radius in self.restrict):
+                    continue
                 if self.world.walkable(src,dest,stats):
                     self.cost[other],self.parent[other] = total,cell
                     heapq.heappush(self.frontier,(total+math.dist(dest[:2],self.goal),total,other))
 
-    def waypoint(self, s, goal):
+    def waypoint(self, s, goal, resource=False):
+        """[CHATGPT_ENHANCEMENT_2026-11-22] Incrementally detour around buildings for safe visible loot.
+
+        Legacy urgent-zone routing is unchanged. Resource detours are separately
+        instantiated by the policy, are disabled around visible opponents, damage
+        reserves or zone urgency, and cannot plan outside either safe circle.
+        They never invent an item position or override a finishable capture.
+        """
         me, zone = s.me, s.obs['zone']
-        pos,stats = me['pos'],me['stats']
-        if (not s.urgent or not me['grounded'] or math.dist(pos[:2],zone['next_center']) < zone['next_radius']-5
-                or abs(pos[2]-self.world.ground(*pos[:2])) > stats['step_up']):
+        pos, stats = me['pos'], me['stats']
+        circles = None
+        resource_safe = (resource and not s.urgent and not s.enemies and
+                         s.health >= .80 and me['grounded'] and me['in_zone'])
+        if resource_safe:
+            circles = ((zone['center'], zone['radius']-14),
+                       (zone['next_center'], zone['next_radius']-14))
+            if any(radius <= 18 or math.dist(pos[:2], center) >= radius or
+                   math.dist(goal, center) >= radius for center,radius in circles):
+                resource_safe = False
+        if (not (s.urgent or resource_safe) or not me['grounded'] or
+                (not resource_safe and
+                 math.dist(pos[:2], zone['next_center']) < zone['next_radius']-5) or
+                abs(pos[2]-self.world.ground(*pos[:2])) > stats['step_up']):
             self.clear()
             return goal
-        if self.anchor is not None and math.dist(self.goal,goal) > 18:
+        self.restrict = circles if resource_safe else None
+        if self.anchor is not None and math.dist(self.goal, goal) > 18:
             self.clear()
+            self.restrict = circles if resource_safe else None
         if self.path:
-            while self.path and math.dist(pos[:2],self.path[0]) < 3:
+            while self.path and math.dist(pos[:2], self.path[0]) < 3:
                 self.path.pop(0)
             for i in range(min(len(self.path),4)-1,-1,-1):
                 if self.world.walkable(pos,self.path[i],stats):
                     self.path = self.path[i:]
                     return self.path[0]
             self.clear()
+            self.restrict = circles if resource_safe else None
         if not self.frontier:
             distance = math.dist(pos[:2],goal)
             if distance < 8 or s.obs['t'] < self.retry_at:
