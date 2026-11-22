@@ -6,6 +6,7 @@ from .strategy import Strategy
 from .navigation import Navigator
 from .combat import Combat
 from .zone_route import ZoneRoute
+from .laser_duel import LaserDuel
 
 
 class Bot:
@@ -19,6 +20,7 @@ class Bot:
         self.observer, self.strategy = Observer(), Strategy()
         self.navigator = Navigator(self.world)
         self.zone_route = ZoneRoute(self.world)
+        self.laser_duel = LaserDuel(self.world,self.config)
         self.combat = Combat(self.config,self.world)
         self.mode = 'balanced'
 
@@ -27,7 +29,8 @@ class Bot:
         self.mode = self.strategy.choose(s)
         goal = self.strategy.goal(s,self.mode)
         goal = self.zone_route.waypoint(s,goal)
-        move, boost = self.navigator.move(s,goal,self.mode,zone_detour=bool(self.zone_route.path))
+        duel = self.laser_duel.goal(s)
+        move, boost = self.navigator.move(s,duel or goal,self.mode,zone_detour=bool(self.zone_route.path),duel=duel is not None)
         aim, fire, reload = self.combat.act(s,self.mode)
         action = dict(tick=obs['tick'],move=move,boost=boost,jump=False,aim=aim,fire=fire,reload=reload)
         offer = obs.get('offer')
