@@ -588,6 +588,20 @@
       "technical_validation": "54 tests passed; checker 300/300 max 7.5 ms locally. Six controlled eligible drone scenarios yielded six aligned fire actions versus zero from the parent. A stationary full-health scenario completed eight hit updates without a mid-burst reload. The official recording contains no drones, and all 300 recorded actions matched the 2.90 source. No inferred match damage, cube count or placement.",
       "commit": "e91bfe42e89e8677af2aa513e6980bb5497123a3",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44966555493",
+      "submission_id": "BB-F494DF22",
+      "official_score": null,
+      "official_submission_status": "Scoring",
+      "submitted_at_display": "Sat 7:43 PM"
+    },
+    {
+      "id": "EXP-031",
+      "branch": "experiment/astra-finish-supply-031",
+      "base_commit": "27662b9a02c0677ca8b914fda223067d11065988",
+      "base_official_score": 2.9,
+      "hypothesis": "Preserve banked progress during the last 1.5 seconds of a supply capture when the observed holder is ourselves, zone travel is safe and known opponents cannot immediately contest the ring. Keep existing combat and safe movement within its boundary.",
+      "technical_validation": "53 tests passed, official checker 300/300 max 7.0 ms locally. The official recording has no supply drops. Six controlled ground scenarios spanning three health values and two initial velocities completed six captures with the constraint versus zero with the parent behavior. This counts boundary crossings and simulated capture progress, not practice results.",
+      "commit": "76dcb1f15e5b4d27db9e2a196deef6916ac54a04",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44967708850",
       "submission_id": null,
       "official_score": null,
       "official_submission_status": "Validated, unsubmitted"
@@ -607,7 +621,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-22T00:36:46.433583+00:00",
+  "last_updated_at": "2026-11-22T00:43:15.512832+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-21T18:35:00-05:00",
     "rank": 240,
