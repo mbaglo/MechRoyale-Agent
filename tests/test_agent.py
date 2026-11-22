@@ -81,6 +81,20 @@ class AgentTests(unittest.TestCase):
         o['self']['in_zone'] = False
         self.assertTrue(self.bot.observer.parse(o).urgent)
 
+    def test_zone_deadline_depends_on_remaining_trip(self):
+        # [ASTRA_FIX_2026-11-21] [CODEX_FIX_2026-11-21]
+        o = self.quiet()
+        o['t'] = o['zone']['shrink_end'] - 1
+        o['mechs'] = [self.enemy()]
+        self.bot.act(o)
+        self.assertEqual(self.bot.mode, 'aggressive')
+        x, y = o['self']['pos'][:2]
+        o['zone']['next_center'] = [x + o['zone']['next_radius'] - 5, y]
+        self.bot.act(o)
+        self.assertEqual(self.bot.mode, 'conservative')
+        o['zone'].update(next_center=[x, y], next_radius=0)
+        self.assertTrue(self.bot.observer.parse(o).urgent)
+
     def test_retreat_preserves_regeneration(self):
         o = self.quiet()
         o['mechs'] = [self.enemy(100)]
