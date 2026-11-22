@@ -663,9 +663,11 @@
       "commit": "1006cdc8679b9f90b5234d52b2faced87cf61f99",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44971524357",
       "submission_id": "BB-A59FBC9D",
-      "official_score": null,
-      "official_submission_status": "Scoring",
-      "submitted_at_display": "Sat 8:44 PM"
+      "official_score": 2.92,
+      "official_submission_status": "Scored",
+      "submitted_at_display": "Sat 8:44 PM",
+      "selected": false,
+      "assessment": "Official tie. Preserve the selected 2.92 source. The narrow two-opponent finishing geometry changed 7 of 40 constructed decisions, but exposure frequency in the official matches is unavailable. Proceed with the independently validated sloped-ground loot correction."
     },
     {
       "id": "EXP-035",
@@ -695,7 +697,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-22T01:44:20.538193+00:00",
+  "last_updated_at": "2026-11-22T01:47:54.522093+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-21T20:05:00-05:00",
     "rank": 252,
