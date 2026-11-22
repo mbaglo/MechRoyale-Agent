@@ -1,5 +1,14 @@
 # Active Buildathon Submission — User Confirmation
 
+## Current competition status (November 22)
+
+- **Selected best:** EXP-044, **3.06**, exact source commit `b0d240270a180f2f5a5b4a238e7a9faf1afa58e6`, receipt `BB-2F33846B`. Verified in the authenticated competition-result ledger.
+- Mortar `BB-46438060`: **2.90**. Recovery combination `BB-CCC1C2D4`: **2.83**. Unseen-fire escape `BB-79FE36C6`: **2.90**. All have been scored; do not resubmit.
+- **Latest fully validated unsubmitted candidate:** safe early supply staging, source `3544e1a28f4f7aa43ee125f08ac1af98f366201a`, GitHub Actions [45014432619](https://github.com/mbaglo/MechRoyale-Agent/actions/runs/45014432619): 76 unit tests, Linux AMD64 Docker, official checker 300/300. Competitive score **unknown**. Many other unsubmitted candidates also exist in `reports/experiments.json`.
+- The bot is **not** authorized for an authenticated competition-browser submission through available connected tools in this session. No new submission was made. Reconcile live quota and any external submissions before submitting manually.
+- Deadline: November 22, 2026, **11:00 AM America/New_York**. This status supersedes historical point-in-time instructions below.
+
+
 [CHATGPT_ENHANCEMENT_2026-11-21]
 
 The user confirmed that the **mortar covered-target candidate was submitted** to
@@ -14,16 +23,14 @@ resumed engineering. Do not restart Codex or submit the same candidate again.
 - Competition submission: **USER CONFIRMED**, not independently seen in competition UI
 - Competition receipt: **BB-46438060** (user reported)
 - Official practice score: **2.90** (Scored, user reported)
-- Existing best recorded official practice score: **2.92**
+- Best recorded official practice score **at this historical point**: **2.92** (later surpassed by 3.06)
 - Best score commit: 76dcb1f15e5b4d27db9e2a196deef6916ac54a04
-- Selected final entry: keep the 2.92 winner unless a higher official score is verified.
+- Selected final entry **now**: EXP-044 at **3.06**, not this mortar submission.
 
 Do not conflate this report commit with the source submitted to the competition.
 Never change the historical candidate commit or submit a ledger-only commit.
-The other validated but unsubmitted experimental candidate is
-beede6315d13da949fcf87943d916797d994d7c8
-(recovery-cover combination), and it must not be submitted without checking
-current quota and whether a stronger official result is already known.
+The recovery-cover combination `beede6315d13da949fcf87943d916797d994d7c8`
+was subsequently submitted (`BB-CCC1C2D4`) and scored **2.83**. Do not resubmit.
 
 Score and receipt have now been supplied by the user and recorded in
 reports/experiments.json and reports/SCOREBOARD.md. This experiment is below
@@ -37,9 +44,9 @@ EST cutoff and the official team submission limit.
 - CI run: https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44977788911
 - Validation: **61 regression tests passed**, linux/amd64 Docker build passed,
   official conformance checker **300/300**, zero late or missing replies.
-- Official score: **UNKNOWN**; never infer score from conformance.
-- Submission: **NOT submitted**. The mortar result has since been received (2.90).
-  Check the current quota and pending entries before any submission.
+- Official score: **2.90** (later authenticated result; not inferred from conformance).
+- Submission: **Scored** (later receipt `BB-79FE36C6`); do not resubmit.
+  Check the current quota and pending entries before any new submission.
 - Hypothesis: when the mech is already idle within a safe zone and is damaged
   by an unseen shooter, a brief collision-checked retreat/side-step from the
   confirmed attack bearing may improve survival. Preserve visible combat,
