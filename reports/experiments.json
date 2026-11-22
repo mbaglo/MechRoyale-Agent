@@ -543,9 +543,11 @@
       "commit": "b34e3cc01d6926d10201d9b466d94c0cc773d259",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44962881931",
       "submission_id": "BB-02F7618E",
-      "official_score": null,
-      "official_submission_status": "Scoring",
-      "submitted_at_display": "Sat 7:19 PM"
+      "official_score": 2.79,
+      "official_submission_status": "Scored",
+      "submitted_at_display": "Sat 7:19 PM",
+      "selected": false,
+      "assessment": "Rejected against 2.90. The faster open-field scan may spend more time facing irrelevant bearings or change initial engagements. The isolated visibility metric improved but the official aggregate decreased. Retain tracking of confirmed opponents and evaluate defense during weapon downtime."
     },
     {
       "id": "EXP-028",
@@ -589,7 +591,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-22T00:19:22.449026+00:00",
+  "last_updated_at": "2026-11-22T00:23:40.493968+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-21T18:35:00-05:00",
     "rank": 240,
