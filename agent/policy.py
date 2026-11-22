@@ -13,12 +13,14 @@ class Bot:
     name = 'MechRoyale-Agent'
 
     def __init__(self, hello):
+        """[CHATGPT_ENHANCEMENT_2026-11-22] Share official weapon stats with navigation."""
         if hello['protocol'] != 'mechfight/1':
             raise ValueError('unsupported protocol')
         self.config = hello['config']
         self.world = World(hello['map']['dir'])
         self.observer, self.strategy = Observer(), Strategy()
-        self.navigator = Navigator(self.world)
+        # [CHATGPT_ENHANCEMENT_2026-11-22] Live gravity and splash numbers.
+        self.navigator = Navigator(self.world, self.config)
         self.zone_route = ZoneRoute(self.world)
         self.combat = Combat(self.config,self.world)
         self.mode = 'balanced'
