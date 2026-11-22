@@ -788,7 +788,7 @@
       "submission_id": "BB-255BCC39",
       "official_score": 2.94,
       "submitted_at_display": "Sat 11:35 PM",
-      "selected": true
+      "selected": false
     },
     {
       "id": "EXP-040",
@@ -860,27 +860,39 @@
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44985973930",
       "hypothesis": "On the 2.94 drone farming baseline, retain normal strategy at the shrink deadline if already inside the future safety margin.",
       "technical_validation": "63 tests passed; official checker 300/300, 7.8 ms local maximum. No recorded action differences on the starter stream; late-window targeted tests cover the decision change.",
-      "official_submission_status": "Scoring",
+      "official_submission_status": "Scored",
       "submission_id": "BB-F48B82B2",
-      "official_score": null,
-      "submitted_at_display": "Sat 11:39 PM"
+      "official_score": 2.98,
+      "submitted_at_display": "Sat 11:39 PM",
+      "selected": true
+    },
+    {
+      "id": "EXP-043",
+      "branch": "experiment/astra-finish-drone-magazine-043",
+      "commit": "a57dc2d45cf593149edd699a77edbf581c7e880a",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44986121350",
+      "hypothesis": "Avoid early reload when the remaining gun rounds can finish the targeted drone with one round in reserve.",
+      "technical_validation": "63 tests; checker 300/300, max 8.4 ms locally. In an open 90-HP drone scenario with four rounds the baseline reloaded; the candidate deferred reload. Both retain reload when the drone has 350 HP. The recording contains no drone engagements.",
+      "official_submission_status": "Validated, unsubmitted",
+      "submission_id": null,
+      "official_score": null
     }
   ],
   "best_official_entry": {
-    "experiment": "EXP-039",
-    "commit": "822ac93441bc3cad45b03803362062961ccbb33c",
-    "submission_id": "BB-255BCC39",
-    "score": 2.94,
+    "experiment": "EXP-042",
+    "commit": "280e38c51798b41671f0379b76c73b092a4ad7b6",
+    "submission_id": "BB-F48B82B2",
+    "score": 2.98,
     "selected": "Verified automatic best-scoring final entry",
     "source": "Authenticated official page"
   },
   "quota_observed": {
-    "display": "2 of 6 left this hour",
+    "display": "3 of 6 left this hour",
     "team_limit_per_rolling_hour": 4,
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10,
-  "last_updated_at": "2026-11-22T04:39:53.563253+00:00",
+  "last_updated_at": "2026-11-22T04:43:44.250495+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-22T03:55:35.820568+00:00",
     "rank": 268,
