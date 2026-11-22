@@ -960,6 +960,21 @@
       "official_score": null,
       "selected": false,
       "assessment": "Distinct high-impact partial-cover gun attack experiment. Evaluations branch records only; existing official best EXP-044 3.06 remains selected. No authenticated competition browser available here; do not claim submission or score. Check current quota and histories before manual submission."
+    },
+    {
+      "id": "CHATGPT-NEUTRAL-COLLECTION-001",
+      "branch": "experiment/chatgpt-safe-neutral-cube-collection-2026-11-22",
+      "base_commit": "b0d240270a180f2f5a5b4a238e7a9faf1afa58e6",
+      "base_official_score": 3.06,
+      "commit": "69b7dcf2b403f87be4e1b9be06bf9395f126e7e0",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/45001945718",
+      "hypothesis": "The 3.06 scorer's safe NPC farm shoots drones at ~100m while navigating back to a quiet-zone goal, leaving valuable two-cube reward out of reach. When a safe isolated drone is already eligible for shooting, take a direct collision-checked short approach to 55m standoff, then let existing resource policy retrieve its two observed cubes. Never override existing high-priority cubes, pickup, supply, zone, combat, health, ammo or threat constraints.",
+      "technical_validation": "GitHub Actions job 137145204627 success at exact hash: 76 Python unit tests (12 new collection regressions), recorded-action policy comparator, Linux AMD64 Docker build, official match-sandbox conformance 300/300 on time, zero late/missed/bad/tick errors; p99 5.6ms, max 5.9ms on runner. No interactive match or official placement data.",
+      "official_submission_status": "Validated, unsubmitted",
+      "submission_id": null,
+      "official_score": null,
+      "selected": false,
+      "assessment": "Distinct high-impact early cube acquisition experiment, but practice score remains unknown. Keep EXP-044 official 3.06 selected. Authenticated Buildathon submission unavailable here; reconcile quota and pending attempts before manual submission."
     }
   ],
   "best_official_entry": {
@@ -976,7 +991,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10,
-  "last_updated_at": "2026-11-22",
+  "last_updated_at": "2026-11-22T08:15:36Z",
   "leaderboard_observation": {
     "observed_at": "2026-11-22T04:51:48.658447+00:00",
     "rank": 275,
