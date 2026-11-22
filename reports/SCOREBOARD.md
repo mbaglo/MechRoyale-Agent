@@ -68,3 +68,7 @@ The selected entry is **EXP-044** at **3.06**. The target is **10.00**.
 | CHATGPT-NEUTRAL-COLLECTION-001 | [69b7dcf2b403f87be4e1b9be06bf9395f126e7e0](https://github.com/mbaglo/MechRoyale-Agent/commit/69b7dcf2b403f87be4e1b9be06bf9395f126e7e0) | Unsubmitted | CI passed: 76 tests, linux/amd64 Docker and official checker 300/300; score unknown |
 
 [CHATGPT_ENHANCEMENT_2026-11-21] New distinct optional drone cube-harvesting approach passed Actions [45001945718](https://github.com/mbaglo/MechRoyale-Agent/actions/runs/45001945718). The currently selected official **EXP-044** remains **3.06**. The new experiment has **no competition receipt or official score** and has not been submitted.
+
+| CHATGPT-SAFE-RESOURCE-DETOUR-001 | [9b4ebc09f75075f20df6a59b092ae823e6b08e3d](https://github.com/mbaglo/MechRoyale-Agent/commit/9b4ebc09f75075f20df6a59b092ae823e6b08e3d) | Unsubmitted | CI 45006865362 passed: 68 tests, AMD64 Docker, checker 300/300; score unknown |
+
+[CHATGPT_ENHANCEMENT_2026-11-22] Safe observed-resource A* detour candidate validated under official geometry bounds. The synthetic obstacle tests verify bounded routing, **not** score or match outcomes. Preserve selected EXP-044 (**3.06**); no submission attempted.

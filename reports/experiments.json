@@ -975,6 +975,21 @@
       "official_score": null,
       "selected": false,
       "assessment": "Distinct high-impact early cube acquisition experiment, but practice score remains unknown. Keep EXP-044 official 3.06 selected. Authenticated Buildathon submission unavailable here; reconcile quota and pending attempts before manual submission."
+    },
+    {
+      "id": "CHATGPT-SAFE-RESOURCE-DETOUR-001",
+      "branch": "experiment/chatgpt-safe-resource-detour-2026-11-22",
+      "base_commit": "b0d240270a180f2f5a5b4a238e7a9faf1afa58e6",
+      "base_official_score": 3.06,
+      "commit": "9b4ebc09f75075f20df6a59b092ae823e6b08e3d",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/45006865362",
+      "hypothesis": "The original local navigation can get stuck repeatedly pointing at a previously observed resource behind an opaque obstacle. Apply the existing bounded 8m-grid zone A* separately to visible cube, weapon and drop targets when healthy, unthreatened and fully inside both current and next safe circles; avoid out-of-zone or unsafe detours and never override urgent routing.",
+      "technical_validation": "GitHub Actions 45006865362 completed successfully for exact source hash: 68 Python unit tests (four new focused safe-resource-detour tests), existing recorded-action policy comparator, linux/amd64 Docker build, and official checker under sandbox 300/300 with zero late, missed or bad lines, max response 4.7ms. Synthetic maze tests show safe detour around an impassable wall with max 29 walkability calls per tick. No interactive match, score, survival or placement result inferred.",
+      "official_submission_status": "Validated, unsubmitted",
+      "submission_id": null,
+      "official_score": null,
+      "selected": false,
+      "assessment": "Distinct safe obstacle navigation candidate. Submit only after authenticated quota/history reconciliation; preserve best official EXP-044 (3.06)."
     }
   ],
   "best_official_entry": {
@@ -991,7 +1006,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10,
-  "last_updated_at": "2026-11-22T08:15:36Z",
+  "last_updated_at": "2026-11-22T09:18:26Z",
   "leaderboard_observation": {
     "observed_at": "2026-11-22T04:51:48.658447+00:00",
     "rank": 275,
