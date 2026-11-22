@@ -844,7 +844,7 @@
           "EXP-041": -3.184
         },
         "worst_change_m": {
-          "selected": -10.0,
+          "selected": -10,
           "EXP-040": -18.588,
           "EXP-041": -9.743
         },
@@ -915,6 +915,21 @@
       "official_submission_status": "Validated, unsubmitted",
       "submission_id": null,
       "official_score": null
+    },
+    {
+      "id": "CHATGPT-RESOURCE-MEMORY-001",
+      "branch": "experiment/chatgpt-resource-sighting-memory-2026-11-22",
+      "base_commit": "b0d240270a180f2f5a5b4a238e7a9faf1afa58e6",
+      "base_official_score": 3.06,
+      "commit": "df2f6bb061fc3ed5ee1274411b51131a0577731e",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44991145041",
+      "hypothesis": "The official 120-degree vision wedge can temporarily hide a previously seen cube or weapon pickup when the mech turns. Remember observed resource locations for at most 2.5s only if healthy, safe, in-zone, with no visible enemies, nearby shots or incoming projectiles. Visible objects retain priority and old sightings disappear once the mech approaches without a new sighting.",
+      "technical_validation": "Seven new guarded sighting-memory tests; 71 total unit tests passed, Linux AMD64 Docker build and official checker 300/300 passed with zero missed, late or invalid responses. Checker max 4.5 ms locally. Tests cover brief FOV loss, expiration, fresh resource priority, stale close-range invalidation, zone safety, opponent health and projectile/sound guards, inventory limits and no hallucinated resources. No actual match/placement data.",
+      "official_submission_status": "Validated, unsubmitted",
+      "submission_id": null,
+      "official_score": null,
+      "selected": false,
+      "assessment": "Distinct navigation reliability experiment based on explicitly observed items, not new estimated positions. Official placement effect unknown. Do not submit until current quota and all pending submissions are reconciled. The selected best remains EXP-044 (3.06)."
     }
   ],
   "best_official_entry": {
