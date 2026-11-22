@@ -1,5 +1,6 @@
 """[CODEX_ENHANCEMENT_2026-11-21] Intercepts, weapon control and fire discipline."""
 import math
+from .mortar_lob import mortar_lob_solution  # [CHATGPT_ENHANCEMENT_2026-11-21]
 
 
 def angle_delta(a, b):
@@ -46,12 +47,41 @@ class Combat:
             return d + e.get('hp',1400)*.025 - (15 if e['id'] == self.target_id else 0)
         targets.sort(key=priority)
         target = None
+        # [CHATGPT_ENHANCEMENT_2026-11-21] Preserve direct-fire priority.
+        # Retain the optional covered-target arc only when no direct shot exists.
+        lob_solution = None
+        mortar_weapon = None
         for e in targets[:8]:
             height = {'mech':4.5*(1+.05*e.get('cubes',0)), 'npc':1.75, 'crate':1.2}[e['kind']]
             point = [e['pos'][0],e['pos'][1],e['pos'][2]+height]
             if self.world.clear(origin,point):
                 target = e
                 break
+
+        # [CHATGPT_FIX_2026-11-21] Prior code could not use the mortar's
+        # documented ability to lob shells over a building: all targets first
+        # had to pass a direct line-of-fire test. Only attempt an arcing shot
+        # if every currently visible/tracked enemy is occluded, and never
+        # redirect aim away from a valid existing direct-fire opportunity.
+        if target is None and s.enemies and not s.urgent:
+            mortar_weapon = next(
+                (w for w in me['weapons']
+                 if w and w['kind'] == 'mortar' and
+                 w.get('cooldown',0) <= .1),
+                None
+            )
+            if mortar_weapon:
+                for enemy in s.enemies[:6]:
+                    enemy_dist = math.dist(enemy['pos'][:2],me['pos'][:2])
+                    # Do not spend a shell in an unsafe conservative retreat.
+                    if mode == 'conservative' and enemy_dist > 55:
+                        continue
+                    lob = mortar_lob_solution(
+                        me, enemy, self.world, mortar_weapon['stats']
+                    )
+                    if lob is not None:
+                        target, lob_solution = enemy, lob
+                        break
         reload = any(w and w['kind']=='gun' and w.get('reload',0)==0 and
                      (w.get('ammo',0)==0 or (not s.enemies and w.get('ammo',0)<w['stats']['mag']*.6)) for w in me['weapons'])
         if target is None:
@@ -96,6 +126,10 @@ class Combat:
                          (w.get('cooldown',0)<=.1 or w.get('charge',0)>0) and
                          distance < w['stats'].get('range',220)), None)
         selected = selected or next((w for w in weapons if w), None)
+        if lob_solution is not None:
+            # [CHATGPT_FIX_2026-11-21] A validated lofted trajectory must
+            # own the torso aim; direct hits remain on their original path.
+            selected = mortar_weapon
         aim_point = point
         pitch = None
         if selected and selected['kind']=='gun':
@@ -110,6 +144,8 @@ class Combat:
                 pitch = math.atan((v*v-math.sqrt(discriminant))/(g*r))
         yaw = math.atan2(aim_point[1]-origin[1],aim_point[0]-origin[0])
         pitch = pitch if pitch is not None else math.atan2(aim_point[2]-origin[2],math.dist(origin[:2],aim_point[:2]))
+        if lob_solution is not None:
+            yaw, pitch = lob_solution  # [CHATGPT_FIX_2026-11-21] checked arc
         pitch = max(me['stats']['min_pitch'],min(me['stats']['max_pitch'],pitch))
         aligned = abs(angle_delta(yaw,me['aim'][0])) < math.atan2(2,max(distance,1))+.015 and abs(pitch-me['aim'][1]) < .04
         retreat = mode=='conservative' and distance > 55
@@ -135,7 +171,12 @@ class Combat:
             elif kind=='mortar':
                 r = math.dist(origin[:2],aim_point[:2]); dz = aim_point[2]-origin[2]
                 possible = st['speed']**4-st['gravity']*(st['gravity']*r*r+2*dz*st['speed']**2)>=0
-                fire[i] = bool(allowed and selected is w and possible and distance > st['splash_radius']*2+8)
+                # [CHATGPT_FIX_2026-11-21] The checked lob already
+                # verified the correct mortar tube height, offset and arc.
+                # Keep all original alignment, cooldown and splash gates.
+                fire[i] = bool(allowed and selected is w and
+                               (possible or lob_solution is not None) and
+                               distance > st['splash_radius']*2+8)
         # [ASTRA_ENHANCEMENT_2026-11-21] Preserve an imminent regeneration window
         # while tracking a distant target. Keep close defense and finishing shots.
         if s.recovery_window and not s.urgent and not any(w and w.get('charge',0) > 0 for w in weapons):
