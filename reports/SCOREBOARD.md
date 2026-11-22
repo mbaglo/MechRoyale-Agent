@@ -76,3 +76,8 @@ The selected entry is **EXP-044** at **3.06**. The target is **10.00**.
 | CHATGPT-EARLY-SUPPLY-STAGING-001 | [3544e1a28f4f7aa43ee125f08ac1af98f366201a](https://github.com/mbaglo/MechRoyale-Agent/commit/3544e1a28f4f7aa43ee125f08ac1af98f366201a) | Unsubmitted | 76 tests, AMD64 Docker, official checker 300/300 via [CI 45014432619](https://github.com/mbaglo/MechRoyale-Agent/actions/runs/45014432619); competitive score unknown |
 
 [CHATGPT_ENHANCEMENT_2026-11-21] New early-stage supply drop approach based on the official 25-second drop announcement, three-cube reward and full HP/energy refill. Eligibility guards protect existing cube/weapon goals, zone travel, opponent safety and immediate terrain. CI verified 12 new synthetic and integrated-action regressions; no official match score is inferred. **EXP-044 remains the verified selected best at 3.06**.
+
+
+| CHATGPT-SECONDARY-SWAP-001 | [6d2c0287e7777aa495f80df3e318786a959b8731](https://github.com/mbaglo/MechRoyale-Agent/commit/6d2c0287e7777aa495f80df3e318786a959b8731) | Unsubmitted | 72 tests, linux/amd64 Docker, checker 300/300 via [CI 45018407887](https://github.com/mbaglo/MechRoyale-Agent/actions/runs/45018407887); official score unknown |
+
+[CHATGPT_ENHANCEMENT_2026-11-21] Safe full-inventory lightning-to-laser swap and observed-laser navigation passed eight new synthetic regressions and all CI checks. First CI failure was an incomplete test fixture, now corrected. This does not estimate competitive performance. **EXP-044 remains the official selected best at 3.06**. No new submission was attempted because no authenticated competition submission action is available in this session.
