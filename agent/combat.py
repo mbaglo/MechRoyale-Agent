@@ -54,12 +54,42 @@ class Combat:
             return d + e.get('hp',1400)*.025 - (15 if e['id'] == self.target_id else 0)
         targets.sort(key=priority)
         target = None
+        # [CHATGPT_ENHANCEMENT_2026-11-22] Keep the original center-hit
+        # selection strictly first. Only when *every* center ray is blocked,
+        # try a clear upper torso gun shot rather than idling behind a waist-
+        # high barrier. This is not a mortar lob or an invisible-target guess.
+        partial_target_point = None
+        center_blocked = []
         for e in targets[:8]:
             height = {'mech':4.5*(1+.05*e.get('cubes',0)), 'npc':1.75, 'crate':1.2}[e['kind']]
             point = [e['pos'][0],e['pos'][1],e['pos'][2]+height]
             if self.world.clear(origin,point):
                 target = e
                 break
+            if e['kind'] == 'mech':
+                center_blocked.append(e)
+        if target is None and center_blocked:
+            gun = next((w for w in me['weapons']
+                        if w and w['kind'] == 'gun' and
+                        w.get('ammo',0) > 0 and w.get('reload',0) <= 0), None)
+            if gun:
+                for opponent in center_blocked:
+                    # Use actual cube-scaled enemy cylinder height. A shot at
+                    # 80% height is safely inside its upper-body silhouette.
+                    scale = 1 + self.config['cubes']['size_per_cube']*opponent.get('cubes',0)
+                    upper = [opponent['pos'][0], opponent['pos'][1],
+                             opponent['pos'][2] + self.config['mech']['height']*.8*scale]
+                    if math.dist(origin,upper) >= gun['stats']['range'] - 2:
+                        continue
+                    projected = intercept(origin,upper,opponent.get('vel',[0,0,0]),
+                                          gun['stats']['speed'])
+                    # [CHATGPT_FIX_2026-11-22] Validate the *projected* shot
+                    # ray. Checking only the current position can allow a
+                    # moving target to lead the gun back into the barrier.
+                    if self.world.clear(origin,projected):
+                        target = opponent
+                        partial_target_point = upper
+                        break
         reload = any(w and w['kind']=='gun' and w.get('reload',0)==0 and
                      (w.get('ammo',0)==0 or (not s.enemies and w.get('ammo',0)<w['stats']['mag']*.6)) for w in me['weapons'])
         if target is None:
@@ -99,7 +129,8 @@ class Combat:
         # not the 9 m mech; aim at 1.75 m for an NPC center-of-mass hit.
         height = (1.2 if target['kind']=='crate' else 1.75 if target['kind']=='npc'
                   else 4.5*(1+.05*target.get('cubes',0)))
-        point = [target['pos'][0], target['pos'][1], target['pos'][2]+height]
+        point = (partial_target_point if partial_target_point is not None else
+                 [target['pos'][0], target['pos'][1], target['pos'][2]+height])
         distance = math.dist(origin,point)
         weapons = me['weapons']
         # A ready/charging secondary takes aim priority; gun otherwise.
@@ -107,6 +138,11 @@ class Combat:
                          (w.get('cooldown',0)<=.1 or w.get('charge',0)>0) and
                          distance < w['stats'].get('range',220)), None)
         selected = selected or next((w for w in weapons if w), None)
+        if partial_target_point is not None:
+            # [CHATGPT_FIX_2026-11-22] A high-body peek is a verified
+            # straight gun shot, not a mortar trajectory. Prevent a loaded
+            # secondary from hijacking this protected gun aim.
+            selected = next(w for w in weapons if w and w['kind'] == 'gun')
         if target['kind'] == 'npc':
             # [CHATGPT_ENHANCEMENT_2026-11-21] Don't waste a scarce mortar,
             # laser charge, or lightning energy on neutral farming.
@@ -136,7 +172,10 @@ class Combat:
         for i,w in enumerate(weapons):
             # [ASTRA_FIX_2026-11-21] [CODEX_FIX_2026-11-21] Selecting gun aim
             # alone still lets independent secondary triggers fire at drones.
-            if not w or (target['kind'] == 'npc' and w['kind'] != 'gun'):
+            if (not w or (target['kind'] == 'npc' and w['kind'] != 'gun') or
+                    (partial_target_point is not None and w['kind'] != 'gun')):
+                # [CHATGPT_FIX_2026-11-22] No blindly charging/firing a
+                # secondary while using an upper-body gun-only lane.
                 continue
             kind, st = w['kind'], w['stats']
             allowed = aligned and not retreat and w.get('cooldown',0)<=.1
