@@ -918,10 +918,10 @@
   "objective_official_practice_score_at_least": 10,
   "last_updated_at": "2026-11-22T04:51:12.841111+00:00",
   "leaderboard_observation": {
-    "observed_at": "2026-11-22T03:55:35.820568+00:00",
-    "rank": 268,
-    "teams": 345,
-    "score": 2.92,
+    "observed_at": "2026-11-22T04:51:48.658447+00:00",
+    "rank": 275,
+    "teams": 354,
+    "score": 3.06,
     "rank_32_score": 6.19,
     "highest_displayed_score": 6.58,
     "source": "Official expanded practice leaderboard"
