@@ -45,5 +45,5 @@ The selected entry is **EXP-031** at **2.92**. The target is **10.00**.
 | EXP-036 | [ee5931e5759e20befb46a8bb0ba2845441774ce5](https://github.com/mbaglo/MechRoyale-Agent/commit/ee5931e5759e20befb46a8bb0ba2845441774ce5) | BB-C4DF100C | 2.92 |
 | CHATGPT-MORTAR-001 | [65feeefda930083bb4701a148afbfc40f92c6008](https://github.com/mbaglo/MechRoyale-Agent/commit/65feeefda930083bb4701a148afbfc40f92c6008) | BB-46438060 | 2.90 |
 | EXP-037 | [5ca3abdddf0bf9b7bc7f8cd6ae4e97aa7a4409f0](https://github.com/mbaglo/MechRoyale-Agent/commit/5ca3abdddf0bf9b7bc7f8cd6ae4e97aa7a4409f0) | BB-98EBDC6C | 2.88 |
-| UNSEEN-FIRE | [6f24f0019b81c559275bbcd405b92f4f60eb0f83](https://github.com/mbaglo/MechRoyale-Agent/commit/6f24f0019b81c559275bbcd405b92f4f60eb0f83) | BB-79FE36C6 | Scoring |
-| RECOVERY-COMBINATION | [beede6315d13da949fcf87943d916797d994d7c8](https://github.com/mbaglo/MechRoyale-Agent/commit/beede6315d13da949fcf87943d916797d994d7c8) | Unsubmitted | Unsubmitted |
+| UNSEEN-FIRE | [6f24f0019b81c559275bbcd405b92f4f60eb0f83](https://github.com/mbaglo/MechRoyale-Agent/commit/6f24f0019b81c559275bbcd405b92f4f60eb0f83) | BB-79FE36C6 | 2.90 |
+| RECOVERY-COMBINATION | [beede6315d13da949fcf87943d916797d994d7c8](https://github.com/mbaglo/MechRoyale-Agent/commit/beede6315d13da949fcf87943d916797d994d7c8) | BB-CCC1C2D4 | Scoring |

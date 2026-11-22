@@ -733,10 +733,11 @@
       "commit": "6f24f0019b81c559275bbcd405b92f4f60eb0f83",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44977788911",
       "hypothesis": "Move away from an observed damage bearing when an unseen attacker hits a stationary mech in the safe zone.",
-      "official_submission_status": "Scoring",
+      "official_submission_status": "Scored",
       "submission_id": "BB-79FE36C6",
-      "official_score": null,
-      "submitted_at_display": "Sat 10:38 PM"
+      "official_score": 2.9,
+      "submitted_at_display": "Sat 10:38 PM",
+      "selected": false
     },
     {
       "id": "RECOVERY-COMBINATION",
@@ -744,9 +745,10 @@
       "commit": "beede6315d13da949fcf87943d916797d994d7c8",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44974099620",
       "hypothesis": "Combine sheltered recovery with existing supply-finish priority. Earlier separate shelter trial scored 2.81.",
-      "official_submission_status": "Unsubmitted",
-      "submission_id": null,
-      "official_score": null
+      "official_submission_status": "Scoring",
+      "submission_id": "BB-CCC1C2D4",
+      "official_score": null,
+      "submitted_at_display": "Sat 10:41 PM"
     }
   ],
   "best_official_entry": {
@@ -758,12 +760,12 @@
     "source": "Authenticated official page"
   },
   "quota_observed": {
-    "display": "3 of 6 left this hour",
+    "display": "2 of 6 left this hour",
     "team_limit_per_rolling_hour": 4,
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10,
-  "last_updated_at": "2026-11-22T03:38:11.478977+00:00",
+  "last_updated_at": "2026-11-22T03:42:04.585097+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-21T20:05:00-05:00",
     "rank": 252,
