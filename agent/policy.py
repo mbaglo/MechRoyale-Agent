@@ -7,6 +7,7 @@ from .navigation import Navigator
 from .combat import Combat
 from .zone_route import ZoneRoute
 from .supply import finishing_drop, stay_inside
+from .weapon_swap import safe_laser_replacements  # [CHATGPT_ENHANCEMENT_2026-11-21]
 
 
 class Bot:
@@ -24,6 +25,7 @@ class Bot:
         self.mode = 'balanced'
 
     def act(self, obs):
+        """[CHATGPT_ENHANCEMENT_2026-11-21] Preserve original decision; allow guarded full-slot weapon swap."""
         s = self.observer.parse(obs)
         self.mode = self.strategy.choose(s)
         drop = finishing_drop(s,self.config)
@@ -47,6 +49,17 @@ class Bot:
                   math.dist(p['pos'][:2],me['pos'][:2]) <= self.config['loot']['pickup_radius'] and abs(p['pos'][2]-me['pos'][2])<=4]
         if nearby and any(w is None for w in me['weapons']):
             action['take'] = min(nearby,key=lambda p:math.dist(p['pos'],me['pos']))['id']
+        # [CHATGPT_ENHANCEMENT_2026-11-21] The official take+drop action lets
+        # us replace a short-range secondary without dropping the starter gun.
+        # Do this only in a verified quiet state and pickup reach.
+        if not any(w is None for w in me['weapons']):
+            radius = self.config['loot']['pickup_radius']
+            eligible = [p for p in safe_laser_replacements(s)
+                        if math.dist(p['pos'][:2], me['pos'][:2]) <= radius and
+                        abs(p['pos'][2] - me['pos'][2]) <= 4]
+            if eligible:
+                action['take'] = min(eligible, key=lambda p: math.dist(p['pos'], me['pos']))['id']
+                action['drop'] = 1
         # Keep serialization strict: a non-finite result is never a legal action.
         if not all(math.isfinite(v) for v in action['move']+action['aim']):
             raise ValueError('non-finite action')
