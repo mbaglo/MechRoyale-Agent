@@ -679,9 +679,11 @@
       "commit": "169f1d53be564b30039d39359a4e430ac117287f",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44972526440",
       "submission_id": "BB-BEE2E070",
-      "official_score": null,
-      "official_submission_status": "Scoring",
-      "submitted_at_display": "Sat 9:03 PM"
+      "official_score": 2.92,
+      "official_submission_status": "Scored",
+      "submitted_at_display": "Sat 9:03 PM",
+      "selected": false,
+      "assessment": "Official tie. Keep the earlier selected 2.92 entry. Locally the eligibility correction recognized 52 direct ground routes, but its frequency and opportunity costs in practice are undocumented. Evaluate laser release separately."
     },
     {
       "id": "EXP-036",
@@ -711,7 +713,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-22T02:03:19.664133+00:00",
+  "last_updated_at": "2026-11-22T02:06:54.117424+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-21T20:05:00-05:00",
     "rank": 252,
