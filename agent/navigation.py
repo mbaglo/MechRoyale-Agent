@@ -28,6 +28,24 @@ class Navigator:
         # The inner-circle goal follows our current position. Holding it during
         # an exposed duel otherwise makes every moving candidate lose progress.
         lateral_axis = None
+        # [ASTRA_ENHANCEMENT_2026-11-21] [CODEX_ENHANCEMENT_2026-11-21]
+        # A held circle goal can pin the mech between two opponents. Score
+        # escape by clearance from the closest one, including a sideways exit.
+        escape_from = []
+        if distance < .01 and mode == 'conservative' and not s.urgent:
+            nearby = [e['pos'][:2] for e in s.enemies if math.dist(e['pos'], pos) < 100]
+            if len(nearby) >= 2 and not any(
+                    d['lands_in'] <= 0 and math.dist(pos[:2], d['pos'][:2]) <= d['radius']
+                    for d in o.get('drops', [])):
+                escape_from = nearby
+                look = 8
+                # Test both perpendicular exits even when the line between
+                # opponents falls between the navigator's sampled headings.
+                ex = nearby[1][0] - nearby[0][0]
+                ey = nearby[1][1] - nearby[0][1]
+                length = math.hypot(ex, ey)
+                if length > 1:
+                    candidates.extend([(-ey/length, ex/length), (ey/length, -ex/length)])
         if distance < .01 and mode == 'balanced' and len(s.enemies) == 1 and not s.urgent:
             enemy = s.enemies[0]
             ep = enemy['pos']
@@ -49,6 +67,8 @@ class Navigator:
             if (dx or dy) and not self.world.walkable(pos, end, stats):
                 continue
             progress = distance-math.dist(end[:2], goal)
+            if escape_from:
+                progress = min(math.dist(end[:2], enemy) for enemy in escape_from)
             score = progress*(4 if s.urgent else 1)
             if lateral_axis is not None:
                 # Both tangents are legal. Existing obstacle, hazard, zone and

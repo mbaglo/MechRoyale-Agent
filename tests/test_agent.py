@@ -81,6 +81,20 @@ class AgentTests(unittest.TestCase):
         o['self']['in_zone'] = False
         self.assertTrue(self.bot.observer.parse(o).urgent)
 
+    def test_escape_across_two_opposing_mechs_at_held_goal(self):
+        # [ASTRA_FIX_2026-11-21] [CODEX_FIX_2026-11-21]
+        o = self.quiet()
+        p = o['self']['pos']
+        o['mechs'] = [self.enemy(55), dict(self.enemy(-55), id=7)]
+        self.bot.world.walkable = lambda *args: True
+        self.bot.world.clear = lambda *args: True
+        action = self.bot.act(o)
+        self.assertEqual(self.bot.mode, 'conservative')
+        self.assertGreater(abs(action['move'][1]), .9)
+        for opponent in o['mechs']:
+            endpoint = [p[i]+20*action['move'][i] for i in range(2)]
+            self.assertGreater(math.dist(endpoint, opponent['pos'][:2]), 55)
+
     def test_retreat_preserves_regeneration(self):
         o = self.quiet()
         o['mechs'] = [self.enemy(100)]
