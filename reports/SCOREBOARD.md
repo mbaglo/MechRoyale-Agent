@@ -58,3 +58,6 @@ The selected entry is **EXP-044** at **3.06**. The target is **10.00**.
 | EXP-045 | [aa29c981b126e7f22ce3d969360afe453380647b](https://github.com/mbaglo/MechRoyale-Agent/commit/aa29c981b126e7f22ce3d969360afe453380647b) | Unsubmitted | Validated, unsubmitted |
 | EXP-046 | [f03ef9078b8ab00773470f097246e2c50c1d5b75](https://github.com/mbaglo/MechRoyale-Agent/commit/f03ef9078b8ab00773470f097246e2c50c1d5b75) | Unsubmitted | Validated, unsubmitted |
 | CHATGPT-RESOURCE-MEMORY-001 | [df2f6bb061fc3ed5ee1274411b51131a0577731e](https://github.com/mbaglo/MechRoyale-Agent/commit/df2f6bb061fc3ed5ee1274411b51131a0577731e) | Unsubmitted | 71 tests / Docker / checker 300-300 passed; official score unknown |
+| CHATGPT-INCOMING-FIRE-001 | [25e6fe8146700f131e41c70f1a734d8c7cef70c4](https://github.com/mbaglo/MechRoyale-Agent/commit/25e6fe8146700f131e41c70f1a734d8c7cef70c4) | Unsubmitted | CI passed: predictive mortar splash + incoming-bullet evasive movement; official score unknown |
+
+[CHATGPT_ENHANCEMENT_2026-11-22] This candidate is **validated but unsubmitted**; the selected EXP-044 score **3.06** remains unchanged. CI 44993311532 passed unit tests, comparator, Docker and official sandbox check. No simulated match or competition score has been inferred.
