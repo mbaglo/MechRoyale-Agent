@@ -678,6 +678,20 @@
       "technical_validation": "56 tests, checker 300/300 max 7.3 ms locally. No recorded action changes. Of 1,600 deterministic geometry samples (seed 35), 145 had valid ground endpoints differing by at least 4 m. The parent selected none. The candidate selected all 52 with a direct walkable ground route and none of the 93 blocked routes. This is a navigation eligibility result.",
       "commit": "169f1d53be564b30039d39359a4e430ac117287f",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44972526440",
+      "submission_id": "BB-BEE2E070",
+      "official_score": null,
+      "official_submission_status": "Scoring",
+      "submitted_at_display": "Sat 9:03 PM"
+    },
+    {
+      "id": "EXP-036",
+      "branch": "experiment/astra-laser-release-036",
+      "base_commit": "76dcb1f15e5b4d27db9e2a196deef6916ac54a04",
+      "base_official_score": 2.92,
+      "hypothesis": "Release a fully charged game laser when its actual reported torso ray intersects a clear point on the opponent cylinder, including power-cube size scaling. Preserve the existing charging and retreat rules.",
+      "technical_validation": "57 tests, checker 300/300 max 6.5 ms locally. The original stream has only a starter gun and all 300 commands were unchanged. With a full-charge laser injected into the same poses, 10 release commands changed to holds, all on rays outside the target cylinder. Scenario coverage includes a blocked upper-body intersection and a legal close-range release. This is pose-level release validation.",
+      "commit": "ee5931e5759e20befb46a8bb0ba2845441774ce5",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44973362843",
       "submission_id": null,
       "official_score": null,
       "official_submission_status": "Validated, unsubmitted"
@@ -697,7 +711,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-22T01:47:54.522093+00:00",
+  "last_updated_at": "2026-11-22T02:03:19.664133+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-21T20:05:00-05:00",
     "rank": 252,
