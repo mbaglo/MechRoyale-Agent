@@ -70,13 +70,16 @@ class SecondarySwapTests(unittest.TestCase):
         self.assertNotIn('take', self.action())
 
     def test_zone_grounding_and_capture_protected(self):
+        """[CHATGPT_FIX_2026-11-21] Supply fixture includes all protocol-required fields."""
         self.obs['self']['in_zone'] = False
         self.assertNotIn('take', self.action())
         self.obs['self']['in_zone'] = True
         self.obs['self']['grounded'] = False
         self.assertNotIn('take', self.action())
         self.obs['self']['grounded'] = True
-        self.obs['drops'] = [dict(holder=self.obs['self']['id'], progress=1.)]
+        self.obs['drops'] = [dict(id=20000, pos=[0., 0., 0.], radius=8.,
+                                  lands_in=0., capture_s=4.,
+                                  holder=self.obs['self']['id'], progress=1.)]
         self.assertNotIn('take', self.action())
 
     def test_damage_warning_sound_and_projectile_protected(self):
