@@ -10,6 +10,7 @@ from test_agent import recording
 from agent.drop_approach import stage_supply_goal
 from agent.observation import Observer
 from agent.strategy import Strategy
+from agent.policy import Bot
 
 
 class WalkableWorld:
@@ -29,6 +30,7 @@ class EarlySupplyStagingTests(unittest.TestCase):
 
     def setUp(self):
         hello, frames = recording()
+        self.hello = hello
         self.obs = copy.deepcopy(frames[0])
         self.obs.update(t=75., tick=1500, mechs=[], events=[], sounds=[],
                         cubes=[], projectiles=[], pickups=[], drops=[], crates=[])
@@ -124,6 +126,23 @@ class EarlySupplyStagingTests(unittest.TestCase):
                                       lands_in=14., radius=8., capture_s=4.,
                                       progress=0., holder=None))
         self.assertEqual(self.choose()[1], [110., 15.])
+
+
+    def test_integrated_bot_moves_toward_drop_without_overriding_warning(self):
+        """[CHATGPT_ENHANCEMENT_2026-11-21] End-to-end action distinguishes early route."""
+        def bot_action():
+            bot = Bot(self.hello)
+            bot.world = self.world
+            bot.navigator.world = self.world
+            bot.zone_route.world = self.world
+            bot.combat.world = self.world
+            bot.combat.neutral_farm.world = self.world
+            return bot.act(copy.deepcopy(self.obs))
+        move = bot_action()['move']
+        self.assertGreater(move[0], .9)
+        self.assertLess(abs(move[1]), .01)
+        self.obs['sounds'] = [dict(kind='gun', dist='near', bearing=0., age=.1)]
+        self.assertEqual(bot_action()['move'], [0., 0.])
 
 
 if __name__ == '__main__':
