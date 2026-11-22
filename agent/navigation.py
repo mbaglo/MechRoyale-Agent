@@ -1,10 +1,13 @@
 """[CODEX_ENHANCEMENT_2026-11-21] Bounded local movement with hazard scoring."""
 import math
+from .incoming_fire import mortar_impacts, incoming_bullet, explosive_risk, immediate_blast_warning
 
 
 class Navigator:
-    def __init__(self, world):
+    def __init__(self, world, config=None):
+        """[CHATGPT_ENHANCEMENT_2026-11-22] Read live weapon physics when available."""
         self.world = world
+        self.config = config or {}
         self.previous = (0, 0)
         self.anchor = None
         self.anchor_t = 0
@@ -12,6 +15,7 @@ class Navigator:
         self.side = 1
 
     def move(self, s, goal, mode, zone_detour=False):
+        """[CHATGPT_FIX_2026-11-22] Keep zone/cover movement and dodge imminent impacts."""
         me, o = s.me, s.obs
         pos, stats = me['pos'], me['stats']
         if self.anchor is None or o['t']-self.anchor_t > 1.5:
@@ -44,6 +48,10 @@ class Navigator:
         best, best_score = (0., 0.), -float('inf')
         # Limit detailed collision checks to the nearest projectiles.
         bullets = sorted(o.get('projectiles', []), key=lambda p:math.dist(p['pos'],pos))[:16]
+        # [CHATGPT_ENHANCEMENT_2026-11-22] Precompute ballistics once, not
+        # inside each candidate. Visible mortar shells fall under gravity.
+        impacts = mortar_impacts(bullets, self.world, self.config, me)
+        incoming_danger = immediate_blast_warning(me, impacts) or incoming_bullet(bullets, me)
         for dx, dy in candidates:
             end = [pos[0]+dx*look, pos[1]+dy*look, pos[2]]
             if (dx or dy) and not self.world.walkable(pos, end, stats):
@@ -87,11 +95,18 @@ class Navigator:
                 height = rel[2]+vel[2]*t
                 if -2 < height < stats.get('height',9)+2:
                     score -= max(0, stats.get('radius',2.5)+2-horizontal)*5
+            if impacts:
+                # [CHATGPT_ENHANCEMENT_2026-11-22] Respect collision, splash,
+                # actual ground acceleration and walls blocking blast damage.
+                score -= explosive_risk(pos,me['vel'],(dx,dy),stats,impacts,self.world)
             if score > best_score:
                 best, best_score = (dx,dy), score
         self.previous = best
         boost = bool(me['energy'] > 30 and (s.urgent or (mode == 'conservative' and s.enemies)))
         # Do not spend energy or create footstep sounds while already at a quiet goal.
-        if distance < 2 and not s.enemies and not s.urgent:
+        # [CHATGPT_FIX_2026-11-22] Never override a defensive movement choice
+        # merely because the current goal is already reached. The previous
+        # unconditional idle made an isolated mech ignore incoming fire.
+        if distance < 2 and not s.enemies and not s.urgent and not incoming_danger:
             best, boost = (0., 0.), False
         return list(best), boost
