@@ -132,6 +132,16 @@ class NeutralFarmTests(unittest.TestCase):
         self.obs['self']['in_zone']=False
         self.assertEqual(farm.targets(self.situation()),[])
 
+    def test_partial_magazine_finishes_an_affordable_drone(self):
+        # [ASTRA_FIX_2026-11-21] [CODEX_FIX_2026-11-21]
+        self.obs['self']['weapons'][0]['ammo'] = 4
+        combat = Combat(self.hello['config'], OpenWorld())
+        for hp, expect_reload in ((90., False), (350., True)):
+            with self.subTest(hp=hp):
+                self.npc['hp'] = hp
+                _, _, reload = combat.act(self.situation(), 'balanced')
+                self.assertEqual(reload, expect_reload)
+
     def test_secondary_weapon_is_not_wasted_on_drone(self):
         """[CHATGPT_FIX_2026-11-21] Preserve mortar for opponent encounters."""
         self.obs['self']['weapons'][1]=dict(
