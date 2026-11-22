@@ -608,7 +608,7 @@
       "official_score": 2.92,
       "official_submission_status": "Scored",
       "submitted_at_display": "Sat 8:02 PM",
-      "selected": true,
+      "selected": false,
       "assessment": "Promoted by official score at 2.92 versus 2.90. The reported result does not reveal how many late supply finishes occurred. Preserve as the baseline and test laser-cycle positioning separately."
     },
     {
@@ -784,10 +784,11 @@
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44982125900",
       "hypothesis": "Farm healthy isolated drones with gun ammunition only. Correct leaked lightning and laser trigger commands in the unsubmitted NPC farm branch.",
       "technical_validation": "Two secondary-slot subtests failed before the fix and all three passed after. 62 tests; 300 official checker observations, max 6.1 ms locally; unchanged recorded actions versus selected 2.92. No local match score.",
-      "official_submission_status": "Scoring",
+      "official_submission_status": "Scored",
       "submission_id": "BB-255BCC39",
-      "official_score": null,
-      "submitted_at_display": "Sat 11:35 PM"
+      "official_score": 2.94,
+      "submitted_at_display": "Sat 11:35 PM",
+      "selected": true
     },
     {
       "id": "EXP-040",
@@ -796,7 +797,7 @@
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44982323516",
       "hypothesis": "Escape a stationary inner-circle hold when flanked by two nearby mechs. Rank feasible exits by nearest opponent clearance and evaluate perpendicular headings. Retain active supply and urgent zone control.",
       "technical_validation": "54 tests; official protocol checker 300/300, max 7.3 ms locally. One-step navigation probe on official terrain at the recorded starting pose with 32 rotated diametrically opposed synthetic pairs, 55m away: parent held 31/32 and improved minimum clearance once. Candidate improved clearance at 8m on 32/32. No match or survival result inferred.",
-      "official_submission_status": "Held for EXP-041 official result",
+      "official_submission_status": "Held after EXP-041 regression",
       "submission_id": null,
       "official_score": null,
       "multi_step_navigation_probe": {
@@ -822,7 +823,8 @@
           55
         ],
         "decisions_per_condition": 320
-      }
+      },
+      "interpretation": "Deprioritized the sibling pincer intervention after EXP-041 scored 2.56 versus its 2.92 parent. EXP-040 has no official result."
     },
     {
       "id": "EXP-041",
@@ -853,20 +855,20 @@
     }
   ],
   "best_official_entry": {
-    "experiment": "EXP-031",
-    "commit": "76dcb1f15e5b4d27db9e2a196deef6916ac54a04",
-    "submission_id": "BB-33F280F9",
-    "score": 2.92,
+    "experiment": "EXP-039",
+    "commit": "822ac93441bc3cad45b03803362062961ccbb33c",
+    "submission_id": "BB-255BCC39",
+    "score": 2.94,
     "selected": "Verified automatic best-scoring final entry",
     "source": "Authenticated official page"
   },
   "quota_observed": {
-    "display": "2 of 6 left this hour",
+    "display": "3 of 6 left this hour",
     "team_limit_per_rolling_hour": 4,
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10,
-  "last_updated_at": "2026-11-22T04:35:16.708573+00:00",
+  "last_updated_at": "2026-11-22T04:38:05.138603+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-22T03:55:35.820568+00:00",
     "rank": 268,
