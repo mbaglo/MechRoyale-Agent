@@ -764,6 +764,17 @@
       "official_score": null,
       "selected": false,
       "assessment": "Significant new resource-growth strategy; unscored. Avoid submitting until pending official results and 4/hour quota are checked."
+    },
+    {
+      "id": "EXP-038",
+      "branch": "experiment/astra-inside-zone-deadline-038",
+      "commit": "8e2da949c413cf109f34d8cb8f339c87fec77dbd",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44981920990",
+      "hypothesis": "Suppress deadline-driven retreat when already inside the next zone safety margin. Keep outside-zone and final-circle urgency.",
+      "technical_validation": "54 tests; official checker 300/300 within 9.8 ms locally. No movement, target, mode, boost, fire, take or aim differences on the recording. Near-deadline scenarios confirm aggressive mode in the interior, conservative mode at the margin and urgency at zero radius.",
+      "official_submission_status": "Validated, unsubmitted",
+      "submission_id": null,
+      "official_score": null
     }
   ],
   "best_official_entry": {
