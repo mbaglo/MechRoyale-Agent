@@ -662,6 +662,20 @@
       "technical_validation": "57 tests; checker 300/300 max 6.9 ms locally. No recorded command changes because the kit stream has no simultaneous opponents. In 40 constructed two-opponent configurations on official geometry, the policy relaxed 7 from conservative to balanced. An independently denser approach-angle sweep found no exposed flank in those 7; max complete decision 6.61 ms locally. Geometry and damage timing are estimates, not match outcomes.",
       "commit": "1006cdc8679b9f90b5234d52b2faced87cf61f99",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44971524357",
+      "submission_id": "BB-A59FBC9D",
+      "official_score": null,
+      "official_submission_status": "Scoring",
+      "submitted_at_display": "Sat 8:44 PM"
+    },
+    {
+      "id": "EXP-035",
+      "branch": "experiment/astra-ground-loot-035",
+      "base_commit": "76dcb1f15e5b4d27db9e2a196deef6916ac54a04",
+      "base_official_score": 2.92,
+      "hypothesis": "Recognize reachable ground-level weapons and cubes across sloping terrain within the existing search radius and zone safeguards. Apply the four-meter pickup-height rule when actually collecting, and continue rejecting inaccessible roof loot.",
+      "technical_validation": "56 tests, checker 300/300 max 7.3 ms locally. No recorded action changes. Of 1,600 deterministic geometry samples (seed 35), 145 had valid ground endpoints differing by at least 4 m. The parent selected none. The candidate selected all 52 with a direct walkable ground route and none of the 93 blocked routes. This is a navigation eligibility result.",
+      "commit": "169f1d53be564b30039d39359a4e430ac117287f",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44972526440",
       "submission_id": null,
       "official_score": null,
       "official_submission_status": "Validated, unsubmitted"
@@ -681,7 +695,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-22T01:37:49.164402+00:00",
+  "last_updated_at": "2026-11-22T01:44:20.538193+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-21T20:05:00-05:00",
     "rank": 252,
