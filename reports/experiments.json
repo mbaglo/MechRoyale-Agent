@@ -559,9 +559,11 @@
       "commit": "1ebe62781e975006ced3d95013a432f8cb262063",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44963568161",
       "submission_id": "BB-ECFD930D",
-      "official_score": null,
-      "official_submission_status": "Scoring",
-      "submitted_at_display": "Sat 7:33 PM"
+      "official_score": 2.85,
+      "official_submission_status": "Scored",
+      "submitted_at_display": "Sat 7:33 PM",
+      "selected": false,
+      "assessment": "Rejected against the 2.90 parent. The synthetic reduction in rear-facing bearings during reload did not carry through to the official aggregate. Actual opponents move during the reload and a torso turn can give up sensor coverage on the primary opponent. Cause unverified. Evaluate safe starter-drone encounters next."
     },
     {
       "id": "EXP-029",
@@ -605,7 +607,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-22T00:33:19.133479+00:00",
+  "last_updated_at": "2026-11-22T00:36:46.433583+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-21T18:35:00-05:00",
     "rank": 240,
