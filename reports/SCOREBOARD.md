@@ -49,3 +49,4 @@ The selected entry is **EXP-031** at **2.92**. The target is **10.00**.
 | RECOVERY-COMBINATION | [beede6315d13da949fcf87943d916797d994d7c8](https://github.com/mbaglo/MechRoyale-Agent/commit/beede6315d13da949fcf87943d916797d994d7c8) | BB-CCC1C2D4 | 2.83 |
 | CHATGPT-NPC-001 | [9022abb52b826d2c282e88c69abe70f70a9f2de7](https://github.com/mbaglo/MechRoyale-Agent/commit/9022abb52b826d2c282e88c69abe70f70a9f2de7) | Unsubmitted | Validated, unsubmitted |
 | EXP-038 | [8e2da949c413cf109f34d8cb8f339c87fec77dbd](https://github.com/mbaglo/MechRoyale-Agent/commit/8e2da949c413cf109f34d8cb8f339c87fec77dbd) | Unsubmitted | Validated, unsubmitted |
+| EXP-039 | [822ac93441bc3cad45b03803362062961ccbb33c](https://github.com/mbaglo/MechRoyale-Agent/commit/822ac93441bc3cad45b03803362062961ccbb33c) | Unsubmitted | Validated, unsubmitted |

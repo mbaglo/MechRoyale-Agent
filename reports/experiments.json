@@ -776,6 +776,17 @@
       "official_submission_status": "Validated, unsubmitted",
       "submission_id": null,
       "official_score": null
+    },
+    {
+      "id": "EXP-039",
+      "branch": "experiment/astra-npc-gun-only-039",
+      "commit": "822ac93441bc3cad45b03803362062961ccbb33c",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44982125900",
+      "hypothesis": "Farm healthy isolated drones with gun ammunition only. Correct leaked lightning and laser trigger commands in the unsubmitted NPC farm branch.",
+      "technical_validation": "Two secondary-slot subtests failed before the fix and all three passed after. 62 tests; 300 official checker observations, max 6.1 ms locally; unchanged recorded actions versus selected 2.92. No local match score.",
+      "official_submission_status": "Validated, unsubmitted",
+      "submission_id": null,
+      "official_score": null
     }
   ],
   "best_official_entry": {
@@ -792,7 +803,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10,
-  "last_updated_at": "2026-11-22T03:45:08.197438+00:00",
+  "last_updated_at": "2026-11-22T03:47:16.889713+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-21T20:05:00-05:00",
     "rank": 252,
