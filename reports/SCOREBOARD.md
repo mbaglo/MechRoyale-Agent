@@ -72,3 +72,7 @@ The selected entry is **EXP-044** at **3.06**. The target is **10.00**.
 | CHATGPT-SAFE-RESOURCE-DETOUR-001 | [9b4ebc09f75075f20df6a59b092ae823e6b08e3d](https://github.com/mbaglo/MechRoyale-Agent/commit/9b4ebc09f75075f20df6a59b092ae823e6b08e3d) | Unsubmitted | CI 45006865362 passed: 68 tests, AMD64 Docker, checker 300/300; score unknown |
 
 [CHATGPT_ENHANCEMENT_2026-11-22] Safe observed-resource A* detour candidate validated under official geometry bounds. The synthetic obstacle tests verify bounded routing, **not** score or match outcomes. Preserve selected EXP-044 (**3.06**); no submission attempted.
+
+| CHATGPT-EARLY-SUPPLY-STAGING-001 | [376784eed06850653baa04d5f007054e2dbf64a0](https://github.com/mbaglo/MechRoyale-Agent/commit/376784eed06850653baa04d5f007054e2dbf64a0) | Unsubmitted | 75 tests, AMD64 Docker, official checker 300/300 via [CI 45014322822](https://github.com/mbaglo/MechRoyale-Agent/actions/runs/45014322822); competitive score unknown |
+
+[CHATGPT_ENHANCEMENT_2026-11-21] New early-stage supply drop approach based on the official 25-second drop announcement, three-cube reward and full HP/energy refill. Eligibility guards protect existing cube/weapon goals, zone travel, opponent safety and immediate terrain. CI verified 11 new synthetic regressions; no official match score is inferred. **EXP-044 remains the verified selected best at 3.06**.
