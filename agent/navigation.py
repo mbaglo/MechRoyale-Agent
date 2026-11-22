@@ -11,7 +11,40 @@ class Navigator:
         self.escape_until = 0
         self.side = 1
 
+    def _laser_lanes(self, s):
+        """[CHATGPT_ENHANCEMENT_2026-11-21] Detect exposed lanes from charging enemy lasers.
+
+        Only visible tracked mechs with a laser and a torso aimed along our
+        current lane count.  The official laser is hitscan, reaches 280 m,
+        and fires on release after a visible charging interval.
+        """
+        if s.urgent or not s.me.get('grounded', True):
+            return []
+        pos = s.me['pos']
+        lanes = []
+        for enemy in s.enemies:
+            if not enemy.get('charging') or 'laser' not in enemy.get('weapons', ()):
+                continue
+            ep = enemy['pos']
+            yaw = enemy['aim'][0]
+            forward = math.cos(yaw)
+            sideways = math.sin(yaw)
+            px, py = pos[0] - ep[0], pos[1] - ep[1]
+            depth = px*forward + py*sideways
+            offset = abs(px*sideways - py*forward)
+            if not (0 < depth < 275 and offset < 8):
+                continue
+            muzzle = [ep[0], ep[1], ep[2] + 7*(1 + .05*enemy.get('cubes',0))]
+            torso = [pos[0], pos[1], pos[2]+s.me['stats'].get('height',9)*.5]
+            if not self.world.clear(muzzle, torso):
+                continue
+            lanes.append((ep, muzzle, forward, sideways, offset))
+            if len(lanes) == 2:
+                break
+        return lanes
+
     def move(self, s, goal, mode, zone_detour=False):
+        """[CHATGPT_ENHANCEMENT_2026-11-21] Existing navigation plus guarded laser-lane escape."""
         me, o = s.me, s.obs
         pos, stats = me['pos'], me['stats']
         if self.anchor is None or o['t']-self.anchor_t > 1.5:
@@ -41,6 +74,11 @@ class Navigator:
                 if self.world.clear([ep[0],ep[1],ep[2]+7*scale],
                                     [pos[0],pos[1],pos[2]+stats['height']*.5]):
                     lateral_axis = (-dy/separation, dx/separation)
+        # [CHATGPT_ENHANCEMENT_2026-11-21] The original mild lateral
+        # preference cannot offset even a short goal-progress advantage
+        # against a charging 315-damage hitscan laser. Identify exposed lanes
+        # once per decision; terrain and zone guards still select a legal move.
+        laser_lanes = self._laser_lanes(s)
         best, best_score = (0., 0.), -float('inf')
         # Limit detailed collision checks to the nearest projectiles.
         bullets = sorted(o.get('projectiles', []), key=lambda p:math.dist(p['pos'],pos))[:16]
@@ -54,6 +92,18 @@ class Navigator:
                 # Both tangents are legal. Existing obstacle, hazard, zone and
                 # momentum scores choose the feasible side and maintain it.
                 score += 2*look*abs(dx*lateral_axis[0]+dy*lateral_axis[1])
+            # [CHATGPT_ENHANCEMENT_2026-11-21] Prioritize getting laterally
+            # out of an aimed, visible laser lane over ordinary loot progress.
+            # World collision and emergency-zone checks remain in force.
+            for ep, muzzle, facing_x, facing_y, previous_gap in laser_lanes:
+                rx, ry = end[0]-ep[0], end[1]-ep[1]
+                depth = rx*facing_x + ry*facing_y
+                if 0 < depth < 280:
+                    gap = abs(rx*facing_y - ry*facing_x)
+                    score += 5 * (min(14., gap) - previous_gap)
+                    if (dx or dy) and not self.world.clear(
+                            muzzle, [end[0], end[1], end[2] + stats.get('height',9)*.5]):
+                        score += 25
             score += .8*(dx*self.previous[0]+dy*self.previous[1])
             if self.escape_until > o['t'] and not zone_detour:
                 score += 12*self.side*(dx*(-math.sin(base))+dy*math.cos(base))
