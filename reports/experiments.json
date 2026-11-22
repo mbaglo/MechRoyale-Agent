@@ -899,7 +899,11 @@
       "technical_validation": "65 tests passed; checker 300/300 at 9.7 ms local maximum. Baseline failed to select the pair at 148m; candidate selected it and declined the detour for a singleton or when an opponent was tracked. No recorded policy differences in the standard action comparison; actual collection and placement are unknown.",
       "official_submission_status": "Validated, unsubmitted",
       "submission_id": null,
-      "official_score": null
+      "official_score": null,
+      "submission_attempt": {
+        "checked_at": "2026-11-22T05:32:43.274702+00:00",
+        "result": "No submission action taken. Competition browser connection refused at eligibility check. Managed desktop control unavailable in this session. Reconcile authenticated history before retrying."
+      }
     },
     {
       "id": "EXP-046",
