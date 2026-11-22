@@ -1,5 +1,6 @@
 """[CODEX_ENHANCEMENT_2026-11-21] Placement-first mode transitions and goals."""
 import math
+from .weapon_swap import safe_laser_replacements  # [CHATGPT_ENHANCEMENT_2026-11-21]
 
 
 class Strategy:
@@ -18,6 +19,7 @@ class Strategy:
         return self.mode
 
     def goal(self, s, mode):
+        """[CHATGPT_ENHANCEMENT_2026-11-21] Preserve goals and seek safe full-slot upgrades."""
         o, me = s.obs, s.me
         pos = me['pos']
         z = o['zone']
@@ -41,6 +43,10 @@ class Strategy:
                     # tactical change from V1 is weapon search reach (65 -> 130 m).
                     # Existing zone, enemy-contestation and vertical filters apply.
                     candidates.append((p, .85, 130))
+        # [CHATGPT_ENHANCEMENT_2026-11-21] Seek an observed laser only if it
+        # can replace a held lightning secondary safely; cubes remain prioritized.
+        for p in safe_laser_replacements(s):
+            candidates.append((p, 1.15, 85))
         for p in o.get('drops', []):
             if p['lands_in'] < 8:
                 candidates.append((p, .6 if s.health < .7 else 1.2, 100))
