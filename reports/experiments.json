@@ -647,9 +647,11 @@
       "commit": "be77e0362b1bda0660c00f6f80d722eed5122e3e",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44970104273",
       "submission_id": "BB-28686770",
-      "official_score": null,
-      "official_submission_status": "Scoring",
-      "submitted_at_display": "Sat 8:34 PM"
+      "official_score": 2.71,
+      "official_submission_status": "Scored",
+      "submitted_at_display": "Sat 8:34 PM",
+      "selected": false,
+      "assessment": "Rejected against 2.92. The last-reported bearing matched one recorded reacquisition, but continuing to orient toward stale contacts reduced the official mean. The winning policy retains current engine-provided tracking and resumes its normal behavior when reports end. Test actual geometric isolation next."
     },
     {
       "id": "EXP-034",
@@ -679,7 +681,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-22T01:34:20.027507+00:00",
+  "last_updated_at": "2026-11-22T01:37:49.164402+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-21T20:05:00-05:00",
     "rank": 252,
