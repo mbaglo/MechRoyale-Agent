@@ -60,6 +60,7 @@ class Navigator:
                                     [pos[0],pos[1],pos[2]+stats['height']*.5]):
                     lateral_axis = (-dy/separation, dx/separation)
         best, best_score = (0., 0.), -float('inf')
+        initial_clearance = min((math.dist(pos[:2], e) for e in escape_from), default=0.)
         # Limit detailed collision checks to the nearest projectiles.
         bullets = sorted(o.get('projectiles', []), key=lambda p:math.dist(p['pos'],pos))[:16]
         for dx, dy in candidates:
@@ -69,6 +70,11 @@ class Navigator:
             progress = distance-math.dist(end[:2], goal)
             if escape_from:
                 progress = min(math.dist(end[:2], enemy) for enemy in escape_from)
+                # [ASTRA_FIX_2026-11-21] [CODEX_FIX_2026-11-21] When there
+                # is no projectile to dodge, avoid closing on a flank merely
+                # to earn a cover or momentum bonus.
+                if not bullets and progress < initial_clearance:
+                    continue
             score = progress*(4 if s.urgent else 1)
             if lateral_axis is not None:
                 # Both tangents are legal. Existing obstacle, hazard, zone and
