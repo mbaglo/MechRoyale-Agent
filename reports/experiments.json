@@ -613,16 +613,26 @@
     },
     {
       "id": "EXP-032",
-      "branch": "experiment/astra-firing-cover-032",
-      "base_commit": "27662b9a02c0677ca8b914fda223067d11065988",
-      "base_official_score": 2.9,
+      "branch": "experiment/astra-laser-cycle-on-292",
+      "base_commit": "76dcb1f15e5b4d27db9e2a196deef6916ac54a04",
+      "base_official_score": 2.92,
       "hypothesis": "Pair a reachable firing position with nearby solid shelter while fighting a lone laser-equipped mech. Use a confirmed release to open a brief firing window and return to shelter before the next charge. Avoid permanent cover holding.",
-      "technical_validation": "53 tests, checker 300/300 max 17.5 ms locally. 21 recorded movement decisions changed. All five observed beam releases replayed on approximate ground paths produced one fully sheltered release for both controllers and 110 firing lanes each. In 18 synthetic cycles anchored to recorded poses with a stationary shooter, 11 versus 6 were sheltered at the next release; open firing lanes during the first second were 119 versus 121. Both checks are geometry probes.",
-      "commit": "3dbe07e7902ba4c8abf9998b6f51526e1be62d04",
-      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44968654823",
+      "technical_validation": "56 tests, checker 300/300 max 23.5 ms locally, 21 movement changes compared with the 2.92 parent. Supply finish tests and laser cycle tests both passed. The predecessor record includes unchanged local geometry-probe outcomes.",
+      "commit": "1108e449bcd1801c489d1ece994b8caae405302c",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44969883578",
       "submission_id": null,
       "official_score": null,
-      "official_submission_status": "Validated, unsubmitted"
+      "official_submission_status": "Validated, unsubmitted",
+      "prepared_predecessors": [
+        {
+          "branch": "experiment/astra-firing-cover-032",
+          "commit": "3dbe07e7902ba4c8abf9998b6f51526e1be62d04",
+          "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44968654823",
+          "base_commit": "27662b9a02c0677ca8b914fda223067d11065988",
+          "technical_validation": "53 tests, checker 300/300 max 17.5 ms locally. 21 recorded movement decisions changed. All five observed beam releases replayed on approximate ground paths produced one fully sheltered release for both controllers and 110 firing lanes each. In 18 synthetic cycles anchored to recorded poses with a stationary shooter, 11 versus 6 were sheltered at the next release; open firing lanes during the first second were 119 versus 121. Both checks are geometry probes.",
+          "official_submission_status": "Validated, never submitted"
+        }
+      ]
     }
   ],
   "best_official_entry": {
@@ -639,7 +649,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-22T01:05:52.116727+00:00",
+  "last_updated_at": "2026-11-22T01:07:44.557962+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-21T20:05:00-05:00",
     "rank": 252,
