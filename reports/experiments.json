@@ -1005,6 +1005,21 @@
       "official_score": null,
       "selected": false,
       "assessment": "Meaningful supply capture timing/resource acquisition hypothesis with guarded exposure, but no official competition score. Retain EXP-044 at 3.06 until higher authenticated official score is verified. No contest browser submission tool available to this session; do not claim submitted or consume quota."
+    },
+    {
+      "id": "CHATGPT-SECONDARY-SWAP-001",
+      "branch": "experiment/chatgpt-safe-secondary-weapon-swap-2026-11-22",
+      "base_commit": "b0d240270a180f2f5a5b4a238e7a9faf1afa58e6",
+      "base_official_score": 3.06,
+      "commit": "6d2c0287e7777aa495f80df3e318786a959b8731",
+      "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/45018407887",
+      "hypothesis": "The official take+drop action permits replacing a held short-range lightning secondary with a visible longer-range laser without abandoning the starter gun. While full-inventory and healthy, seek an observed uncontested laser up to 85m, then atomically take and drop slot 1 inside the official 4m pickup radius; do not swap under threats, zone pressure, while airborne or during an active capture.",
+      "technical_validation": "Eight new focused synthetic tests, 72 total tests passed. Exact commit passed recorded-action comparator, linux/amd64 Docker build and official competition sandbox checker: 300/300 on-time responses, zero late/missed, p99 2.9ms and maximum 3.0ms on the runner. Initial test fixture lacked required supply-drop fields, diagnosed from failing CI and fixed; latest Actions 45018407887 successful. No interactive match, official placement or score inferred.",
+      "official_submission_status": "Validated, unsubmitted",
+      "submission_id": null,
+      "official_score": null,
+      "selected": false,
+      "assessment": "Distinct protocol-supported secondary-weapon acquisition experiment from selected EXP-044 (3.06). Limited to low-threat cases; requires authenticated competition history and rolling quota check before submission. No submitted receipt. Preserve scorer as final selected entry."
     }
   ],
   "best_official_entry": {
@@ -1021,7 +1036,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10,
-  "last_updated_at": "2026-11-22T09:18:26Z",
+  "last_updated_at": "2026-11-22T11:39:56Z",
   "leaderboard_observation": {
     "observed_at": "2026-11-22T04:51:48.658447+00:00",
     "rank": 275,
