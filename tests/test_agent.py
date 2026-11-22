@@ -95,6 +95,21 @@ class AgentTests(unittest.TestCase):
         o['zone'].update(next_center=[x, y], next_radius=0)
         self.assertTrue(self.bot.observer.parse(o).urgent)
 
+    def test_extended_trip_requires_two_nearby_cubes_and_no_opponent(self):
+        # [ASTRA_ENHANCEMENT_2026-11-21] [CODEX_ENHANCEMENT_2026-11-21]
+        o = self.quiet()
+        x, y, z = o['self']['pos']
+        first = dict(id=5001, pos=[x + 148., y, z])
+        o['cubes'] = [first]
+        def goal():
+            s = self.bot.observer.parse(o)
+            return self.bot.strategy.goal(s, self.bot.strategy.choose(s))
+        self.assertNotEqual(goal(), first['pos'][:2])
+        o['cubes'].append(dict(id=5002, pos=[x + 151., y, z]))
+        self.assertEqual(goal(), first['pos'][:2])
+        o['mechs'] = [self.enemy(70)]
+        self.assertNotEqual(goal(), first['pos'][:2])
+
     def test_retreat_preserves_regeneration(self):
         o = self.quiet()
         o['mechs'] = [self.enemy(100)]

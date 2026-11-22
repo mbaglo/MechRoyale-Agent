@@ -30,10 +30,21 @@ class Strategy:
         if s.urgent:
             return goal
         candidates = []
-        for p in o.get('cubes', []):
+        cubes = o.get('cubes', [])
+        # [ASTRA_ENHANCEMENT_2026-11-21] [CODEX_ENHANCEMENT_2026-11-21]
+        # A drone can leave two cubes beyond normal collection range. Extend
+        # the approach only for a visible pair while healthy and undisturbed.
+        paired = None
+        if len(cubes) >= 2 and not s.enemies and s.health >= .85 and not o.get('projectiles'):
+            closest = min(cubes, key=lambda cube: math.dist(pos, cube['pos']))
+            if 130 <= math.dist(pos, closest['pos']) < 170 and any(
+                    c['id'] != closest['id'] and math.dist(c['pos'], closest['pos']) <= 7
+                    for c in cubes):
+                paired = closest
+        for p in cubes:
             # [CODEX_ENHANCEMENT_2026-11-21] EXP-010: recover safe visible
             # drops beyond the old 55 m limit, including ordinary gun kills.
-            candidates.append((p, 1.0, 130))
+            candidates.append((p, 1.0, 170 if p is paired else 130))
         if any(w is None for w in me['weapons']):
             for p in o.get('pickups', []):
                 if p['kind'] not in [w['kind'] for w in me['weapons'] if w]:
