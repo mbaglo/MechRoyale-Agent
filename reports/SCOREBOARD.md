@@ -43,3 +43,6 @@ The selected entry is **EXP-031** at **2.92**. The target is **10.00**.
 | EXP-034 | [1006cdc8679b9f90b5234d52b2faced87cf61f99](https://github.com/mbaglo/MechRoyale-Agent/commit/1006cdc8679b9f90b5234d52b2faced87cf61f99) | BB-A59FBC9D | 2.92 |
 | EXP-035 | [169f1d53be564b30039d39359a4e430ac117287f](https://github.com/mbaglo/MechRoyale-Agent/commit/169f1d53be564b30039d39359a4e430ac117287f) | BB-BEE2E070 | 2.92 |
 | EXP-036 | [ee5931e5759e20befb46a8bb0ba2845441774ce5](https://github.com/mbaglo/MechRoyale-Agent/commit/ee5931e5759e20befb46a8bb0ba2845441774ce5) | Unsubmitted | Validated, unsubmitted |
+| CHATGPT-MORTAR-001 | [65feeefda930083bb4701a148afbfc40f92c6008](https://github.com/mbaglo/MechRoyale-Agent/commit/65feeefda930083bb4701a148afbfc40f92c6008) | BB-46438060 | **2.90** — below selected 2.92 | 
+
+[CHATGPT_FIX_2026-11-21] The mortar covered-target candidate scored **2.90** on the user's official result. Keep **EXP-031 at 2.92** selected. New experimental candidate results must be evaluated before any further promotion.
