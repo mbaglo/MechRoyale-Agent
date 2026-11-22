@@ -797,7 +797,31 @@
       "technical_validation": "54 tests; official protocol checker 300/300, max 7.3 ms locally. One-step navigation probe on official terrain at the recorded starting pose with 32 rotated diametrically opposed synthetic pairs, 55m away: parent held 31/32 and improved minimum clearance once. Candidate improved clearance at 8m on 32/32. No match or survival result inferred.",
       "official_submission_status": "Validated, unsubmitted",
       "submission_id": null,
-      "official_score": null
+      "official_score": null,
+      "multi_step_navigation_probe": {
+        "method": "16 opposing-pair orientations per condition, 20 decisions at 0.1 s, official terrain and navigation, synthetic instantaneous commanded movement, stationary opponents or both closing at 5 m/s. No damage, acceleration or energy integration. Values are change in distance to nearest opponent, metres.",
+        "parent_mean": [
+          0.009,
+          -9.991
+        ],
+        "candidate_mean": [
+          7.206,
+          -2.103
+        ],
+        "candidate_worst": [
+          -1.776,
+          -9.98
+        ],
+        "parent_stationary_decisions": [
+          318,
+          318
+        ],
+        "candidate_stationary_decisions": [
+          60,
+          55
+        ],
+        "decisions_per_condition": 320
+      }
     }
   ],
   "best_official_entry": {
