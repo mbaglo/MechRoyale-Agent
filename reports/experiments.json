@@ -589,9 +589,11 @@
       "commit": "e91bfe42e89e8677af2aa513e6980bb5497123a3",
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44966555493",
       "submission_id": "BB-F494DF22",
-      "official_score": null,
-      "official_submission_status": "Scoring",
-      "submitted_at_display": "Sat 7:43 PM"
+      "official_score": 2.9,
+      "official_submission_status": "Scored",
+      "submitted_at_display": "Sat 7:43 PM",
+      "selected": false,
+      "assessment": "Official tie with the selected source. Keep the earlier submission selected. The score does not reveal how many drone encounters occurred. Test preserving existing supply capture progress next."
     },
     {
       "id": "EXP-031",
@@ -621,14 +623,14 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10.0,
-  "last_updated_at": "2026-11-22T00:43:15.512832+00:00",
+  "last_updated_at": "2026-11-22T00:46:37.863239+00:00",
   "leaderboard_observation": {
-    "observed_at": "2026-11-21T18:35:00-05:00",
-    "rank": 240,
-    "teams": 312,
+    "observed_at": "2026-11-21T19:46:00-05:00",
+    "rank": 248,
+    "teams": 323,
     "score": 2.9,
-    "rank_32_score": 6.06,
-    "highest_displayed_score": 6.38,
+    "rank_32_score": 6.13,
+    "highest_displayed_score": 6.44,
     "source": "Official expanded practice leaderboard"
   }
 }
