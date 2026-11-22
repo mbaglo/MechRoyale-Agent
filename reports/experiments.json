@@ -795,7 +795,7 @@
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44982323516",
       "hypothesis": "Escape a stationary inner-circle hold when flanked by two nearby mechs. Rank feasible exits by nearest opponent clearance and evaluate perpendicular headings. Retain active supply and urgent zone control.",
       "technical_validation": "54 tests; official protocol checker 300/300, max 7.3 ms locally. One-step navigation probe on official terrain at the recorded starting pose with 32 rotated diametrically opposed synthetic pairs, 55m away: parent held 31/32 and improved minimum clearance once. Candidate improved clearance at 8m on 32/32. No match or survival result inferred.",
-      "official_submission_status": "Validated, unsubmitted",
+      "official_submission_status": "Held for EXP-041 official result",
       "submission_id": null,
       "official_score": null,
       "multi_step_navigation_probe": {
@@ -830,9 +830,23 @@
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44982586788",
       "hypothesis": "Avoid reducing the closest flank distance on a candidate navigation step while no projectile needs dodging.",
       "technical_validation": "54 tests; checker 300/300 with 7.0 ms local maximum. Across 18 feasible synthetic pincer layouts from eight designated map sites and eight orientations per site, two seconds of closing at 5 m/s: mean clearance change was -9.992 m for the selected agent, -3.630 m for EXP-040 and -3.034 m for EXP-041. Worst cases were -10.000, -18.257 and -9.860 m. At the original recorded pose the 16-orientation closing mean regressed from -2.103 to -3.342 m versus EXP-040. Opponent pursuit ignored obstacles; no damage or official placement measured.",
-      "official_submission_status": "Held for EXP-040 official result",
+      "official_submission_status": "Validated, unsubmitted",
       "submission_id": null,
-      "official_score": null
+      "official_score": null,
+      "ground_acceleration_probe": {
+        "design": "Same 18 feasible paired layouts and closing speed as the cross-map test. Integrate commanded ground velocity subject to published acceleration, reject unwalkable steps, track boost drain and delayed energy regeneration. Opponent paths remain synthetic and ignore obstacles. Two seconds per layout; no weapons, damage or scoring.",
+        "mean_change_m": {
+          "selected": -9.986,
+          "EXP-040": -3.825,
+          "EXP-041": -3.184
+        },
+        "worst_change_m": {
+          "selected": -10.0,
+          "EXP-040": -18.588,
+          "EXP-041": -9.743
+        },
+        "decision": "Prefer EXP-041 for first official evaluation of pincer escape because the larger downside in EXP-040 persisted with acceleration. Use official results to decide whether its sibling warrants a slot."
+      }
     }
   ],
   "best_official_entry": {
@@ -849,7 +863,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10,
-  "last_updated_at": "2026-11-22T03:53:12.261066+00:00",
+  "last_updated_at": "2026-11-22T03:54:42.808237+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-21T20:05:00-05:00",
     "rank": 252,
