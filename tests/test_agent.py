@@ -95,6 +95,17 @@ class AgentTests(unittest.TestCase):
         o['zone'].update(next_center=[x, y], next_radius=0)
         self.assertTrue(self.bot.observer.parse(o).urgent)
 
+    def test_ground_retreat_boost_does_not_trigger_airborne_jet(self):
+        # [ASTRA_FIX_2026-11-21] [CODEX_FIX_2026-11-21]
+        o = self.quiet()
+        o['mechs'] = [self.enemy(80)]
+        o['self']['hp'] = o['self']['max_hp'] * .35
+        o['self']['energy'] = 80
+        o['self']['grounded'] = True
+        self.assertTrue(self.bot.act(o)['boost'])
+        o['self']['grounded'] = False
+        self.assertFalse(self.bot.act(o)['boost'])
+
     def test_retreat_preserves_regeneration(self):
         o = self.quiet()
         o['mechs'] = [self.enemy(100)]

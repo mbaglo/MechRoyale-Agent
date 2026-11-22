@@ -90,7 +90,10 @@ class Navigator:
             if score > best_score:
                 best, best_score = (dx,dy), score
         self.previous = best
-        boost = bool(me['energy'] > 30 and (s.urgent or (mode == 'conservative' and s.enemies)))
+        # [ASTRA_FIX_2026-11-21] [CODEX_FIX_2026-11-21] A ground sprint
+        # becomes upward thrust when the mech crosses a ledge.
+        boost = bool(me['grounded'] and me['energy'] > 30 and
+                     (s.urgent or (mode == 'conservative' and s.enemies)))
         # Do not spend energy or create footstep sounds while already at a quiet goal.
         if distance < 2 and not s.enemies and not s.urgent:
             best, boost = (0., 0.), False
