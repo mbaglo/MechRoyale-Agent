@@ -111,6 +111,10 @@ class Combat:
             # [CHATGPT_ENHANCEMENT_2026-11-21] Don't waste a scarce mortar,
             # laser charge, or lightning energy on neutral farming.
             selected = next((w for w in weapons if w and w['kind']=='gun'), selected)
+            # [ASTRA_FIX_2026-11-21] [CODEX_FIX_2026-11-21] Finish a safe drone
+            # before topping up when enough rounds remain even with one in reserve.
+            if (selected['ammo'] - 1) * selected['stats']['damage'] >= target['hp']:
+                reload = False
         aim_point = point
         pitch = None
         if selected and selected['kind']=='gun':
