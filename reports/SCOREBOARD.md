@@ -61,3 +61,6 @@ The selected entry is **EXP-044** at **3.06**. The target is **10.00**.
 | CHATGPT-INCOMING-FIRE-001 | [25e6fe8146700f131e41c70f1a734d8c7cef70c4](https://github.com/mbaglo/MechRoyale-Agent/commit/25e6fe8146700f131e41c70f1a734d8c7cef70c4) | Unsubmitted | CI passed: predictive mortar splash + incoming-bullet evasive movement; official score unknown |
 
 [CHATGPT_ENHANCEMENT_2026-11-22] This candidate is **validated but unsubmitted**; the selected EXP-044 score **3.06** remains unchanged. CI 44993311532 passed unit tests, comparator, Docker and official sandbox check. No simulated match or competition score has been inferred.
+| CHATGPT-UPPER-BODY-COVER-001 | [5dc57340bb1f49c610b1816b2faa9580fd584f0c](https://github.com/mbaglo/MechRoyale-Agent/commit/5dc57340bb1f49c610b1816b2faa9580fd584f0c) | Unsubmitted | 70 tests, linux/amd64 build and official checker 300/300 passed; score unknown |
+
+[CHATGPT_ENHANCEMENT_2026-11-22] A distinct high-cover engagement candidate now passes CI without affecting selected EXP-044 (3.06). Official outcome is unknown. The upper-body lane is based on target cylinder geometry and an unobstructed projected gun shot; this is not an official match simulation.
