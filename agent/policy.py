@@ -7,6 +7,7 @@ from .navigation import Navigator
 from .combat import Combat
 from .zone_route import ZoneRoute
 from .supply import finishing_drop, stay_inside
+from .neutral_collection import safe_neutral_collection_goal  # [CHATGPT_ENHANCEMENT_2026-11-21]
 
 
 class Bot:
@@ -24,10 +25,22 @@ class Bot:
         self.mode = 'balanced'
 
     def act(self, obs):
+        """[CHATGPT_ENHANCEMENT_2026-11-21] Existing policy plus safe NPC cube approach."""
         s = self.observer.parse(obs)
         self.mode = self.strategy.choose(s)
         drop = finishing_drop(s,self.config)
         goal = drop['pos'][:2] if drop else self.strategy.goal(s,self.mode)
+        # [CHATGPT_ENHANCEMENT_2026-11-21] The previously idle navigation
+        # can close the gap to a safe drone standoff, then collect its cubes.
+        # This cannot override a finishing supply capture, urgent zone route,
+        # nearby player, or existing immediately reachable loot.
+        if not drop and self.mode != 'conservative':
+            neutral_targets = self.combat.neutral_farm.targets(s)
+            npc_goal = safe_neutral_collection_goal(
+                s, neutral_targets, self.world, self.config
+            )
+            if npc_goal is not None:
+                goal = npc_goal
         goal = self.zone_route.waypoint(s,goal)
         move, boost = self.navigator.move(s,goal,self.mode,zone_detour=bool(self.zone_route.path))
         if drop:
