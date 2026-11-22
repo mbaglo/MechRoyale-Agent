@@ -784,9 +784,10 @@
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44982125900",
       "hypothesis": "Farm healthy isolated drones with gun ammunition only. Correct leaked lightning and laser trigger commands in the unsubmitted NPC farm branch.",
       "technical_validation": "Two secondary-slot subtests failed before the fix and all three passed after. 62 tests; 300 official checker observations, max 6.1 ms locally; unchanged recorded actions versus selected 2.92. No local match score.",
-      "official_submission_status": "Validated, unsubmitted",
-      "submission_id": null,
-      "official_score": null
+      "official_submission_status": "Scoring",
+      "submission_id": "BB-255BCC39",
+      "official_score": null,
+      "submitted_at_display": "Sat 11:35 PM"
     },
     {
       "id": "EXP-040",
@@ -830,9 +831,9 @@
       "ci_url": "https://github.com/mbaglo/MechRoyale-Agent/actions/runs/44982586788",
       "hypothesis": "Avoid reducing the closest flank distance on a candidate navigation step while no projectile needs dodging.",
       "technical_validation": "54 tests; checker 300/300 with 7.0 ms local maximum. Across 18 feasible synthetic pincer layouts from eight designated map sites and eight orientations per site, two seconds of closing at 5 m/s: mean clearance change was -9.992 m for the selected agent, -3.630 m for EXP-040 and -3.034 m for EXP-041. Worst cases were -10.000, -18.257 and -9.860 m. At the original recorded pose the 16-orientation closing mean regressed from -2.103 to -3.342 m versus EXP-040. Opponent pursuit ignored obstacles; no damage or official placement measured.",
-      "official_submission_status": "Scoring",
+      "official_submission_status": "Scored",
       "submission_id": "BB-1EAB94B7",
-      "official_score": null,
+      "official_score": 2.56,
       "ground_acceleration_probe": {
         "design": "Same 18 feasible paired layouts and closing speed as the cross-map test. Integrate commanded ground velocity subject to published acceleration, reject unwalkable steps, track boost drain and delayed energy regeneration. Opponent paths remain synthetic and ignore obstacles. Two seconds per layout; no weapons, damage or scoring.",
         "mean_change_m": {
@@ -847,7 +848,8 @@
         },
         "decision": "Prefer EXP-041 for first official evaluation of pincer escape because the larger downside in EXP-040 persisted with acceleration. Use official results to decide whether its sibling warrants a slot."
       },
-      "submitted_at_display": "Sat 11:31 PM"
+      "submitted_at_display": "Sat 11:31 PM",
+      "selected": false
     }
   ],
   "best_official_entry": {
@@ -864,7 +866,7 @@
     "source": "Authenticated competition page"
   },
   "objective_official_practice_score_at_least": 10,
-  "last_updated_at": "2026-11-22T04:31:24.272415+00:00",
+  "last_updated_at": "2026-11-22T04:35:16.708573+00:00",
   "leaderboard_observation": {
     "observed_at": "2026-11-22T03:55:35.820568+00:00",
     "rank": 268,
